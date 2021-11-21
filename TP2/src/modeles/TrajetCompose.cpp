@@ -1,28 +1,26 @@
 /*************************************************************************
-                           Liste  -  description
+                           TrajetCompose  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
+    début                : 17/11/2021
+    copyright            : (C) 2021 par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <Liste> (fichier Liste.cpp) ------------
+//---------- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-
 //------------------------------------------------------ Include personnel
-#include "Liste.h"
-
+#include "TrajetCompose.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Liste::Méthode ( liste des paramètres )
+// type TrajetCompose::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
@@ -30,7 +28,7 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Liste & Liste::operator = ( const Liste & unListe )
+TrajetCompose & TrajetCompose::operator = ( const TrajetCompose & unTrajetCompose )
 // Algorithme :
 //
 {
@@ -38,34 +36,34 @@ Liste & Liste::operator = ( const Liste & unListe )
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Liste::Liste ( const Liste & unListe )
+TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Liste>" << endl;
+    cout << "Appel au constructeur de copie de <TrajetCompose>" << endl;
 #endif
-} //----- Fin de Liste (constructeur de copie)
+} //----- Fin de TrajetCompose (constructeur de copie)
 
 
-Liste::Liste ( )
+TrajetCompose::TrajetCompose ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Liste>" << endl;
+    cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
-} //----- Fin de Liste
+} //----- Fin de TrajetCompose
 
 
-Liste::~Liste ( )
+TrajetCompose::~TrajetCompose ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Liste>" << endl;
+    cout << "Appel au destructeur de <TrajetCompose>" << endl;
 #endif
-} //----- Fin de ~Liste
+} //----- Fin de ~TrajetCompose
 
 
 //------------------------------------------------------------------ PRIVE
