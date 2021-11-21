@@ -1,17 +1,16 @@
 /*************************************************************************
                            Liste  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
+    début                : 21/11/2021
+    copyright            : (C) 2021 par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
 //---------- Interface de la classe <Liste> (fichier Liste.h) ----------------
 #if ! defined ( LISTE_H )
 #define LISTE_H
-
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Element.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -28,7 +27,13 @@ class Liste
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
+    int Taille ( ) const;
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    void Ajouter ( const Trajet* _trajet );
     // Mode d'emploi :
     //
     // Contrat :
@@ -36,7 +41,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Liste & operator = ( const Liste & unListe );
+    Liste & operator = ( const Liste & _liste );
     // Mode d'emploi :
     //
     // Contrat :
@@ -44,7 +49,7 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Liste ( const Liste & unListe );
+    Liste ( const Liste & _liste );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
@@ -64,11 +69,11 @@ public:
 
 //------------------------------------------------------------------ PRIVE
 
-protected:
-//----------------------------------------------------- Méthodes protégées
+private:
+//----------------------------------------------------- Méthodes privées
 
-//----------------------------------------------------- Attributs protégés
-
+//----------------------------------------------------- Attributs privés
+    Element* premier;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Liste>

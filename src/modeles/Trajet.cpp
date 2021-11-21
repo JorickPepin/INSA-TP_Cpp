@@ -1,28 +1,26 @@
 /*************************************************************************
-                           Catalogue  -  description
+                           Trajet  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
+    début                : 17/11/2021
+    copyright            : (C) 2021 par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
+//---------- Réalisation de la classe <Trajet> (fichier Trajet.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-
 //------------------------------------------------------ Include personnel
-#include "Catalogue.h"
-
+#include "Trajet.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Catalogue::Méthode ( liste des paramètres )
+// type Trajet::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
@@ -30,7 +28,7 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Catalogue & Catalogue::operator = ( const Catalogue & unCatalogue )
+Trajet & Trajet::operator = ( const Trajet & unTrajet )
 // Algorithme :
 //
 {
@@ -38,34 +36,34 @@ Catalogue & Catalogue::operator = ( const Catalogue & unCatalogue )
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Catalogue::Catalogue ( const Catalogue & unCatalogue )
+Trajet::Trajet ( const Trajet & unTrajet )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Catalogue>" << endl;
+    cout << "Appel au constructeur de copie de <Trajet>" << endl;
 #endif
-} //----- Fin de Catalogue (constructeur de copie)
+} //----- Fin de Trajet (constructeur de copie)
 
 
-Catalogue::Catalogue ( )
+Trajet::Trajet ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Catalogue>" << endl;
+    cout << "Appel au constructeur de <Trajet>" << endl;
 #endif
-} //----- Fin de Catalogue
+} //----- Fin de Trajet
 
 
-Catalogue::~Catalogue ( )
+Trajet::~Trajet ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Catalogue>" << endl;
+    cout << "Appel au destructeur de <Trajet>" << endl;
 #endif
-} //----- Fin de ~Catalogue
+} //----- Fin de ~Trajet
 
 
 //------------------------------------------------------------------ PRIVE

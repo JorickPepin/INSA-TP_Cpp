@@ -1,36 +1,51 @@
 /*************************************************************************
-                           TrajetCompose  -  description
+                           Element  -  description
                              -------------------
-    début                : 17/11/2021
+    début                : 21/11/2021
     copyright            : (C) 2021 par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
+//---------- Réalisation de la classe <Element> (fichier Element.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-
 //------------------------------------------------------ Include personnel
-#include "TrajetCompose.h"
-
+#include "Element.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type TrajetCompose::Méthode ( liste des paramètres )
+int Element::Taille ( ) const
 // Algorithme :
 //
-//{
-//} //----- Fin de Méthode
+{
+    int taille = 1;
 
+    if (suivant)
+        taille += suivant->Taille();
+
+    return taille;
+
+} //----- Fin de Taille
+
+void Element::Ajouter ( Element* _element )
+// Algorithme :
+//
+{
+    if (!suivant)
+        suivant = _element;
+    else
+        suivant->Ajouter(_element);
+
+} //----- Fin de Ajouter
 
 //------------------------------------------------- Surcharge d'opérateurs
-TrajetCompose & TrajetCompose::operator = ( const TrajetCompose & unTrajetCompose )
+Element & Element::operator = ( const Element & _element )
 // Algorithme :
 //
 {
@@ -38,34 +53,47 @@ TrajetCompose & TrajetCompose::operator = ( const TrajetCompose & unTrajetCompos
 
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )
+Element::Element ( const Element & _element )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <TrajetCompose>" << endl;
+    cout << "Appel au constructeur de copie de <Element>" << endl;
 #endif
-} //----- Fin de TrajetCompose (constructeur de copie)
+} //----- Fin de Element (constructeur de copie)
 
 
-TrajetCompose::TrajetCompose ( )
+Element::Element ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <TrajetCompose>" << endl;
+    cout << "Appel au constructeur de <Element>" << endl;
 #endif
-} //----- Fin de TrajetCompose
+} //----- Fin de Element
 
 
-TrajetCompose::~TrajetCompose ( )
+Element::Element (const Trajet* _trajet) : trajet(_trajet), suivant(nullptr)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <TrajetCompose>" << endl;
+    cout << "Appel au constructeur de <Element>" << endl;
 #endif
-} //----- Fin de ~TrajetCompose
+} //----- Fin de Element
+
+
+Element::~Element ( )
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au destructeur de <Element>" << endl;
+#endif
+
+    delete trajet;
+    delete suivant;
+} //----- Fin de ~Element
 
 
 //------------------------------------------------------------------ PRIVE
