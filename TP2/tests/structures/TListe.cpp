@@ -6,12 +6,11 @@
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation du module <TListe> (fichier TListe.cpp) ---------------
+//---------- Réalisation du module <TListe> (fichier TListe.cpp) ---------
 
 /////////////////////////////////////////////////////////////////  INCLUDE
 //-------------------------------------------------------- Include système
 #include <iostream>
-using namespace std;
 //------------------------------------------------------ Include personnel
 #include "TListe.h"
 #include "../acutest.h"
@@ -19,19 +18,12 @@ using namespace std;
 #include "../../src/modeles/TrajetSimple.h"
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
-void testConstructeurDefaut()
-// Algorithme :
-//
-{
+void testConstructeurDefaut() {
     Liste liste;
     TEST_CHECK_(liste.Taille() == 0, "la taille de la liste est 0");
-} //----- fin de testConstructeurDefaut
+}
 
-
-void testAjoutTrajet()
-// Algorithme :
-//
-{
+void testAjoutTrajet() {
     Liste* liste = new Liste();
     Trajet* trajet1 = new TrajetSimple();
     Trajet* trajet2 = new TrajetSimple();
@@ -43,11 +35,10 @@ void testAjoutTrajet()
     TEST_CHECK_(liste->Taille() == 2, "la taille de la liste est 2 après l'ajout de deux éléments");
 
     delete liste;
-} //----- fin de testAjoutTrajet
-
+}
 
 TEST_LIST = {
-    {"Constructeur par défaut d'une liste : Liste ( ); ", testConstructeurDefaut },
-    {"Ajout dans une liste : void Ajouter ( const Trajet* _trajet ); ", testAjoutTrajet },
+    { "Constructeur par défaut d'une liste : Liste ( ); ", testConstructeurDefaut },
+    { "Ajout dans une liste : void Ajouter ( const Trajet* _trajet ); ", testAjoutTrajet },
     { NULL, NULL }
 };

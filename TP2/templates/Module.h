@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface du module <Xxx> (fichier Xxx.h) -------------------
-#if ! defined ( XXX_H )
-#define XXX_H
+#ifndef XXX_H_
+#define XXX_H_
 
 //------------------------------------------------------------------------
 // Rôle du module <Xxx>
@@ -25,11 +25,11 @@
 
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
-// type Nom ( liste de paramètres );
+// type Nom(liste de paramètres);
 // Mode d'emploi :
 //
 // Contrat :
 //
 
-#endif // XXX_H
+#endif  // XXX_H_
 

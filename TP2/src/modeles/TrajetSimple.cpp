@@ -6,12 +6,11 @@
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) ------------
+//-- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
 //------------------------------------------------------ Include personnel
 #include "TrajetSimple.h"
@@ -20,53 +19,31 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type TrajetSimple::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
 
 //------------------------------------------------- Surcharge d'opérateurs
-TrajetSimple & TrajetSimple::operator = ( const TrajetSimple & unTrajetSimple )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
+TrajetSimple& TrajetSimple::operator=(const TrajetSimple& _trajetSimple) {
+}
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <TrajetSimple>" << endl;
-#endif
-} //----- Fin de TrajetSimple (constructeur de copie)
+TrajetSimple::TrajetSimple(const TrajetSimple& _trajetSimple) {
+    #ifdef MAP
+        std::cout <<
+            "Appel au constructeur de copie de <TrajetSimple>" << std::endl;
+    #endif
+}
 
+TrajetSimple::TrajetSimple() {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de <TrajetSimple>" << std::endl;
+    #endif
+}
 
-TrajetSimple::TrajetSimple ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <TrajetSimple>" << endl;
-#endif
-} //----- Fin de TrajetSimple
-
-
-TrajetSimple::~TrajetSimple ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <TrajetSimple>" << endl;
-#endif
-} //----- Fin de ~TrajetSimple
-
+TrajetSimple::~TrajetSimple() {
+    #ifdef MAP
+        std::cout << "Appel au destructeur de <TrajetSimple>" << std::endl;
+    #endif
+}
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

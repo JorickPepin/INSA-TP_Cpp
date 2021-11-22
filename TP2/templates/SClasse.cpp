@@ -11,64 +11,41 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
-
 //------------------------------------------------------ Include personnel
 #include "Xxx.h"
-
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Xxx::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
+// type Xxx::Méthode(liste des paramètres) {
+//}
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Xxx & Xxx::operator = ( const Xxx & unXxx )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
+Xxx & Xxx::operator=(const Xxx& _Xxx) {
+}
 
 //-------------------------------------------- Constructeurs - destructeur
-Xxx::Xxx ( const Xxx & unXxx )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Xxx>" << endl;
-#endif
-} //----- Fin de Xxx (constructeur de copie)
+Xxx::Xxx(const Xxx& _Xxx) {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de copie de <Xxx>" << std::endl;
+    #endif
+}
 
+Xxx::Xxx() {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de <Xxx>" << std::endl;
+    #endif
+}
 
-Xxx::Xxx ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <Xxx>" << endl;
-#endif
-} //----- Fin de Xxx
-
-
-Xxx::~Xxx ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <Xxx>" << endl;
-#endif
-} //----- Fin de ~Xxx
-
+Xxx::~Xxx() {
+    #ifdef MAP
+        std::cout << "Appel au destructeur de <Xxx>" << std::endl;
+    #endif
+}
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

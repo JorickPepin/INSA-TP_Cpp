@@ -6,12 +6,11 @@
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <Liste> (fichier Liste.cpp) ------------
+//---------- Réalisation de la classe <Liste> (fichier Liste.cpp) --------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
 //------------------------------------------------------ Include personnel
 #include "Liste.h"
@@ -20,72 +19,47 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-int Liste::Taille ( ) const
-// Algorithme :
-//
-{
+int Liste::Taille() const {
     int taille = 0;
 
     if (premier)
         taille = premier->Taille();
 
     return taille;
-} //----- Fin de Taille
+}
 
-
-void Liste::Ajouter ( const Trajet* _trajet )
-// Algorithme :
-//
-{
+void Liste::Ajouter(const Trajet* _trajet) {
     if (premier)
         premier->Ajouter(new Element(_trajet));
-    else 
+    else
         premier = new Element(_trajet);
-
-} //----- Fin de Ajouter
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
-Liste & Liste::operator = ( const Liste & _liste )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
+Liste & Liste::operator=(const Liste & _liste) {
+}
 
 //-------------------------------------------- Constructeurs - destructeur
-Liste::Liste ( const Liste & _liste )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Liste>" << endl;
-#endif
-} //----- Fin de Liste (constructeur de copie)
+Liste::Liste(const Liste & _liste) {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de copie de <Liste>" << std::endl;
+    #endif
+}
 
+Liste::Liste() : premier(nullptr) {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de <Liste>" << std::endl;
+    #endif
+}
 
-Liste::Liste ( ) : premier(nullptr)
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <Liste>" << endl;
-#endif
-} //----- Fin de Liste
-
-
-Liste::~Liste ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <Liste>" << endl;
-#endif
+Liste::~Liste() {
+    #ifdef MAP
+        std::cout << "Appel au destructeur de <Liste>" << std::endl;
+    #endif
 
     delete premier;
-} //----- Fin de ~Liste
-
+}
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

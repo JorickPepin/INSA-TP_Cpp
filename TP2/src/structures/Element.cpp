@@ -6,12 +6,11 @@
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <Element> (fichier Element.cpp) ------------
+//---------- Réalisation de la classe <Element> (fichier Element.cpp) ----
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
 //------------------------------------------------------ Include personnel
 #include "Element.h"
@@ -20,83 +19,54 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-int Element::Taille ( ) const
-// Algorithme :
-//
-{
+int Element::Taille() const {
     int taille = 1;
 
     if (suivant)
         taille += suivant->Taille();
 
     return taille;
+}
 
-} //----- Fin de Taille
-
-void Element::Ajouter ( Element* _element )
-// Algorithme :
-//
-{
+void Element::Ajouter(Element *_element) {
     if (!suivant)
         suivant = _element;
     else
         suivant->Ajouter(_element);
-
-} //----- Fin de Ajouter
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
-Element & Element::operator = ( const Element & _element )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
+Element &Element::operator=(const Element &_element) {
+}
 
 //-------------------------------------------- Constructeurs - destructeur
-Element::Element ( const Element & _element )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Element>" << endl;
-#endif
-} //----- Fin de Element (constructeur de copie)
+Element::Element(const Element &_element) {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de copie de <Element>" << std::endl;
+    #endif
+}
 
+Element::Element() {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de <Element>" << std::endl;
+    #endif
+}
 
-Element::Element ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <Element>" << endl;
-#endif
-} //----- Fin de Element
+Element::Element(const Trajet *_trajet) : trajet(_trajet), suivant(nullptr) {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de <Element>" << std::endl;
+    #endif
+}
 
-
-Element::Element (const Trajet* _trajet) : trajet(_trajet), suivant(nullptr)
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <Element>" << endl;
-#endif
-} //----- Fin de Element
-
-
-Element::~Element ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <Element>" << endl;
-#endif
+Element::~Element() {
+    #ifdef MAP
+        std::cout << "Appel au destructeur de <Element>" << std::endl;
+    #endif
 
     delete trajet;
     delete suivant;
-} //----- Fin de ~Element
-
+}
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

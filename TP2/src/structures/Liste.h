@@ -6,9 +6,9 @@
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Liste> (fichier Liste.h) ----------------
-#if ! defined ( LISTE_H )
-#define LISTE_H
+//---------- Interface de la classe <Liste> (fichier Liste.h) ------------
+#ifndef SRC_STRUCTURES_LISTE_H_
+#define SRC_STRUCTURES_LISTE_H_
 //--------------------------------------------------- Interfaces utilisées
 #include "Element.h"
 //------------------------------------------------------------- Constantes
@@ -21,62 +21,54 @@
 //
 //------------------------------------------------------------------------
 
-class Liste 
-{
-//----------------------------------------------------------------- PUBLIC
-
-public:
-//----------------------------------------------------- Méthodes publiques
-    int Taille ( ) const;
+class Liste {
+ public:
+    //----------------------------------------------------- Méthodes publiques
+    int Taille() const;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    void Ajouter ( const Trajet* _trajet );
+    void Ajouter(const Trajet* _trajet);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
-//------------------------------------------------- Surcharge d'opérateurs
-    Liste & operator = ( const Liste & _liste );
+    //------------------------------------------------- Surcharge d'opérateurs
+    Liste& operator=(const Liste& _liste);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
-//-------------------------------------------- Constructeurs - destructeur
-    Liste ( const Liste & _liste );
+    //-------------------------------------------- Constructeurs - destructeur
+    Liste(const Liste& _liste);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Liste ( );
+    Liste();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Liste ( );
+    virtual ~Liste();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE
+ private:
+    //----------------------------------------------------- Méthodes privées
 
-private:
-//----------------------------------------------------- Méthodes privées
-
-//----------------------------------------------------- Attributs privés
+    //----------------------------------------------------- Attributs privés
     Element* premier;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Liste>
 
-#endif // LISTE_H
-
+#endif  // SRC_STRUCTURES_LISTE_H_

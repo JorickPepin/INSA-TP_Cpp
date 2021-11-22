@@ -6,9 +6,9 @@
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ----------------
-#if ! defined ( TRAJETCOMPOSE_H )
-#define TRAJETCOMPOSE_H
+//--- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ---
+#ifndef SRC_MODELES_TRAJETCOMPOSE_H_
+#define SRC_MODELES_TRAJETCOMPOSE_H_
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
@@ -22,56 +22,42 @@
 //
 //------------------------------------------------------------------------
 
-class TrajetCompose : public Trajet
-{
-//----------------------------------------------------------------- PUBLIC
+class TrajetCompose : public Trajet {
+ public:
+    //----------------------------------------------------- Méthodes publiques
 
-public:
-//----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
+    //------------------------------------------------- Surcharge d'opérateurs
+    TrajetCompose& operator=(const TrajetCompose& _trajetCompose);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
-//------------------------------------------------- Surcharge d'opérateurs
-    TrajetCompose & operator = ( const TrajetCompose & unTrajetCompose );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//-------------------------------------------- Constructeurs - destructeur
-    TrajetCompose ( const TrajetCompose & unTrajetCompose );
+    //-------------------------------------------- Constructeurs - destructeur
+    TrajetCompose(const TrajetCompose& _trajetCompose);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    TrajetCompose ( );
+    TrajetCompose();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~TrajetCompose ( );
+    virtual ~TrajetCompose();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE
+ protected:
+    //----------------------------------------------------- Méthodes protégées
 
-protected:
-//----------------------------------------------------- Méthodes protégées
-
-//----------------------------------------------------- Attributs protégés
-
+    //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <TrajetCompose>
+//-------------------------- Autres définitions dépendantes de <TrajetCompose>
 
-#endif // TRAJETCOMPOSE_H
-
+#endif  // SRC_MODELES_TRAJETCOMPOSE_H_

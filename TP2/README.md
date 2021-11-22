@@ -1,5 +1,22 @@
 # INSA-TP2_Cpp
 
+## Guide de style
+
+Le projet suit le [guide de style C++ de Google](https://google.github.io/styleguide/cppguide.html).\
+Il est préférable d'utiliser un linter comme [cpplint](https://github.com/cpplint/cpplint) pour vérifier si le code suit ces conventions.
+
+Installation de cpplint avec pip :
+
+```bash
+$ pip install cpplint
+```
+
+Exemples d'utilisation :
+
+```bash
+$ cpplint src/main.cpp
+$ cpplint --recursive src/
+```
 
 ## Debug
 
@@ -14,7 +31,6 @@ Lancer l'exécutable :
 ```bash
 $ ./main.out
 ```
-
 
 ## Tests
 

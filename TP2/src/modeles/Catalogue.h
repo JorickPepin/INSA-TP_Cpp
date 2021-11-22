@@ -6,9 +6,9 @@
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Catalogue> (fichier Catalogue.h) ----------------
-#if ! defined ( CATALOGUE_H )
-#define CATALOGUE_H
+//------- Interface de la classe <Catalogue> (fichier Catalogue.h) -------
+#ifndef SRC_MODELES_CATALOGUE_H_
+#define SRC_MODELES_CATALOGUE_H_
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -22,56 +22,40 @@
 //
 //------------------------------------------------------------------------
 
-class Catalogue
-{
-//----------------------------------------------------------------- PUBLIC
+class Catalogue {
+ public:
+    //----------------------------------------------------- Méthodes publiques
 
-public:
-//----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
+    //------------------------------------------------- Surcharge d'opérateurs
+    Catalogue& operator=(const Catalogue& _catalogue);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
-//------------------------------------------------- Surcharge d'opérateurs
-    Catalogue & operator = ( const Catalogue & unCatalogue );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//-------------------------------------------- Constructeurs - destructeur
-    Catalogue ( const Catalogue & unCatalogue );
+    //-------------------------------------------- Constructeurs - destructeur
+    Catalogue(const Catalogue& _catalogue);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Catalogue ( );
+    Catalogue();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Catalogue ( );
+    virtual ~Catalogue();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE
+ protected:
+    //----------------------------------------------------- Méthodes protégées
 
-protected:
-//----------------------------------------------------- Méthodes protégées
-
-//----------------------------------------------------- Attributs protégés
-
+    //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <Catalogue>
-
-#endif // CATALOGUE_H
-
+#endif  // SRC_MODELES_CATALOGUE_H_
