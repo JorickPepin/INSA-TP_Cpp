@@ -1,74 +1,48 @@
 /*************************************************************************
-                           Liste  -  description
+                           Trajet  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
+    début                : 17/11/2021
+    copyright            : (C) 2021 par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <Liste> (fichier Liste.cpp) ------------
+//---------- Réalisation de la classe <Trajet> (fichier Trajet.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
-
 //------------------------------------------------------ Include personnel
-#include "Liste.h"
-
+#include "Trajet.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Liste::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
 
 //------------------------------------------------- Surcharge d'opérateurs
-Liste & Liste::operator = ( const Liste & unListe )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
+Trajet& Trajet::operator=(const Trajet& _catalogue) {
+}
 
 //-------------------------------------------- Constructeurs - destructeur
-Liste::Liste ( const Liste & unListe )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Liste>" << endl;
-#endif
-} //----- Fin de Liste (constructeur de copie)
+Trajet::Trajet(const Trajet& _trajet) {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de copie de <Trajet>" << std::endl;
+    #endif
+}
 
+Trajet::Trajet() {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de <Trajet>" << std::endl;
+    #endif
+}
 
-Liste::Liste ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <Liste>" << endl;
-#endif
-} //----- Fin de Liste
-
-
-Liste::~Liste ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <Liste>" << endl;
-#endif
-} //----- Fin de ~Liste
-
+Trajet::~Trajet() {
+    #ifdef MAP
+        std::cout << "Appel au destructeur de <Trajet>" << std::endl;
+    #endif
+}
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

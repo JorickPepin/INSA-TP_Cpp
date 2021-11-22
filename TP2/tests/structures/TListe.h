@@ -1,18 +1,18 @@
 /*************************************************************************
-                           Xxx  -  description
+                           TListe  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
+    début                : 21/11/2021
+    copyright            : (C) 2021 par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface du module <Xxx> (fichier Xxx.h) -------------------
-#ifndef XXX_H_
-#define XXX_H_
+//---------- Interface du module <TListe> (fichier TListe.h) -------------
+#ifndef TESTS_STRUCTURES_TLISTE_H_
+#define TESTS_STRUCTURES_TLISTE_H_
 
 //------------------------------------------------------------------------
-// Rôle du module <Xxx>
-//
+// Rôle du module <TListe>
+// Contient les tests unitaires de la classe Liste.
 //
 //------------------------------------------------------------------------
 
@@ -25,11 +25,17 @@
 
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
-// type Nom(liste de paramètres);
+void testConstructeurDefaut();
 // Mode d'emploi :
 //
 // Contrat :
 //
 
-#endif  // XXX_H_
+void testAjoutTrajet();
+// Mode d'emploi :
+//
+// Contrat :
+//
+
+#endif  // TESTS_STRUCTURES_TLISTE_H_
 

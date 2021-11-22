@@ -1,59 +1,52 @@
 /*************************************************************************
-                           Xxx  -  description
+                           TrajetCompose  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
+    début                : 17/11/2021
+    copyright            : (C) 2021 par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
-#ifndef XXX_H_
-#define XXX_H_
+//--- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ---
+#ifndef SRC_MODELES_TRAJETCOMPOSE_H_
+#define SRC_MODELES_TRAJETCOMPOSE_H_
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Trajet.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Xxx>
+// Rôle de la classe <TrajetCompose>
 //
 //
 //------------------------------------------------------------------------
 
-class Xxx : public Ancetre {
+class TrajetCompose : public Trajet {
  public:
     //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
 
     //------------------------------------------------- Surcharge d'opérateurs
-    Xxx& operator=(const Xxx& _Xxx);
+    TrajetCompose& operator=(const TrajetCompose& _trajetCompose);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
     //-------------------------------------------- Constructeurs - destructeur
-    Xxx(const Xxx& _Xxx);
+    TrajetCompose(const TrajetCompose& _trajetCompose);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Xxx();
+    TrajetCompose();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Xxx();
+    virtual ~TrajetCompose();
     // Mode d'emploi :
     //
     // Contrat :
@@ -65,6 +58,6 @@ class Xxx : public Ancetre {
     //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <Xxx>
+//-------------------------- Autres définitions dépendantes de <TrajetCompose>
 
-#endif  // XXX_H_
+#endif  // SRC_MODELES_TRAJETCOMPOSE_H_

@@ -1,74 +1,49 @@
 /*************************************************************************
-                           TrajetCompose  -  description
+                           TrajetSimple  -  description
                              -------------------
     début                : 17/11/2021
     copyright            : (C) 2021 par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
+//-- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
-
 //------------------------------------------------------ Include personnel
-#include "TrajetCompose.h"
-
+#include "TrajetSimple.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type TrajetCompose::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
 
 //------------------------------------------------- Surcharge d'opérateurs
-TrajetCompose & TrajetCompose::operator = ( const TrajetCompose & unTrajetCompose )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
+TrajetSimple& TrajetSimple::operator=(const TrajetSimple& _trajetSimple) {
+}
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <TrajetCompose>" << endl;
-#endif
-} //----- Fin de TrajetCompose (constructeur de copie)
+TrajetSimple::TrajetSimple(const TrajetSimple& _trajetSimple) {
+    #ifdef MAP
+        std::cout <<
+            "Appel au constructeur de copie de <TrajetSimple>" << std::endl;
+    #endif
+}
 
+TrajetSimple::TrajetSimple() {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de <TrajetSimple>" << std::endl;
+    #endif
+}
 
-TrajetCompose::TrajetCompose ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <TrajetCompose>" << endl;
-#endif
-} //----- Fin de TrajetCompose
-
-
-TrajetCompose::~TrajetCompose ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <TrajetCompose>" << endl;
-#endif
-} //----- Fin de ~TrajetCompose
-
+TrajetSimple::~TrajetSimple() {
+    #ifdef MAP
+        std::cout << "Appel au destructeur de <TrajetSimple>" << std::endl;
+    #endif
+}
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-
