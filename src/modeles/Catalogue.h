@@ -1,14 +1,14 @@
 /*************************************************************************
-                           Xxx  -  description
+                           Catalogue  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
-#ifndef XXX_H_
-#define XXX_H_
+//------- Interface de la classe <Catalogue> (fichier Catalogue.h) -------
+#ifndef SRC_MODELES_CATALOGUE_H_
+#define SRC_MODELES_CATALOGUE_H_
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -17,43 +17,36 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Xxx>
+// Rôle de la classe <Catalogue>
 //
 //
 //------------------------------------------------------------------------
 
-class Xxx : public Ancetre {
+class Catalogue {
  public:
     //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
 
     //------------------------------------------------- Surcharge d'opérateurs
-    Xxx& operator=(const Xxx& _Xxx);
+    Catalogue& operator=(const Catalogue& _catalogue);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
     //-------------------------------------------- Constructeurs - destructeur
-    Xxx(const Xxx& _Xxx);
+    Catalogue(const Catalogue& _catalogue);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Xxx();
+    Catalogue();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Xxx();
+    virtual ~Catalogue();
     // Mode d'emploi :
     //
     // Contrat :
@@ -65,6 +58,4 @@ class Xxx : public Ancetre {
     //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <Xxx>
-
-#endif  // XXX_H_
+#endif  // SRC_MODELES_CATALOGUE_H_

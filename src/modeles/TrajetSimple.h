@@ -1,59 +1,52 @@
 /*************************************************************************
-                           Xxx  -  description
+                           TrajetSimple  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
+    début                : 17/11/2021
+    copyright            : (C) 2021 par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
-#ifndef XXX_H_
-#define XXX_H_
+//---- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) ----
+#ifndef SRC_MODELES_TRAJETSIMPLE_H_
+#define SRC_MODELES_TRAJETSIMPLE_H_
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Trajet.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Xxx>
+// Rôle de la classe <TrajetSimple>
 //
 //
 //------------------------------------------------------------------------
 
-class Xxx : public Ancetre {
+class TrajetSimple : public Trajet {
  public:
     //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
 
     //------------------------------------------------- Surcharge d'opérateurs
-    Xxx& operator=(const Xxx& _Xxx);
+    TrajetSimple& operator=(const TrajetSimple& _trajetSimple);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
     //-------------------------------------------- Constructeurs - destructeur
-    Xxx(const Xxx& _Xxx);
+    TrajetSimple(const TrajetSimple& _trajetSimple);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Xxx();
+    TrajetSimple();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Xxx();
+    virtual ~TrajetSimple();
     // Mode d'emploi :
     //
     // Contrat :
@@ -65,6 +58,6 @@ class Xxx : public Ancetre {
     //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <Xxx>
+//--------------------------- Autres définitions dépendantes de <TrajetSimple>
 
-#endif  // XXX_H_
+#endif  // SRC_MODELES_TRAJETSIMPLE_H_

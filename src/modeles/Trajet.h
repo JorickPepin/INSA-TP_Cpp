@@ -6,9 +6,9 @@
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Trajet> (fichier Trajet.h) ----------------
-#if ! defined ( TRAJET_H )
-#define TRAJET_H
+//---------- Interface de la classe <Trajet> (fichier Trajet.h) ----------
+#ifndef SRC_MODELES_TRAJET_H_
+#define SRC_MODELES_TRAJET_H_
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -22,56 +22,42 @@
 //
 //------------------------------------------------------------------------
 
-class Trajet
-{
-//----------------------------------------------------------------- PUBLIC
+class Trajet {
+ public:
+    //----------------------------------------------------- Méthodes publiques
 
-public:
-//----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
+    //------------------------------------------------- Surcharge d'opérateurs
+    Trajet& operator=(const Trajet& _trajet);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
-//------------------------------------------------- Surcharge d'opérateurs
-    Trajet & operator = ( const Trajet & unTrajet );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//-------------------------------------------- Constructeurs - destructeur
-    Trajet ( const Trajet & unTrajet );
+    //-------------------------------------------- Constructeurs - destructeur
+    Trajet(const Trajet& _trajet);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Trajet ( );
+    Trajet();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Trajet ( );
+    virtual ~Trajet();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE
+ protected:
+    //----------------------------------------------------- Méthodes protégées
 
-protected:
-//----------------------------------------------------- Méthodes protégées
-
-//----------------------------------------------------- Attributs protégés
-
+    //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <Trajet>
+//--------------------------------- Autres définitions dépendantes de <Trajet>
 
-#endif // TRAJET_H
-
+#endif  // SRC_MODELES_TRAJET_H_

@@ -1,49 +1,63 @@
 /*************************************************************************
-                           Xxx  -  description
+                           Liste  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
+    début                : 21/11/2021
+    copyright            : (C) 2021 par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <Xxx> (fichier Xxx.cpp) ------------
+//---------- Réalisation de la classe <Liste> (fichier Liste.cpp) --------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 #include <iostream>
 //------------------------------------------------------ Include personnel
-#include "Xxx.h"
+#include "Liste.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Xxx::Méthode(liste des paramètres) {
-//}
+int Liste::Taille() const {
+    int taille = 0;
 
+    if (premier)
+        taille = premier->Taille();
+
+    return taille;
+}
+
+void Liste::Ajouter(const Trajet* _trajet) {
+    if (premier)
+        premier->Ajouter(new Element(_trajet));
+    else
+        premier = new Element(_trajet);
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
-Xxx & Xxx::operator=(const Xxx& _Xxx) {
+Liste & Liste::operator=(const Liste & _liste) {
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-Xxx::Xxx(const Xxx& _Xxx) {
+Liste::Liste(const Liste & _liste) {
     #ifdef MAP
-        std::cout << "Appel au constructeur de copie de <Xxx>" << std::endl;
+        std::cout << "Appel au constructeur de copie de <Liste>" << std::endl;
     #endif
 }
 
-Xxx::Xxx() {
+Liste::Liste() : premier(nullptr) {
     #ifdef MAP
-        std::cout << "Appel au constructeur de <Xxx>" << std::endl;
+        std::cout << "Appel au constructeur de <Liste>" << std::endl;
     #endif
 }
 
-Xxx::~Xxx() {
+Liste::~Liste() {
     #ifdef MAP
-        std::cout << "Appel au destructeur de <Xxx>" << std::endl;
+        std::cout << "Appel au destructeur de <Liste>" << std::endl;
     #endif
+
+    delete premier;
 }
 
 //------------------------------------------------------------------ PRIVE
