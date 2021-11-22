@@ -6,9 +6,9 @@
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Element> (fichier Element.h) ----------------
-#if ! defined ( ELEMENT_H )
-#define ELEMENT_H
+//---------- Interface de la classe <Element> (fichier Element.h) --------
+#ifndef SRC_STRUCTURES_ELEMENT_H_
+#define SRC_STRUCTURES_ELEMENT_H_
 //--------------------------------------------------- Interfaces utilisées
 #include "../modeles/Trajet.h"
 //------------------------------------------------------------- Constantes
@@ -21,71 +21,67 @@
 //
 //------------------------------------------------------------------------
 
-class Element
-{
-//----------------------------------------------------------------- PUBLIC
-
-public:
-//----------------------------------------------------- Méthodes publiques
-    int Taille ( ) const;
+class Element {
+ public:
+    //----------------------------------------------------- Méthodes publiques
+    int Taille() const;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    void Ajouter ( Element* _element );
+    void Ajouter(Element* _element);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    Element* GetSuivant ( ) const { return suivant; }
+    Element* GetSuivant() const { return suivant; }
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
-//------------------------------------------------- Surcharge d'opérateurs
-    Element & operator = ( const Element & _element );
+    //------------------------------------------------- Surcharge d'opérateurs
+    Element& operator=(const Element& _element);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
-//-------------------------------------------- Constructeurs - destructeur
-    Element ( const Element & _element );
+    //-------------------------------------------- Constructeurs - destructeur
+    Element(const Element& _element);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Element ( );
+    Element();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    Element ( const Trajet* _trajet );
-
-    virtual ~Element ( );
+    explicit Element(const Trajet* _trajet);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE
+    virtual ~Element();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
-private:
-//----------------------------------------------------- Méthodes privées
+ private:
+    //----------------------------------------------------- Méthodes privées
 
-//----------------------------------------------------- Attributs privés
+    //----------------------------------------------------- Attributs privés
     const Trajet* trajet;
     Element* suivant;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Element>
 
-#endif // ELEMENT_H
-
+#endif  // SRC_STRUCTURES_ELEMENT_H_

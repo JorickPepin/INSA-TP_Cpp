@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
-#if ! defined ( XXX_H )
-#define XXX_H
+#ifndef XXX_H_
+#define XXX_H_
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -22,12 +22,9 @@
 //
 //------------------------------------------------------------------------
 
-class Xxx : public Ancetre
-{
-//----------------------------------------------------------------- PUBLIC
-
-public:
-//----------------------------------------------------- Méthodes publiques
+class Xxx : public Ancetre {
+ public:
+    //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
@@ -35,43 +32,39 @@ public:
     //
 
 
-//------------------------------------------------- Surcharge d'opérateurs
-    Xxx & operator = ( const Xxx & unXxx );
+    //------------------------------------------------- Surcharge d'opérateurs
+    Xxx& operator=(const Xxx& _Xxx);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
 
-//-------------------------------------------- Constructeurs - destructeur
-    Xxx ( const Xxx & unXxx );
+    //-------------------------------------------- Constructeurs - destructeur
+    Xxx(const Xxx& _Xxx);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Xxx ( );
+    Xxx();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Xxx ( );
+    virtual ~Xxx();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE
+ protected:
+    //----------------------------------------------------- Méthodes protégées
 
-protected:
-//----------------------------------------------------- Méthodes protégées
-
-//----------------------------------------------------- Attributs protégés
-
+    //----------------------------------------------------- Attributs protégés
 };
 
 //-------------------------------- Autres définitions dépendantes de <Xxx>
 
-#endif // XXX_H
-
+#endif  // XXX_H_

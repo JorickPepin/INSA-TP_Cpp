@@ -11,7 +11,6 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
 //------------------------------------------------------ Include personnel
 #include "Trajet.h"
@@ -20,53 +19,30 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Trajet::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
 
 //------------------------------------------------- Surcharge d'opérateurs
-Trajet & Trajet::operator = ( const Trajet & unTrajet )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
+Trajet& Trajet::operator=(const Trajet& _catalogue) {
+}
 
 //-------------------------------------------- Constructeurs - destructeur
-Trajet::Trajet ( const Trajet & unTrajet )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Trajet>" << endl;
-#endif
-} //----- Fin de Trajet (constructeur de copie)
+Trajet::Trajet(const Trajet& _trajet) {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de copie de <Trajet>" << std::endl;
+    #endif
+}
 
+Trajet::Trajet() {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de <Trajet>" << std::endl;
+    #endif
+}
 
-Trajet::Trajet ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <Trajet>" << endl;
-#endif
-} //----- Fin de Trajet
-
-
-Trajet::~Trajet ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <Trajet>" << endl;
-#endif
-} //----- Fin de ~Trajet
-
+Trajet::~Trajet() {
+    #ifdef MAP
+        std::cout << "Appel au destructeur de <Trajet>" << std::endl;
+    #endif
+}
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

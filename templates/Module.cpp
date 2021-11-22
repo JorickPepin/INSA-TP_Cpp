@@ -22,21 +22,11 @@
 //---------------------------------------------------- Variables statiques
 
 //------------------------------------------------------ Fonctions privées
-//static type nom ( liste de paramètres )
-// Mode d'emploi :
-//
-// Contrat :
-//
-// Algorithme :
-//
-//{
-//} //----- fin de nom
+//static type nom(liste de paramètres) {
+//}
 
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
-type Nom ( liste de paramètres )
-// Algorithme :
-//
-{
-} //----- fin de Nom
+type Nom(liste de paramètres) {
+}
 

@@ -6,9 +6,9 @@
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface du module <TListe> (fichier TListe.h) -------------------
-#if ! defined ( TLISTE_H )
-#define TLISTE_H
+//---------- Interface du module <TListe> (fichier TListe.h) -------------
+#ifndef TESTS_STRUCTURES_TLISTE_H_
+#define TESTS_STRUCTURES_TLISTE_H_
 
 //------------------------------------------------------------------------
 // Rôle du module <TListe>
@@ -37,5 +37,5 @@ void testAjoutTrajet();
 // Contrat :
 //
 
-#endif // TLISTE_H
+#endif  // TESTS_STRUCTURES_TLISTE_H_
 
