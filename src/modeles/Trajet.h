@@ -1,9 +1,9 @@
 /*************************************************************************
-                           Trajet  -  description
+                           Trajet  -  Classe mère des trajets composés et simples
                              -------------------
     début                : 17/11/2021
-    copyright            : (C) 2021 par $AUTHOR$
-    e-mail               : $EMAIL$
+    copyright            : (C) 2021 par Inès Leclercq--Cuvelier & François Foltet & Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr & francois.foltet@insa-lyon.fr & jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Trajet> (fichier Trajet.h) ----------
@@ -18,35 +18,35 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Trajet>
-//
-//
+// Classe mère abstraite des trajets
+
 //------------------------------------------------------------------------
 
 class Trajet {
  public:
     //----------------------------------------------------- Méthodes publiques
-
+    virtual void Afficher() = 0;
     //------------------------------------------------- Surcharge d'opérateurs
-    Trajet& operator=(const Trajet& trajet_);
+    //Trajet& operator=(const Trajet& trajet_);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Trajet(const Trajet& trajet_);
+    //Trajet(const Trajet& trajet_);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Trajet();
+    //Trajet();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Trajet();
+    //virtual ~Trajet() = 0;
     // Mode d'emploi :
     //
     // Contrat :
