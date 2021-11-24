@@ -28,7 +28,7 @@ class TrajetSimple : public Trajet {
  public:
     //----------------------------------------------------- Méthodes publiques
 
-    void Afficher();
+    void Afficher() const;
     // Mode d'emploi : Méthode pour afficher les trajets simples
 
     //------------------------------------------------- Surcharge d'opérateurs

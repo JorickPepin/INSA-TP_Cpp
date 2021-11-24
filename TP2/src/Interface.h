@@ -1,66 +1,63 @@
 /*************************************************************************
-                           Liste  -  description
+                           Interface  -  description
                              -------------------
-    début                : 21/11/2021
-    copyright            : (C) 2021 par $AUTHOR$
+    début                : $DATE$
+    copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Liste> (fichier Liste.h) ------------
-#ifndef SRC_STRUCTURES_LISTE_H_
-#define SRC_STRUCTURES_LISTE_H_
+//---------- Interface de la classe <Interface> (fichier Interface.h) ----------------
+#ifndef SRC_INTERFACE_H_
+#define SRC_INTERFACE_H_
+
 //--------------------------------------------------- Interfaces utilisées
-#include "Element.h"
+#include "modeles/Catalogue.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Liste>
+// Rôle de la classe <Interface>
 //
 //
 //------------------------------------------------------------------------
 
-class Liste {
+class Interface {
  public:
     //----------------------------------------------------- Méthodes publiques
-    int Taille() const;
+    static void AfficherMenu();
     // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    // 
 
-    void Ajouter(const Trajet* trajet_);
+    static void AjouterTrajet(Catalogue& catalogue_);
     // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    // 
 
-    void Afficher();
+    static void AfficherTrajets(Catalogue& catalogue_);
     // Mode d'emploi :
-    //
+    // 
 
     //------------------------------------------------- Surcharge d'opérateurs
-    Liste& operator=(const Liste& liste_);
+    Interface& operator=(const Interface& interface_);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Liste(const Liste& liste_);
+    Interface(const Interface& interface_);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Liste();
+    Interface();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Liste();
+    virtual ~Interface();
     // Mode d'emploi :
     //
     // Contrat :
@@ -68,11 +65,12 @@ class Liste {
 
  private:
     //----------------------------------------------------- Méthodes privées
-
+    static void AjouterTrajetSimple(Catalogue& catalogue_);
+    static void AjouterTrajetCompose(Catalogue& catalogue_);
     //----------------------------------------------------- Attributs privés
-    Element* premier;
+    static const int TAILLE_MAX = 50;
 };
 
-//-------------------------------- Autres définitions dépendantes de <Liste>
+//-------------------------------- Autres définitions dépendantes de <Interface>
 
-#endif  // SRC_STRUCTURES_LISTE_H_
+#endif  // SRC_INTERFACE_H_

@@ -37,6 +37,15 @@ void Liste::Ajouter(const Trajet* trajet_) {
     }
 }
 
+void Liste::Afficher() {
+    Element* element = premier;
+
+    while (element) {
+        element->Afficher();
+        element = element->GetSuivant();
+    }
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 Liste& Liste::operator=(const Liste& liste_) {
 }
