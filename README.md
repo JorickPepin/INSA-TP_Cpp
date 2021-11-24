@@ -3,8 +3,7 @@
 ## Guide de style
 
 Le projet suit le [guide de style C++ de Google](https://google.github.io/styleguide/cppguide.html)
-et [celui de l'INSA](https://github.com/JorickPepin/INSA-TP2_Cpp/blob/main/doc/GuideDeStyle_INSA.md),
-les deux étant compatibles.\
+et [celui de l'INSA](doc/GuideDeStyle_INSA.md), les deux étant compatibles.\
 Il est préférable d'utiliser un linter comme [cpplint](https://github.com/cpplint/cpplint) pour
 vérifier si le code suit ces conventions.
 
