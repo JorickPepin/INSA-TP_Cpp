@@ -30,21 +30,21 @@ class Liste {
     // Contrat :
     //
 
-    void Ajouter(const Trajet* _trajet);
+    void Ajouter(const Trajet* trajet_);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     //------------------------------------------------- Surcharge d'opérateurs
-    Liste& operator=(const Liste& _liste);
+    Liste& operator=(const Liste& liste_);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Liste(const Liste& _liste);
+    Liste(const Liste& liste_);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :

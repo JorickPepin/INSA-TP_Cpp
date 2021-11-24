@@ -27,14 +27,14 @@ class Trajet {
     //----------------------------------------------------- Méthodes publiques
 
     //------------------------------------------------- Surcharge d'opérateurs
-    Trajet& operator=(const Trajet& _trajet);
+    Trajet& operator=(const Trajet& trajet_);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Trajet(const Trajet& _trajet);
+    Trajet(const Trajet& trajet_);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :

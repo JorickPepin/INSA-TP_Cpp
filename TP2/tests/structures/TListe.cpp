@@ -39,6 +39,6 @@ void testAjoutTrajet() {
 
 TEST_LIST = {
     { "Constructeur par défaut d'une liste : Liste ( ); ", testConstructeurDefaut },
-    { "Ajout dans une liste : void Ajouter ( const Trajet* _trajet ); ", testAjoutTrajet },
+    { "Ajout dans une liste : void Ajouter ( const Trajet* trajet_ ); ", testAjoutTrajet },
     { NULL, NULL }
 };
