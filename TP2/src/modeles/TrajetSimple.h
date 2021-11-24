@@ -27,14 +27,14 @@ class TrajetSimple : public Trajet {
     //----------------------------------------------------- Méthodes publiques
 
     //------------------------------------------------- Surcharge d'opérateurs
-    TrajetSimple& operator=(const TrajetSimple& _trajetSimple);
+    TrajetSimple& operator=(const TrajetSimple& trajetSimple_);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    TrajetSimple(const TrajetSimple& _trajetSimple);
+    TrajetSimple(const TrajetSimple& trajetSimple_);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
