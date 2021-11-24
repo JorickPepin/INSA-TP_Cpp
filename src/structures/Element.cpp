@@ -37,6 +37,10 @@ void Element::Ajouter(Element* element_) {
     }
 }
 
+void Element::Afficher() {
+    trajet->Afficher();
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 Element& Element::operator=(const Element& element_) {
 }
