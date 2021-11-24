@@ -11,7 +11,7 @@
 #define SRC_MODELES_CATALOGUE_H_
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "../structures/Liste.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -25,6 +25,17 @@
 class Catalogue {
  public:
     //----------------------------------------------------- Méthodes publiques
+    void Ajouter(const Trajet* trajet_);
+    // Mode d'emploi :
+    //
+
+    void Afficher();
+    // Mode d'emploi :
+    //
+
+    Liste* GetTrajets() const { return trajets; }
+    // Mode d'emploi :
+    //
 
     //------------------------------------------------- Surcharge d'opérateurs
     Catalogue& operator=(const Catalogue& catalogue_);
@@ -52,10 +63,11 @@ class Catalogue {
     // Contrat :
     //
 
- protected:
-    //----------------------------------------------------- Méthodes protégées
+ private:
+    //----------------------------------------------------- Méthodes privées
 
-    //----------------------------------------------------- Attributs protégés
+    //----------------------------------------------------- Attributs privés
+    Liste* trajets;
 };
 
 #endif  // SRC_MODELES_CATALOGUE_H_

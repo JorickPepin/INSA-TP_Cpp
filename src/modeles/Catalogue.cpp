@@ -19,6 +19,13 @@
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
+void Catalogue::Ajouter(const Trajet* trajet_) {
+    trajets->Ajouter(trajet_);
+}
+
+void Catalogue::Afficher() {
+    trajets->Afficher();
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 Catalogue& Catalogue::operator=(const Catalogue& catalogue_) {
@@ -36,12 +43,16 @@ Catalogue::Catalogue() {
     #ifdef MAP
         std::cout << "Appel au constructeur de <Catalogue>" << std::endl;
     #endif
+
+    trajets = new Liste();
 }
 
 Catalogue::~Catalogue() {
     #ifdef MAP
         std::cout << "Appel au destructeur de <Catalogue>" << std::endl;
     #endif
+
+    delete trajets;
 }
 
 //------------------------------------------------------------------ PRIVE

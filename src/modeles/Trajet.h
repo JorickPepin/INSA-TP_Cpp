@@ -25,7 +25,7 @@
 class Trajet {
  public:
     //----------------------------------------------------- Méthodes publiques
-    virtual void Afficher() = 0;
+    virtual void Afficher() const = 0;
     //------------------------------------------------- Surcharge d'opérateurs
     //Trajet& operator=(const Trajet& trajet_);
     // Mode d'emploi :
@@ -46,7 +46,7 @@ class Trajet {
     // Contrat :
     //
 
-    //virtual ~Trajet() = 0;
+    virtual ~Trajet() {}
     // Mode d'emploi :
     //
     // Contrat :
