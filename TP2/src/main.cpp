@@ -12,15 +12,31 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 //------------------------------------------------------ Include personnel
-#include "structures/Liste.h"
-#include "modeles/TrajetSimple.h"
+#include "Interface.h"
+#include "modeles/Catalogue.h"
 //------------------------------------------------------------------------
 
 int main(int argc, char const *argv[]) {
-    Liste* liste = new Liste();
 
-    liste->Ajouter(new TrajetSimple());
-    liste->Ajouter(new TrajetSimple());
+    Catalogue catalogue;
+    int choix;
+    
+    for ( ; ; ) {
+        Interface::AfficherMenu();
+        
+        std::cin >> choix;
 
-    delete liste;
+        switch (choix) {
+            case 0:
+                return 0;
+            case 1:
+                Interface::AjouterTrajet(catalogue);
+                break;
+            case 2:
+                Interface::AfficherTrajets(catalogue);
+                break;
+            default:
+                break;
+        }
+    }
 }

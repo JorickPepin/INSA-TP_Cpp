@@ -36,6 +36,10 @@ class Element {
     // Contrat :
     //
 
+    void Afficher();
+    // Mode d'emploi :
+    //
+
     Element* GetSuivant() const { return suivant; }
     // Mode d'emploi :
     //

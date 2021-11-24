@@ -21,7 +21,7 @@
 
 //----------------------------------------------------- Méthodes publiques
 
-void TrajetSimple::Afficher()
+void TrajetSimple::Afficher() const
 {
     std::cout << villeDepart << " -> " << villeArrivee << " en " << moyenDeTransport << std::endl;
 }
