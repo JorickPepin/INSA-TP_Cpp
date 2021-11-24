@@ -27,14 +27,14 @@ class TrajetCompose : public Trajet {
     //----------------------------------------------------- Méthodes publiques
 
     //------------------------------------------------- Surcharge d'opérateurs
-    TrajetCompose& operator=(const TrajetCompose& _trajetCompose);
+    TrajetCompose& operator=(const TrajetCompose& trajetCompose_);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    TrajetCompose(const TrajetCompose& _trajetCompose);
+    TrajetCompose(const TrajetCompose& trajetCompose_);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :

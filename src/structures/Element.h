@@ -30,7 +30,7 @@ class Element {
     // Contrat :
     //
 
-    void Ajouter(Element* _element);
+    void Ajouter(Element* element_);
     // Mode d'emploi :
     //
     // Contrat :
@@ -43,14 +43,14 @@ class Element {
     //
 
     //------------------------------------------------- Surcharge d'opérateurs
-    Element& operator=(const Element& _element);
+    Element& operator=(const Element& element_);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Element(const Element& _element);
+    Element(const Element& element_);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
@@ -62,7 +62,7 @@ class Element {
     // Contrat :
     //
 
-    explicit Element(const Trajet* _trajet);
+    explicit Element(const Trajet* trajet_);
     // Mode d'emploi :
     //
     // Contrat :

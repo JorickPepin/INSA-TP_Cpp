@@ -27,14 +27,14 @@ class Catalogue {
     //----------------------------------------------------- Méthodes publiques
 
     //------------------------------------------------- Surcharge d'opérateurs
-    Catalogue& operator=(const Catalogue& _catalogue);
+    Catalogue& operator=(const Catalogue& catalogue_);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Catalogue(const Catalogue& _catalogue);
+    Catalogue(const Catalogue& catalogue_);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :

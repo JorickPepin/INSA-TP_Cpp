@@ -22,25 +22,27 @@
 int Element::Taille() const {
     int taille = 1;
 
-    if (suivant)
+    if (suivant) {
         taille += suivant->Taille();
+    }
 
     return taille;
 }
 
-void Element::Ajouter(Element *_element) {
-    if (!suivant)
-        suivant = _element;
-    else
-        suivant->Ajouter(_element);
+void Element::Ajouter(Element* element_) {
+    if (!suivant) {
+        suivant = element_;
+    } else {
+        suivant->Ajouter(element_);
+    }
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-Element &Element::operator=(const Element &_element) {
+Element& Element::operator=(const Element& element_) {
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-Element::Element(const Element &_element) {
+Element::Element(const Element& _element) {
     #ifdef MAP
         std::cout << "Appel au constructeur de copie de <Element>" << std::endl;
     #endif
@@ -52,7 +54,7 @@ Element::Element() {
     #endif
 }
 
-Element::Element(const Trajet *_trajet) : trajet(_trajet), suivant(nullptr) {
+Element::Element(const Trajet* trajet_) : trajet(trajet_), suivant(nullptr) {
     #ifdef MAP
         std::cout << "Appel au constructeur de <Element>" << std::endl;
     #endif
