@@ -21,11 +21,11 @@
 //----------------------------------------------------- Méthodes publiques
 
 //------------------------------------------------- Surcharge d'opérateurs
-Catalogue& Catalogue::operator=(const Catalogue& _catalogue) {
+Catalogue& Catalogue::operator=(const Catalogue& catalogue_) {
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-Catalogue::Catalogue(const Catalogue& _catalogue) {
+Catalogue::Catalogue(const Catalogue& catalogue_) {
     #ifdef MAP
         std::cout <<
             "Appel au constructeur de copie de <Catalogue>" << std::endl;

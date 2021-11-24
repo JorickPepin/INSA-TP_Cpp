@@ -21,11 +21,11 @@
 //----------------------------------------------------- Méthodes publiques
 
 //------------------------------------------------- Surcharge d'opérateurs
-TrajetCompose& TrajetCompose::operator=(const TrajetCompose& _trajetCompose) {
+TrajetCompose& TrajetCompose::operator=(const TrajetCompose& trajetCompose_) {
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetCompose::TrajetCompose(const TrajetCompose& _trajetCompose) {
+TrajetCompose::TrajetCompose(const TrajetCompose& trajetCompose_) {
     #ifdef MAP
         std::cout <<
             "Appel au constructeur de copie de <TrajetCompose>" << std::endl;

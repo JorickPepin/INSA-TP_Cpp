@@ -22,25 +22,27 @@
 int Liste::Taille() const {
     int taille = 0;
 
-    if (premier)
+    if (premier) {
         taille = premier->Taille();
+    }
 
     return taille;
 }
 
-void Liste::Ajouter(const Trajet* _trajet) {
-    if (premier)
-        premier->Ajouter(new Element(_trajet));
-    else
-        premier = new Element(_trajet);
+void Liste::Ajouter(const Trajet* trajet_) {
+    if (premier) {
+        premier->Ajouter(new Element(trajet_));
+    } else {
+        premier = new Element(trajet_);
+    }
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-Liste & Liste::operator=(const Liste & _liste) {
+Liste& Liste::operator=(const Liste& liste_) {
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-Liste::Liste(const Liste & _liste) {
+Liste::Liste(const Liste& liste_) {
     #ifdef MAP
         std::cout << "Appel au constructeur de copie de <Liste>" << std::endl;
     #endif
