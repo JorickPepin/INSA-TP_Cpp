@@ -26,7 +26,7 @@ void Interface::AfficherMenu() {
 	std::cout << "2: Afficher les trajets" << std::endl;
 }
 
-void Interface::AjouterTrajet(Catalogue& catalogue_) {
+void Interface::AjouterTrajet(Liste& catalogue_) {
     std::cout << "Quel type de trajet souhaitez-vous créer ?" << std::endl;
     std::cout << "s: Simple" << std::endl;
     std::cout << "c: Composé" << std::endl << std::endl;
@@ -50,7 +50,7 @@ void Interface::AjouterTrajet(Catalogue& catalogue_) {
     }
 }
 
-void Interface::AfficherTrajets(Catalogue& catalogue_) {
+void Interface::AfficherTrajets(Liste& catalogue_) {
     std::cout << "Le catalogue contient les trajets suivants :" << std::endl;
 
     catalogue_.Afficher();
@@ -82,7 +82,7 @@ Interface::~Interface() {
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-void Interface::AjouterTrajetSimple(Catalogue& catalogue_) {
+void Interface::AjouterTrajetSimple(Liste& catalogue_) {
     char villeDepart[TAILLE_MAX];
     char villeArrivee[TAILLE_MAX];
     char transport[TAILLE_MAX];
@@ -101,6 +101,6 @@ void Interface::AjouterTrajetSimple(Catalogue& catalogue_) {
     catalogue_.Ajouter(trajet);
 }
 
-void Interface::AjouterTrajetCompose(Catalogue& catalogue_) {
+void Interface::AjouterTrajetCompose(Liste& catalogue_) {
 
 }

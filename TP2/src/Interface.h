@@ -11,7 +11,7 @@
 #define SRC_INTERFACE_H_
 
 //--------------------------------------------------- Interfaces utilisées
-#include "modeles/Catalogue.h"
+#include "structures/Liste.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -29,11 +29,11 @@ class Interface {
     // Mode d'emploi :
     // 
 
-    static void AjouterTrajet(Catalogue& catalogue_);
+    static void AjouterTrajet(Liste& catalogue_);
     // Mode d'emploi :
     // 
 
-    static void AfficherTrajets(Catalogue& catalogue_);
+    static void AfficherTrajets(Liste& catalogue_);
     // Mode d'emploi :
     // 
 
@@ -65,8 +65,8 @@ class Interface {
 
  private:
     //----------------------------------------------------- Méthodes privées
-    static void AjouterTrajetSimple(Catalogue& catalogue_);
-    static void AjouterTrajetCompose(Catalogue& catalogue_);
+    static void AjouterTrajetSimple(Liste& catalogue_);
+    static void AjouterTrajetCompose(Liste& catalogue_);
     //----------------------------------------------------- Attributs privés
     static const int TAILLE_MAX = 50;
 };

@@ -13,12 +13,12 @@
 #include <iostream>
 //------------------------------------------------------ Include personnel
 #include "Interface.h"
-#include "modeles/Catalogue.h"
+#include "structures/Liste.h"
 //------------------------------------------------------------------------
 
 int main(int argc, char const *argv[]) {
 
-    Catalogue catalogue;
+    Liste catalogue;
     int choix;
     
     for ( ; ; ) {
