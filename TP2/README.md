@@ -1,4 +1,4 @@
-# INSA-TP2_Cpp
+# INSA C++ - TP n°2
 
 ## Guide de style
 
@@ -22,19 +22,25 @@ $ cpplint --recursive src/
 
 ## Debug
 
+### Programme
+
 Construire l'exécutable avec les affichages de debug définis dans la macro `MAP` :
 
 ```bash
 $ make debug
+$ ./sejours
 ```
 
-Lancer l'exécutable :
+### Mémoire
+
+Utilisation de [Valgrind](https://en.wikipedia.org/wiki/Valgrind) :
 
 ```bash
-$ ./main.out
+$ make
+$ valgrind ./sejours
 ```
 
-## Tests
+## Tests unitaires
 
 L'interface [acutest](https://github.com/mity/acutest) est utilisée pour améliorer l'affichage des tests unitaires.
 
@@ -47,5 +53,5 @@ $ make test
 Lancer les tests :
 
 ```bash
-$ ./test.out -v
+$ ./test -v
 ```
