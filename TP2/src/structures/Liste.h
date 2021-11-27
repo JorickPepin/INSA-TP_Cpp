@@ -36,7 +36,7 @@ class Liste {
     // Contrat :
     //
 
-    void Afficher();
+    void Afficher() const;
     // Mode d'emploi :
     //
 

@@ -37,7 +37,7 @@ void Liste::Ajouter(const Trajet* trajet_) {
     }
 }
 
-void Liste::Afficher() {
+void Liste::Afficher() const {
     Element* element = premier;
 
     while (element) {
