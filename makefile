@@ -1,4 +1,4 @@
-CXXFLAGS = -ansi -pedantic -Wall -std=c++11
+CXXFLAGS = -g -ansi -pedantic -Wall -std=c++11
 CC := g++
 
 SRC := src
@@ -7,20 +7,15 @@ OBJ := obj
 
 SOURCES := $(wildcard $(SRC)/*.cpp $(SRC)/*/*.cpp)
 OBJECTS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SOURCES))
-EXECUTABLE := main.out
-$(info Fichiers sources : $(SOURCES))
-$(info Fichiers objets : $(OBJECTS))
+EXECUTABLE := sejours
 
 TEST_SOURCES := $(wildcard $(TESTS)/*.cpp $(TESTS)/*/*.cpp)
 TEST_OBJECTS := $(patsubst $(TESTS)/%.cpp, $(OBJ)/%.o, $(TEST_SOURCES))
-TEST_EXECUTABLE := test.out
-$(info Fichiers sources tests : $(TEST_SOURCES))
-$(info Fichiers objets tests : $(TEST_OBJECTS))
-
+TEST_EXECUTABLE := test
 
 all: executable
 
-debug: CXXFLAGS += -D MAP -g
+debug: CXXFLAGS += -D MAP
 debug: executable
 
 executable: $(OBJECTS)
