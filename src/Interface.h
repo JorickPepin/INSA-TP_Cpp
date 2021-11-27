@@ -6,7 +6,7 @@
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Interface> (fichier Interface.h) ----------------
+//---- Interface de la classe <Interface> (fichier Interface.h) ----------
 #ifndef SRC_INTERFACE_H_
 #define SRC_INTERFACE_H_
 
@@ -27,15 +27,15 @@ class Interface {
     //----------------------------------------------------- Méthodes publiques
     static void AfficherMenu();
     // Mode d'emploi :
-    // 
+    //
 
-    static void AjouterTrajet(Liste& catalogue_);
+    static void AjouterTrajet(Liste* catalogue_);
     // Mode d'emploi :
-    // 
+    //
 
-    static void AfficherTrajets(Liste& catalogue_);
+    static void AfficherTrajets(Liste* catalogue_);
     // Mode d'emploi :
-    // 
+    //
 
     //------------------------------------------------- Surcharge d'opérateurs
     Interface& operator=(const Interface& interface_);
@@ -65,8 +65,8 @@ class Interface {
 
  private:
     //----------------------------------------------------- Méthodes privées
-    static void AjouterTrajetSimple(Liste& catalogue_);
-    static void AjouterTrajetCompose(Liste& catalogue_);
+    static void AjouterTrajetSimple(Liste* catalogue_);
+    static void AjouterTrajetCompose(Liste* catalogue_);
     //----------------------------------------------------- Attributs privés
     static const int TAILLE_MAX = 50;
 };

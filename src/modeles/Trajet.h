@@ -27,20 +27,20 @@ class Trajet {
     //----------------------------------------------------- Méthodes publiques
     virtual void Afficher() const = 0;
     //------------------------------------------------- Surcharge d'opérateurs
-    //Trajet& operator=(const Trajet& trajet_);
+    // Trajet& operator=(const Trajet& trajet_);
     // Mode d'emploi :
     //
     // Contrat :
     //
 
     //-------------------------------------------- Constructeurs - destructeur
-    //Trajet(const Trajet& trajet_);
+    // Trajet(const Trajet& trajet_);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    //Trajet();
+    // Trajet();
     // Mode d'emploi :
     //
     // Contrat :

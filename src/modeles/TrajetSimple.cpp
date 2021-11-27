@@ -21,9 +21,9 @@
 
 //----------------------------------------------------- Méthodes publiques
 
-void TrajetSimple::Afficher() const
-{
-    std::cout << villeDepart << " -> " << villeArrivee << " en " << moyenDeTransport << std::endl;
+void TrajetSimple::Afficher() const {
+    std::cout << villeDepart << " -> " << villeArrivee
+        << " en " << moyenDeTransport << std::endl;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -38,25 +38,27 @@ void TrajetSimple::Afficher() const
     #endif
 }*/
 
-TrajetSimple::TrajetSimple(const char* moyenDeTransport_,const char* villeDepart_,const char* villeArrivee_) 
-{
+TrajetSimple::TrajetSimple(const char* moyenDeTransport_,
+                           const char* villeDepart_,
+                           const char* villeArrivee_) {
     #ifdef MAP
         std::cout << "Appel au constructeur de <TrajetSimple>" << std::endl;
     #endif
-    moyenDeTransport = new char[strlen(moyenDeTransport_)+1];
-    villeDepart = new char[strlen(villeDepart_)+1];
-    villeArrivee = new char[strlen(villeArrivee_)+1];
+
+    moyenDeTransport = new char[strlen(moyenDeTransport_) + 1];
+    villeDepart = new char[strlen(villeDepart_) + 1];
+    villeArrivee = new char[strlen(villeArrivee_) + 1];
 
     strcpy(moyenDeTransport, moyenDeTransport_);
     strcpy(villeDepart, villeDepart_);
     strcpy(villeArrivee, villeArrivee_);
 }
 
-TrajetSimple::~TrajetSimple() 
-{
+TrajetSimple::~TrajetSimple() {
     #ifdef MAP
         std::cout << "Appel au destructeur de <TrajetSimple>" << std::endl;
     #endif
+
     delete [] moyenDeTransport;
     delete [] villeDepart;
     delete [] villeArrivee;

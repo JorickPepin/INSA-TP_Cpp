@@ -17,18 +17,17 @@
 //------------------------------------------------------------------------
 
 int main(int argc, char const *argv[]) {
-
-    Liste catalogue;
+    Liste* catalogue;
     int choix;
-    
+
     for ( ; ; ) {
         Interface::AfficherMenu();
-        
+
         std::cin >> choix;
 
         switch (choix) {
             case 0:
-                return 0;
+                break;
             case 1:
                 Interface::AjouterTrajet(catalogue);
                 break;
@@ -39,4 +38,6 @@ int main(int argc, char const *argv[]) {
                 break;
         }
     }
+
+    delete catalogue;
 }
