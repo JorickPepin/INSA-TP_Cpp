@@ -7,6 +7,7 @@
 *************************************************************************/
 
 /////////////////////////////////////////////////////////////////  INCLUDE
+#include <cstring>
 #include "./acutest.h"
 
 #include "../src/structures/Liste.h"
@@ -14,12 +15,12 @@
 
 /////////////////////////////////////////////////////////////////    TESTS
 //------------------------------------------------------------------ Liste
-void testConstructeurDefaut_Liste() {
+void testConstructeurDefautListe() {
     Liste liste;
     TEST_CHECK_(liste.Taille() == 0, "la taille de la liste est 0");
 }
 
-void testAjoutTrajet_Liste() {
+void testAjoutTrajetListe() {
     Liste* liste = new Liste();
     Trajet* trajet1 = new TrajetSimple("test", "test", "test");
     Trajet* trajet2 = new TrajetSimple("test", "test", "test");
@@ -32,12 +33,25 @@ void testAjoutTrajet_Liste() {
 
     delete liste;
 }
-//--------------------------------------------------------------- <Classe>
+//----------------------------------------------------------- TrajetSimple
+void testConstructeurTrajetSimple() {
+    const char* moyenDeTransport = "Voiture";
+    const char* villeDepart = "Lyon";
+    const char* villeArrivee = "Paris";
 
+    TrajetSimple* t1 = new TrajetSimple(moyenDeTransport, villeDepart, villeArrivee);
+
+    TEST_CHECK_(strcmp(t1->moyenDeTransport, moyenDeTransport) == 0, "le moyen de transport est bien initialisé");
+    TEST_CHECK_(strcmp(t1->villeDepart, villeDepart) == 0, "la ville de départ est bien initialisée");
+    TEST_CHECK_(strcmp(t1->villeArrivee, villeArrivee) == 0, "la ville d'arrivée est bien initialisée");
+
+    delete t1;
+}
 //------------------------------------------------------------------------
 
 TEST_LIST = {
-    { "Constructeur par défaut d'une liste", testConstructeurDefaut_Liste },
-    { "Ajout dans une liste", testAjoutTrajet_Liste },
+    { "Constructeur par défaut d'une liste", testConstructeurDefautListe },
+    { "Ajout dans une liste", testAjoutTrajetListe },
+    { "Constructeur d'un trajet simple", testConstructeurTrajetSimple },
     { NULL, NULL }
 };

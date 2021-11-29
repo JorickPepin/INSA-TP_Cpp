@@ -28,9 +28,11 @@
 class TrajetSimple : public Trajet {
  public:
     //----------------------------------------------------- Méthodes publiques
-
     void Afficher() const;
     // Mode d'emploi : Méthode pour afficher les trajets simples
+
+    //-------------------------------------------------------- Tests unitaires
+    friend void testConstructeurTrajetSimple();
 
     //------------------------------------------------- Surcharge d'opérateurs
     // TrajetSimple& operator=(const TrajetSimple& trajetSimple_);
@@ -45,7 +47,6 @@ class TrajetSimple : public Trajet {
     //
     // Contrat :
     //
-
 
     TrajetSimple(const char* moyenDeTransport_,
                  const char* villeDepart_,
