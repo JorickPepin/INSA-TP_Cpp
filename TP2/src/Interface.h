@@ -1,9 +1,9 @@
 /*************************************************************************
                            Interface  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 24/11/2021
+    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 //---- Interface de la classe <Interface> (fichier Interface.h) ----------
@@ -25,7 +25,19 @@
 class Interface {
  public:
     //----------------------------------------------------- Méthodes publiques
+    static void AfficherBienvenue();
+    // Mode d'emploi :
+    //
+
+    static void AfficherFin();
+    // Mode d'emploi :
+    //
+
     static void AfficherMenu();
+    // Mode d'emploi :
+    //
+
+    static void AfficherMauvaisChoix();
     // Mode d'emploi :
     //
 
@@ -37,40 +49,17 @@ class Interface {
     // Mode d'emploi :
     //
 
-    //------------------------------------------------- Surcharge d'opérateurs
-    Interface& operator=(const Interface& interface_);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    //-------------------------------------------- Constructeurs - destructeur
-    Interface(const Interface& interface_);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Interface();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    virtual ~Interface();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
  private:
     //----------------------------------------------------- Méthodes privées
-    static void AjouterTrajetSimple(Liste* catalogue_);
-    static void AjouterTrajetCompose(Liste* catalogue_);
+    Interface();
+    // Mode d'emploi :
+    // constructeur par défaut mis en privé afin d'éviter une instanciation
+    // de la classe et garder ainsi un comportement statique
+
+    static void ajouterTrajetSimple(Liste* catalogue_);
+    static void ajouterTrajetCompose(Liste* catalogue_);
     //----------------------------------------------------- Attributs privés
     static const int TAILLE_MAX = 50;
 };
-
-//-------------------------------- Autres définitions dépendantes de <Interface>
 
 #endif  // SRC_INTERFACE_H_

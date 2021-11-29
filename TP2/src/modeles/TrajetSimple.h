@@ -2,8 +2,8 @@
                            TrajetSimple  -  Classe fille de Trajet créant des trajets simples
                              -------------------
     début                : 17/11/2021
-    copyright            : (C) 2021 par Inès Leclercq--Cuvelier & François Foltet & Jorick Pepin
-    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr & francois.foltet@insa-lyon.fr & jorick.pepin@insa-lyon.fr
+    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 //---- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) ----
@@ -28,9 +28,11 @@
 class TrajetSimple : public Trajet {
  public:
     //----------------------------------------------------- Méthodes publiques
-
     void Afficher() const;
     // Mode d'emploi : Méthode pour afficher les trajets simples
+
+    //-------------------------------------------------------- Tests unitaires
+    friend void testConstructeurTrajetSimple();
 
     //------------------------------------------------- Surcharge d'opérateurs
     // TrajetSimple& operator=(const TrajetSimple& trajetSimple_);
@@ -45,7 +47,6 @@ class TrajetSimple : public Trajet {
     //
     // Contrat :
     //
-
 
     TrajetSimple(const char* moyenDeTransport_,
                  const char* villeDepart_,
