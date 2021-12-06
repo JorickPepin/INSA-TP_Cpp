@@ -33,6 +33,34 @@ void testAjoutTrajetListe() {
 
     delete liste;
 }
+
+void testGetTrajet() {
+    Liste* liste = new Liste();
+
+    const Trajet* trajet1 = new TrajetSimple("Voiture", "Lyon", "Paris");
+    const Trajet* trajet2 = new TrajetSimple("Train", "Toulouse", "Bordeaux");
+
+    liste->Ajouter(trajet1);
+    liste->Ajouter(trajet2);
+
+    TEST_CHECK_(liste->Get(0)->GetTrajet() == trajet1, "le premier trajet de la liste est le même que le premier trajet ajouté");
+    TEST_CHECK_(liste->Get(1)->GetTrajet() == trajet2, "le deuxième trajet de la liste est le même que le deuxième trajet ajouté");
+
+    delete liste;
+}
+
+void testEstVide() {
+    Liste* liste = new Liste();
+
+    TEST_CHECK_(liste->EstVide() == true, "la liste est indiquée vide quand aucun trajet n'a été inséré");
+
+    liste->Ajouter(new TrajetSimple("Voiture", "Lyon", "Paris"));
+
+    TEST_CHECK_(liste->EstVide() == false, "la liste est indiquée non vide quand un trajet a été inséré");
+
+    delete liste;
+}
+
 //----------------------------------------------------------- TrajetSimple
 void testConstructeurTrajetSimple() {
     const char* moyenDeTransport = "Voiture";
@@ -52,6 +80,8 @@ void testConstructeurTrajetSimple() {
 TEST_LIST = {
     { "Constructeur par défaut d'une liste", testConstructeurDefautListe },
     { "Ajout dans une liste", testAjoutTrajetListe },
+    { "Getter d'une liste", testGetTrajet },
+    { "Méthode EstVide d'une liste", testEstVide },
     { "Constructeur d'un trajet simple", testConstructeurTrajetSimple },
     { NULL, NULL }
 };

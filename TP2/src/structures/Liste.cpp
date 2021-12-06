@@ -41,22 +41,36 @@ void Liste::Afficher() const {
     Element* element = premier;
 
     while (element) {
+        std::cout << " ";
         element->Afficher();
+        std::cout << std::endl;
         element = element->GetSuivant();
     }
 }
 
-//------------------------------------------------- Surcharge d'opérateurs
-Liste& Liste::operator=(const Liste& liste_) {
+Element* Liste::Get(int i) const {
+    Element* courant = premier;
+
+    int count = 0;
+    while (courant != nullptr) {
+        if (count == i) {
+            return courant;
+        }
+
+        count++;
+        courant = courant->GetSuivant();
+    }
+
+    return nullptr;
 }
+
+bool Liste::EstVide() const {
+    return Taille() == 0;
+}
+
+//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-Liste::Liste(const Liste& liste_) {
-    #ifdef MAP
-        std::cout << "Appel au constructeur de copie de <Liste>" << std::endl;
-    #endif
-}
-
 Liste::Liste() : premier(nullptr) {
     #ifdef MAP
         std::cout << "Appel au constructeur de <Liste>" << std::endl;
