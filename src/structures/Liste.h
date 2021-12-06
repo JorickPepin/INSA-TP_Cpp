@@ -40,20 +40,16 @@ class Liste {
     // Mode d'emploi :
     //
 
+    Element* Get(int i) const;
+    // Mode d'emploi : retourne le i-ème élément de la liste, le premier
+    //                 étant à l'index 0
+
+    bool EstVide() const;
+    // Mode d'emploi : retourne true si la liste est vide, false sinon
+
     //------------------------------------------------- Surcharge d'opérateurs
-    Liste& operator=(const Liste& liste_);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Liste(const Liste& liste_);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
     Liste();
     // Mode d'emploi :
     //
