@@ -20,24 +20,19 @@
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-
 void TrajetSimple::Afficher() const {
     std::cout << villeDepart << " -> " << villeArrivee
-        << " en " << moyenDeTransport << std::endl;
+        << " en " << moyenDeTransport;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-/*TrajetSimple& TrajetSimple::operator=(const TrajetSimple& trajetSimple_) {
-}*/
+bool operator==(const TrajetSimple& t1, const TrajetSimple& t2) {
+    return (!strcmp(t1.moyenDeTransport, t2.moyenDeTransport) &&
+            !strcmp(t1.villeDepart, t2.villeDepart) &&
+            !strcmp(t1.villeArrivee, t2.villeArrivee));
+}
 
 //-------------------------------------------- Constructeurs - destructeur
-/*TrajetSimple::TrajetSimple(const TrajetSimple& trajetSimple_) {
-    #ifdef MAP
-        std::cout <<
-            "Appel au constructeur de copie de <TrajetSimple>" << std::endl;
-    #endif
-}*/
-
 TrajetSimple::TrajetSimple(const char* moyenDeTransport_,
                            const char* villeDepart_,
                            const char* villeArrivee_) {

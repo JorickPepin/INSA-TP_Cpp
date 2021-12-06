@@ -12,9 +12,11 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <cstring>
 //------------------------------------------------------ Include personnel
 #include "Interface.h"
 #include "modeles/TrajetSimple.h"
+#include "modeles/TrajetCompose.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
@@ -67,9 +69,12 @@ void Interface::AjouterTrajet(Liste* catalogue_) {
 }
 
 void Interface::AfficherTrajets(Liste* catalogue_) {
-    std::cout << "\nLe catalogue contient les trajets suivants :" << std::endl;
-
-    catalogue_->Afficher();
+    if (catalogue_->EstVide()) {
+        std::cout << "\nLe catalogue est vide." << std::endl;
+    } else {
+        std::cout << "\nLe catalogue contient les trajets suivants :" << std::endl;
+        catalogue_->Afficher();
+    }
 }
 
 //------------------------------------------------------------------ PRIVE
@@ -98,5 +103,36 @@ void Interface::ajouterTrajetSimple(Liste* catalogue_) {
 }
 
 void Interface::ajouterTrajetCompose(Liste* catalogue_) {
-    // TODO(*): implémenter
+    Liste* trajets = new Liste();
+
+    char villeDepart[TAILLE_MAX];
+    char villeArrivee[TAILLE_MAX];
+    char transport[TAILLE_MAX];
+
+    std::cout << "\nCréation d'un trajet composé" << std::endl;
+
+    std::cout << "- Ville de départ : ";
+    std::cin >> villeDepart;
+
+    for ( ; ; ) {  // on boucle tant que l'utilisateur continue d'ajouter des trajets
+        std::cout << "- Ville suivante (ou 'q' pour arrêter la saisie) : ";
+        std::cin >> villeArrivee;
+
+        // l'utilisateur saisit la lettre "q" -> il souhaite arrêter la saisie
+        if (strcmp(villeArrivee, "q") == 0) {
+            break;
+        }
+
+        std::cout << "- Moyen de transport : ";
+        std::cin >> transport;
+
+        trajets->Ajouter(new TrajetSimple(transport, villeDepart, villeArrivee));
+
+        // la ville de départ du nouveau trajet devient la ville d'arrivée de l'ancien
+        strcpy(villeDepart, villeArrivee);
+    }
+
+    if (trajets->Taille() > 0) {  // l'utilisateur a saisi au moins un trajet
+        catalogue_->Ajouter(new TrajetCompose(trajets));
+    }
 }

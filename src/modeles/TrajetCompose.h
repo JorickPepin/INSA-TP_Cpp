@@ -12,6 +12,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
+#include "../structures/Liste.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -25,22 +26,13 @@
 class TrajetCompose : public Trajet {
  public:
     //----------------------------------------------------- Méthodes publiques
+    void Afficher() const;
+    // Mode d'emploi : Méthode pour afficher les trajets composés
 
     //------------------------------------------------- Surcharge d'opérateurs
-    TrajetCompose& operator=(const TrajetCompose& trajetCompose_);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     //-------------------------------------------- Constructeurs - destructeur
-    TrajetCompose(const TrajetCompose& trajetCompose_);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    TrajetCompose();
+    explicit TrajetCompose(Liste* trajets_);
     // Mode d'emploi :
     //
     // Contrat :
@@ -55,7 +47,8 @@ class TrajetCompose : public Trajet {
  protected:
     //----------------------------------------------------- Méthodes protégées
 
-    //----------------------------------------------------- Attributs protégés
+    //----------------------------------------------------- Attributs protégés+
+    Liste* trajets;
 };
 
 //-------------------------- Autres définitions dépendantes de <TrajetCompose>

@@ -43,29 +43,14 @@ class Element {
     Element* GetSuivant() const { return suivant; }
     // Mode d'emploi :
     //
-    // Contrat :
+
+    const Trajet* GetTrajet() const { return trajet; }
+    // Mode d'emploi :
     //
 
     //------------------------------------------------- Surcharge d'opérateurs
-    Element& operator=(const Element& element_);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     //-------------------------------------------- Constructeurs - destructeur
-    Element(const Element& element_);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Element();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
     explicit Element(const Trajet* trajet_);
     // Mode d'emploi :
     //

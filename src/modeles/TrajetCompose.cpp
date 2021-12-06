@@ -19,20 +19,22 @@
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
+void TrajetCompose::Afficher() const {
+    Element* element = trajets->Get(0);
+
+    while (element) {
+        element->Afficher();
+
+        if ((element = element->GetSuivant())) {
+            std::cout << " puis ";
+        }
+    }
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
-TrajetCompose& TrajetCompose::operator=(const TrajetCompose& trajetCompose_) {
-}
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetCompose::TrajetCompose(const TrajetCompose& trajetCompose_) {
-    #ifdef MAP
-        std::cout <<
-            "Appel au constructeur de copie de <TrajetCompose>" << std::endl;
-    #endif
-}
-
-TrajetCompose::TrajetCompose() {
+TrajetCompose::TrajetCompose(Liste* trajets_) : trajets(trajets_) {
     #ifdef MAP
         std::cout << "Appel au constructeur de <TrajetCompose>" << std::endl;
     #endif
@@ -42,6 +44,8 @@ TrajetCompose::~TrajetCompose() {
     #ifdef MAP
         std::cout << "Appel au destructeur de <TrajetCompose>" << std::endl;
     #endif
+
+    delete trajets;
 }
 
 //------------------------------------------------------------------ PRIVE
