@@ -32,3 +32,6 @@
 *.app
 sejours
 test
+
+# IDE
+.vscode

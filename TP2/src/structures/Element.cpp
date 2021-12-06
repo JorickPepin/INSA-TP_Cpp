@@ -42,22 +42,8 @@ void Element::Afficher() {
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-Element& Element::operator=(const Element& element_) {
-}
 
 //-------------------------------------------- Constructeurs - destructeur
-Element::Element(const Element& _element) {
-    #ifdef MAP
-        std::cout << "Appel au constructeur de copie de <Element>" << std::endl;
-    #endif
-}
-
-Element::Element() {
-    #ifdef MAP
-        std::cout << "Appel au constructeur de <Element>" << std::endl;
-    #endif
-}
-
 Element::Element(const Trajet* trajet_) : trajet(trajet_), suivant(nullptr) {
     #ifdef MAP
         std::cout << "Appel au constructeur de <Element>" << std::endl;

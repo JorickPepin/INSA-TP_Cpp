@@ -35,19 +35,11 @@ class TrajetSimple : public Trajet {
     friend void testConstructeurTrajetSimple();
 
     //------------------------------------------------- Surcharge d'opérateurs
-    // TrajetSimple& operator=(const TrajetSimple& trajetSimple_);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    friend bool operator==(const TrajetSimple& t1, const TrajetSimple& t2);
+    // Mode d'emploi : Permet de comparer deux trajets simples pour savoir
+    //                 si leurs composantes sont similaires
 
     //-------------------------------------------- Constructeurs - destructeur
-    // TrajetSimple(const TrajetSimple& trajetSimple_);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
     TrajetSimple(const char* moyenDeTransport_,
                  const char* villeDepart_,
                  const char* villeArrivee_);
