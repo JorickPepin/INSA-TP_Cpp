@@ -12,13 +12,10 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <TrajetSimple>
-// Classe permettant d'implémenter des trajets simples c'est-à-dire des
+// Classe permettant d'implémenter des trajets simples, c'est-à-dire des
 // trajets comportant :
 //    - Moyen de Transport
 //    - Ville de Départ
@@ -29,39 +26,35 @@ class TrajetSimple : public Trajet {
  public:
     //----------------------------------------------------- Méthodes publiques
     void Afficher() const;
-    // Mode d'emploi : Méthode pour afficher les trajets simples
+
+    const char* GetVilleDepart() const;
+    const char* GetVilleArrivee() const;
 
     //-------------------------------------------------------- Tests unitaires
     friend void testConstructeurTrajetSimple();
 
     //------------------------------------------------- Surcharge d'opérateurs
+    /**
+     * Permet de comparer deux trajets simples pour savoir
+     * si leurs composantes sont similaires
+     * 
+     * @return true si les deux trajets ont la même ville de départ, la même
+     *         ville d'arrivée et le même moyen de transport, false sinon
+     */
     friend bool operator==(const TrajetSimple& t1, const TrajetSimple& t2);
-    // Mode d'emploi : Permet de comparer deux trajets simples pour savoir
-    //                 si leurs composantes sont similaires
 
     //-------------------------------------------- Constructeurs - destructeur
     TrajetSimple(const char* moyenDeTransport_,
                  const char* villeDepart_,
                  const char* villeArrivee_);
-    // Mode d'emploi : Constructeur du trajet simple, création de
-    //                 l'objet TrajetSimple
-    // Contrat : les chaines de caractères finissent par '\0'
 
     virtual ~TrajetSimple();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
  protected:
-    //----------------------------------------------------- Méthodes protégées
-
     //----------------------------------------------------- Attributs protégés
     char* moyenDeTransport;
     char* villeDepart;
     char* villeArrivee;
 };
-
-//--------------------------- Autres définitions dépendantes de <TrajetSimple>
 
 #endif  // SRC_MODELES_TRAJETSIMPLE_H_

@@ -9,7 +9,6 @@
 //---- Réalisation de la classe <Interface> (fichier Interface.cpp) ------
 
 //---------------------------------------------------------------- INCLUDE
-
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <cstring>
@@ -17,10 +16,8 @@
 #include "Interface.h"
 #include "modeles/TrajetSimple.h"
 #include "modeles/TrajetCompose.h"
-//------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
-
 //----------------------------------------------------- Méthodes publiques
 void Interface::AfficherBienvenue() {
     std::cout << "----------------------- Catalogue -----------------------" << std::endl;
@@ -35,7 +32,8 @@ void Interface::AfficherFin() {
 void Interface::AfficherMenu() {
     std::cout << "\n0: Quitter" << std::endl;
     std::cout << "1: Ajouter un trajet" << std::endl;
-    std::cout << "2: Afficher les trajets\n" << std::endl;
+    std::cout << "2: Afficher les trajets" << std::endl;
+    std::cout << "3: Rechercher un trajet\n" << std::endl;
 }
 
 void Interface::AfficherMauvaisChoix() {
@@ -77,8 +75,50 @@ void Interface::AfficherTrajets(Liste* catalogue_) {
     }
 }
 
-//------------------------------------------------------------------ PRIVE
+void Interface::RechercherTrajet(Liste* catalogue_) {
+    char villeDepart[TAILLE_MAX];
+    char villeArrivee[TAILLE_MAX];
 
+    std::cout << "\nRecherche d'un trajet" << std::endl;
+
+    std::cout << "- Ville de départ : ";
+    std::cin >> villeDepart;
+
+    std::cout << "- Ville d'arrivée : ";
+    std::cin >> villeArrivee;
+
+    bool trajetTrouve = false;
+
+    if (catalogue_->EstVide()) {
+        std::cout << "\nLe catalogue est vide." << std::endl;
+    } else {
+        Element* courant = catalogue_->GetPremier();
+
+        bool correspond;
+        while (courant) {
+            correspond = courant->GetTrajet()->Correspond(villeDepart, villeArrivee);
+
+            if (correspond) {
+                if (!trajetTrouve) {
+                    std::cout << "\nTrajet(s) trouvé(s) :" << std::endl;
+                }
+
+                courant->Afficher();
+                std::cout << std::endl;
+
+                trajetTrouve = true;
+            }
+
+            courant = courant->GetSuivant();
+        }
+    }
+
+    if (!trajetTrouve) {
+        std::cout << "\nAucun trajet n'a été trouvé." << std::endl;
+    }
+}
+
+//------------------------------------------------------------------ PRIVE
 //------------------------------------------------------- Méthodes privées
 void Interface::ajouterTrajetSimple(Liste* catalogue_) {
     char villeDepart[TAILLE_MAX];

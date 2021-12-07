@@ -2,8 +2,8 @@
                            TrajetCompose  -  description
                              -------------------
     début                : 17/11/2021
-    copyright            : (C) 2021 par $AUTHOR$
-    e-mail               : $EMAIL$
+    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 //--- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ---
@@ -13,44 +13,29 @@
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
 #include "../structures/Liste.h"
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <TrajetCompose>
-//
-//
+// Classe correspondant à un trajet composé, c'est-à-dire un trajet
+// contenant plusieurs trajets simples ou composés
 //------------------------------------------------------------------------
 
 class TrajetCompose : public Trajet {
  public:
     //----------------------------------------------------- Méthodes publiques
     void Afficher() const;
-    // Mode d'emploi : Méthode pour afficher les trajets composés
 
-    //------------------------------------------------- Surcharge d'opérateurs
+    const char* GetVilleDepart() const;
+    const char* GetVilleArrivee() const;
 
     //-------------------------------------------- Constructeurs - destructeur
     explicit TrajetCompose(Liste* trajets_);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     virtual ~TrajetCompose();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
  protected:
-    //----------------------------------------------------- Méthodes protégées
-
     //----------------------------------------------------- Attributs protégés+
     Liste* trajets;
 };
-
-//-------------------------- Autres définitions dépendantes de <TrajetCompose>
 
 #endif  // SRC_MODELES_TRAJETCOMPOSE_H_

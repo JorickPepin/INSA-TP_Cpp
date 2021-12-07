@@ -2,22 +2,19 @@
                            Element  -  description
                              -------------------
     début                : 21/11/2021
-    copyright            : (C) 2021 par $AUTHOR$
-    e-mail               : $EMAIL$
+    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Element> (fichier Element.cpp) ----
 
 //---------------------------------------------------------------- INCLUDE
-
 //-------------------------------------------------------- Include système
 #include <iostream>
 //------------------------------------------------------ Include personnel
 #include "Element.h"
-//------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
-
 //----------------------------------------------------- Méthodes publiques
 int Element::Taille() const {
     int taille = 1;
@@ -41,8 +38,6 @@ void Element::Afficher() {
     trajet->Afficher();
 }
 
-//------------------------------------------------- Surcharge d'opérateurs
-
 //-------------------------------------------- Constructeurs - destructeur
 Element::Element(const Trajet* trajet_) : trajet(trajet_), suivant(nullptr) {
     #ifdef MAP
@@ -58,7 +53,3 @@ Element::~Element() {
     delete trajet;
     delete suivant;
 }
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
