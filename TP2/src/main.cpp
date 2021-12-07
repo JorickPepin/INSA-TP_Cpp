@@ -17,7 +17,7 @@
 //------------------------------------------------------------------------
 
 int main(int argc, char const *argv[]) {
-    Liste* catalogue = new Liste();
+    Liste catalogue;
     int choix;
 
     Interface::AfficherBienvenue();
@@ -33,16 +33,17 @@ int main(int argc, char const *argv[]) {
                 Interface::AfficherFin();
                 break;
             case 1:
-                Interface::AjouterTrajet(catalogue);
+                Interface::AjouterTrajet(&catalogue);
                 break;
             case 2:
-                Interface::AfficherTrajets(catalogue);
+                Interface::AfficherTrajets(&catalogue);
+                break;
+            case 3:
+                Interface::RechercherTrajet(&catalogue);
                 break;
             default:
                 Interface::AfficherMauvaisChoix();
                 break;
         }
     } while (choix != 0);
-
-    delete catalogue;
 }

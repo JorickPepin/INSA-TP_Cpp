@@ -2,8 +2,8 @@
                            Liste  -  description
                              -------------------
     début                : 21/11/2021
-    copyright            : (C) 2021 par $AUTHOR$
-    e-mail               : $EMAIL$
+    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Liste> (fichier Liste.h) ------------
@@ -11,64 +11,59 @@
 #define SRC_STRUCTURES_LISTE_H_
 //--------------------------------------------------- Interfaces utilisées
 #include "Element.h"
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Liste>
+// Classe représentant une liste de trajets simplement chaînée.
 //
-//
+// La classe contient un pointeur vers le premier élément de la liste
+// ainsi qu'un pointeur vers le dernier élément.
 //------------------------------------------------------------------------
 
 class Liste {
  public:
     //----------------------------------------------------- Méthodes publiques
+    /**
+     * @return int la taille de la liste.
+     */
     int Taille() const;
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
+    /**
+     * Ajoute un trajet à la fin de la liste.
+     * 
+     * @param trajet_ le trajet à ajouter
+     */
     void Ajouter(const Trajet* trajet_);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
+    /**
+     * Affiche le contenu de la liste dans la console.
+     */
     void Afficher() const;
-    // Mode d'emploi :
-    //
 
-    Element* Get(int i) const;
-    // Mode d'emploi : retourne le i-ème élément de la liste, le premier
-    //                 étant à l'index 0
-
+    /**
+     * @return true si la liste est vide, false sinon
+     */
     bool EstVide() const;
-    // Mode d'emploi : retourne true si la liste est vide, false sinon
 
-    //------------------------------------------------- Surcharge d'opérateurs
+    /**
+     * @return Element* un pointeur vers le premier élément de la liste
+     */
+    Element* GetPremier() const { return premier; }
+
+    /**
+     * @return Element* un pointeur vers le dernier élément de la liste 
+     */
+    Element* GetDernier() const { return dernier; }
 
     //-------------------------------------------- Constructeurs - destructeur
     Liste();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     virtual ~Liste();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
  private:
-    //----------------------------------------------------- Méthodes privées
-
     //----------------------------------------------------- Attributs privés
     Element* premier;
+    Element* dernier;
 };
-
-//-------------------------------- Autres définitions dépendantes de <Liste>
 
 #endif  // SRC_STRUCTURES_LISTE_H_

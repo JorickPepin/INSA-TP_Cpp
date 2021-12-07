@@ -12,53 +12,81 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "structures/Liste.h"
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Interface>
-//
-//
+// Classe statique gérant les affichages console et servant de contrôleur
+// entre l'utilisateur et le catalogue.
 //------------------------------------------------------------------------
 
 class Interface {
  public:
     //----------------------------------------------------- Méthodes publiques
+    /**
+     * Affiche un message de bienvenue pour accueillir l'utilisateur
+     */
     static void AfficherBienvenue();
-    // Mode d'emploi :
-    //
 
+    /**
+     * Affiche un message de fin lorsque l'utilisateur quitte l'application
+     * 
+     */
     static void AfficherFin();
-    // Mode d'emploi :
-    //
 
+    /**
+     * Affiche le menu principal du programme permettant de choisir entre
+     * l'insertion d'un trajet, l'affichage du catalogue ou la recherche
+     * d'un trajet dans le catalogue.
+     */
     static void AfficherMenu();
-    // Mode d'emploi :
-    //
 
+    /**
+     * Affiche un message lorsque l'utilisateur choisit une option non supportée
+     */
     static void AfficherMauvaisChoix();
-    // Mode d'emploi :
-    //
 
+    /**
+     * Affiche les messages relatifs à l'ajout d'un trajet dans le catalogue
+     */
     static void AjouterTrajet(Liste* catalogue_);
-    // Mode d'emploi :
-    //
 
+    /**
+     * Affiche le catalogue dans la console
+     */
     static void AfficherTrajets(Liste* catalogue_);
-    // Mode d'emploi :
-    //
+
+    /**
+     * Affiche les messages relatifs à la recherche d'un trajet dans le
+     * catalogue ainsi que les résultats obtenus le cas échéant.
+     */
+    static void RechercherTrajet(Liste* catalogue_);
 
  private:
     //----------------------------------------------------- Méthodes privées
+    /**
+     * Constructeur par défaut mis en privé afin d'éviter une instanciation
+     * de la classe et garder ainsi un comportement statique.
+     */
     Interface();
-    // Mode d'emploi :
-    // constructeur par défaut mis en privé afin d'éviter une instanciation
-    // de la classe et garder ainsi un comportement statique
 
+    /**
+     * Affiche les messages relatifs à l'ajout d'un trajet simple dans
+     * le catalogue.
+     * Méthode privée car appelée par la méthode AjouterTrajet.
+     */
     static void ajouterTrajetSimple(Liste* catalogue_);
+
+    /**
+     * Affiche les messages relatifs à l'ajout d'un trajet composé dans
+     * le catalogue.
+     * Méthode privée car appelée par la méthode AjouterTrajet.
+     */
     static void ajouterTrajetCompose(Liste* catalogue_);
+
     //----------------------------------------------------- Attributs privés
+    /**
+     * Entier correspondant à la taille maximale de l'entrée utilisateur
+     */
     static const int TAILLE_MAX = 50;
 };
 

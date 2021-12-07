@@ -2,38 +2,37 @@
                            Liste  -  description
                              -------------------
     début                : 21/11/2021
-    copyright            : (C) 2021 par $AUTHOR$
-    e-mail               : $EMAIL$
+    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Liste> (fichier Liste.cpp) --------
 
 //---------------------------------------------------------------- INCLUDE
-
 //-------------------------------------------------------- Include système
 #include <iostream>
 //------------------------------------------------------ Include personnel
 #include "Liste.h"
-//------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
-
 //----------------------------------------------------- Méthodes publiques
 int Liste::Taille() const {
     int taille = 0;
 
     if (premier) {
-        taille = premier->Taille();
+        taille = premier->Taille();  // calcul de la taille de manière récursive
     }
 
     return taille;
 }
 
 void Liste::Ajouter(const Trajet* trajet_) {
-    if (premier) {
-        premier->Ajouter(new Element(trajet_));
-    } else {
+    if (this->EstVide()) {  // si la liste est vide, premier et dernier pointent vers le même élément
         premier = new Element(trajet_);
+        dernier = premier;
+    } else {
+        dernier->Ajouter(new Element(trajet_));
+        dernier = dernier->GetSuivant();  // dernier pointe désormais vers le dernier élément ajouté
     }
 }
 
@@ -48,30 +47,12 @@ void Liste::Afficher() const {
     }
 }
 
-Element* Liste::Get(int i) const {
-    Element* courant = premier;
-
-    int count = 0;
-    while (courant != nullptr) {
-        if (count == i) {
-            return courant;
-        }
-
-        count++;
-        courant = courant->GetSuivant();
-    }
-
-    return nullptr;
-}
-
 bool Liste::EstVide() const {
-    return Taille() == 0;
+    return this->Taille() == 0;
 }
-
-//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-Liste::Liste() : premier(nullptr) {
+Liste::Liste() : premier(nullptr), dernier(nullptr) {
     #ifdef MAP
         std::cout << "Appel au constructeur de <Liste>" << std::endl;
     #endif
@@ -84,7 +65,3 @@ Liste::~Liste() {
 
     delete premier;
 }
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

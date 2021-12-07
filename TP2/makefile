@@ -15,12 +15,15 @@ TEST_EXECUTABLE := test
 
 all: executable
 
+.PHONY: debug
 debug: CXXFLAGS += -D MAP
 debug: executable
 
+.PHONY: executable
 executable: $(OBJECTS)
 	$(CC) -o $(EXECUTABLE) $^ $(CXXFLAGS)
 
+.PHONY: test
 test: $(filter-out $(OBJ)/main.o, $(OBJECTS)) $(TEST_OBJECTS)
 	$(CC) -o $(TEST_EXECUTABLE) $^ $(CXXFLAGS)
 

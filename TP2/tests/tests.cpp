@@ -43,8 +43,8 @@ void testGetTrajet() {
     liste->Ajouter(trajet1);
     liste->Ajouter(trajet2);
 
-    TEST_CHECK_(liste->Get(0)->GetTrajet() == trajet1, "le premier trajet de la liste est le même que le premier trajet ajouté");
-    TEST_CHECK_(liste->Get(1)->GetTrajet() == trajet2, "le deuxième trajet de la liste est le même que le deuxième trajet ajouté");
+    TEST_CHECK_(liste->GetPremier()->GetTrajet() == trajet1, "le premier trajet de la liste est le même que le premier trajet ajouté");
+    TEST_CHECK_(liste->GetDernier()->GetTrajet() == trajet2, "le deuxième trajet de la liste est le même que le deuxième trajet ajouté");
 
     delete liste;
 }
