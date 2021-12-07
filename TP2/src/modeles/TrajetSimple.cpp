@@ -9,20 +9,25 @@
 //-- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
-
 //-------------------------------------------------------- Include système
 #include <cstring>
 #include <iostream>
 //------------------------------------------------------ Include personnel
 #include "TrajetSimple.h"
-//------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
-
 //----------------------------------------------------- Méthodes publiques
 void TrajetSimple::Afficher() const {
     std::cout << villeDepart << " -> " << villeArrivee
         << " en " << moyenDeTransport;
+}
+
+const char* TrajetSimple::GetVilleDepart() const {
+    return villeDepart;
+}
+
+const char* TrajetSimple::GetVilleArrivee() const {
+    return villeArrivee;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -58,7 +63,3 @@ TrajetSimple::~TrajetSimple() {
     delete [] villeDepart;
     delete [] villeArrivee;
 }
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

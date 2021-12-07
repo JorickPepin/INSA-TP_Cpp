@@ -11,53 +11,40 @@
 #define SRC_MODELES_TRAJET_H_
 
 //--------------------------------------------------- Interfaces utilisées
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
+#include <cstring>
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Trajet>
 // Classe mère abstraite des trajets
-
 //------------------------------------------------------------------------
 
 class Trajet {
  public:
     //----------------------------------------------------- Méthodes publiques
+    /**
+     * Affiche les caractéristiques du trajet dans la console
+     */
     virtual void Afficher() const = 0;
-    //------------------------------------------------- Surcharge d'opérateurs
-    // Trajet& operator=(const Trajet& trajet_);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+
+    virtual const char* GetVilleDepart() const = 0;
+    virtual const char* GetVilleArrivee() const = 0;
+
+    /**
+     * Indique si le trajet invoquant la méthode permet de se déplacer
+     * de la ville de départ à la ville d'arrivée passées en paramètres.
+     * 
+     * @param villeDepart_ 
+     * @param villeArrivee_ 
+     * @return true si le trajet permet d'aller de la ville de départ
+     *         à la ville d'arrivée, false sinon
+     */
+    virtual bool Correspond(const char* villeDepart_, const char* villeArrivee_) const {
+        return (!strcmp(GetVilleDepart(), villeDepart_) &&
+                !strcmp(GetVilleArrivee(), villeArrivee_));
+    }
 
     //-------------------------------------------- Constructeurs - destructeur
-    // Trajet(const Trajet& trajet_);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    // Trajet();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
     virtual ~Trajet() {}
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
- protected:
-    //----------------------------------------------------- Méthodes protégées
-
-    //----------------------------------------------------- Attributs protégés
 };
-
-//--------------------------------- Autres définitions dépendantes de <Trajet>
 
 #endif  // SRC_MODELES_TRAJET_H_
