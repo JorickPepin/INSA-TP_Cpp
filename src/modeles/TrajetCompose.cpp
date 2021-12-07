@@ -2,25 +2,22 @@
                            TrajetCompose  -  description
                              -------------------
     début                : 17/11/2021
-    copyright            : (C) 2021 par $AUTHOR$
-    e-mail               : $EMAIL$
+    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 //- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) -
 
 //---------------------------------------------------------------- INCLUDE
-
 //-------------------------------------------------------- Include système
 #include <iostream>
 //------------------------------------------------------ Include personnel
 #include "TrajetCompose.h"
-//------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
-
 //----------------------------------------------------- Méthodes publiques
 void TrajetCompose::Afficher() const {
-    Element* element = trajets->Get(0);
+    Element* element = trajets->GetPremier();
 
     while (element) {
         element->Afficher();
@@ -31,7 +28,13 @@ void TrajetCompose::Afficher() const {
     }
 }
 
-//------------------------------------------------- Surcharge d'opérateurs
+const char* TrajetCompose::GetVilleDepart() const {
+    return trajets->GetPremier()->GetTrajet()->GetVilleDepart();
+}
+
+const char* TrajetCompose::GetVilleArrivee() const {
+    return trajets->GetDernier()->GetTrajet()->GetVilleArrivee();;
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetCompose::TrajetCompose(Liste* trajets_) : trajets(trajets_) {
@@ -47,7 +50,3 @@ TrajetCompose::~TrajetCompose() {
 
     delete trajets;
 }
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
