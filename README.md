@@ -1,5 +1,10 @@
 # INSA C++ - TP n°2
 
+
+## Sujet
+
+Réalisation d'un catalogue de trajets pouvant être simples ou composés en utilisant uniquement les bibliothèques \<iostream> et \<cstring>.
+
 ## Guide de style
 
 Le projet suit le [guide de style C++ de Google](https://google.github.io/styleguide/cppguide.html)
