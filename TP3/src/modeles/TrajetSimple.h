@@ -30,6 +30,8 @@ class TrajetSimple : public Trajet {
     const char* GetVilleDepart() const;
     const char* GetVilleArrivee() const;
 
+    const TypeTrajet GetType() const;
+
     //-------------------------------------------------------- Tests unitaires
     friend void testConstructeurTrajetSimple();
 
@@ -51,6 +53,7 @@ class TrajetSimple : public Trajet {
     virtual ~TrajetSimple();
 
  protected:
+   std::string toStringFichier() const;
     //----------------------------------------------------- Attributs protégés
     char* moyenDeTransport;
     char* villeDepart;

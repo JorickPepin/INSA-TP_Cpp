@@ -12,6 +12,11 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <cstring>
+#include <fstream>
+#include <string>
+
+//------------------------------------------------------------------ Types
+enum TypeTrajet { Simple, Compose };
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Trajet>
@@ -25,9 +30,16 @@ class Trajet {
      * Affiche les caractéristiques du trajet dans la console
      */
     virtual void Afficher() const = 0;
-
+    
     virtual const char* GetVilleDepart() const = 0;
     virtual const char* GetVilleArrivee() const = 0;
+
+    virtual const TypeTrajet GetType() const = 0;
+
+    friend std::ofstream & operator << (std::ofstream & out, const Trajet & trajet ){
+        out << trajet.toStringFichier();
+        return out;
+    }
 
     /**
      * Indique si le trajet invoquant la méthode permet de se déplacer
@@ -45,6 +57,9 @@ class Trajet {
 
     //-------------------------------------------- Constructeurs - destructeur
     virtual ~Trajet() {}
+
+ protected:
+    virtual std::string toStringFichier() const = 0;
 };
 
 #endif  // SRC_MODELES_TRAJET_H_

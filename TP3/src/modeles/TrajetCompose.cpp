@@ -36,6 +36,10 @@ const char* TrajetCompose::GetVilleArrivee() const {
     return trajets->GetDernier()->GetTrajet()->GetVilleArrivee();;
 }
 
+const TypeTrajet TrajetCompose::GetType() const {
+    return TypeTrajet::Compose;
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 TrajetCompose::TrajetCompose(Liste* trajets_) : trajets(trajets_) {
     #ifdef MAP
@@ -49,4 +53,8 @@ TrajetCompose::~TrajetCompose() {
     #endif
 
     delete trajets;
+}
+
+std::string TrajetCompose::toStringFichier() const{
+    //TODO
 }

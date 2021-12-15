@@ -12,6 +12,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "structures/Liste.h"
+#include "modeles/Trajet.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Sauvegarde>
@@ -21,7 +22,33 @@
 class Sauvegarde {
  public:
     //----------------------------------------------------- Méthodes publiques
-    static void Sauvegarder(Liste* catalogue_);
+    /**
+     * Sauvegarde la totalité du catalogue dans un fichier.
+     * 
+     * @param catalogue le catalogue à sauvegarder
+     * @param nomFichier le nom du fichier
+     */
+    static void SauvegarderSansCritere(const Liste& catalogue,
+                                       const std::string& nomFichier);
+
+    /**
+     * Sauvegarde les trajets simples du catalogue dans un fichier.
+     * 
+     * @param catalogue le catalogue à sauvegarder
+     * @param nomFichier le nom du fichier
+     */
+    static void SauvegarderSelonType(const Liste& catalogue,
+                                     const std::string& nomFichier,
+                                     const std::string& typeTrajet);
+
+    /**
+     * Sauvegarde les trajets composés du catalogue dans un fichier.
+     * 
+     * @param catalogue le catalogue à sauvegarder
+     * @param nomFichier le nom du fichier
+     */
+    static void SauvegarderTrajetsComposes(const Liste& catalogue,
+                                          const std::string& nomFichier);
 
  private:
     //----------------------------------------------------- Méthodes privées

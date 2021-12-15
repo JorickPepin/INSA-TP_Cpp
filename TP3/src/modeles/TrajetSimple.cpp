@@ -30,6 +30,10 @@ const char* TrajetSimple::GetVilleArrivee() const {
     return villeArrivee;
 }
 
+const TypeTrajet TrajetSimple::GetType() const {
+    return TypeTrajet::Simple;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 bool operator==(const TrajetSimple& t1, const TrajetSimple& t2) {
     return (!strcmp(t1.moyenDeTransport, t2.moyenDeTransport) &&
@@ -62,4 +66,11 @@ TrajetSimple::~TrajetSimple() {
     delete [] moyenDeTransport;
     delete [] villeDepart;
     delete [] villeArrivee;
+}
+
+std::string TrajetSimple::toStringFichier() const {
+    // TODO
+    std::string toString("S:");
+    toString = toString + villeDepart + '%' + villeArrivee;
+    return toString;
 }

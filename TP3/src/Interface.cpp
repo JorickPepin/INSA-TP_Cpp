@@ -121,7 +121,31 @@ void Interface::RechercherTrajet(Liste* catalogue_) {
 }
 
 void Interface::SauvegarderCatalogue(Liste* catalogue_) {
-    Sauvegarde::Sauvegarder(catalogue_);
+    int choix;
+
+    do {
+        std::cout << "\nQuel type de sauvegarde souhaitez-vous utiliser ?\n" << std::endl;
+        std::cout << "0: Quitte" << std::endl;
+        std::cout << "1: Sauvegarder sans critère" << std::endl;
+        std::cout << "2: Sauvegarder un certain type de trajet\n" << std::endl;
+
+        std::cout << "Choix : ";
+        std::cin >> choix;
+
+        switch (choix) {
+            case 0:
+                break;
+            case 1:
+                Sauvegarde::SauvegarderSansCritere(*catalogue_, "test");
+                break;
+            case 2:
+                break;
+            default:
+                Interface::AfficherMauvaisChoix();
+                break;
+        }
+    } while (choix != 0);
+
 }
 
 //------------------------------------------------------------------ PRIVE

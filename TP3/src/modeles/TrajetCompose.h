@@ -28,13 +28,16 @@ class TrajetCompose : public Trajet {
     const char* GetVilleDepart() const;
     const char* GetVilleArrivee() const;
 
+    const TypeTrajet GetType() const;
+
     //-------------------------------------------- Constructeurs - destructeur
     explicit TrajetCompose(Liste* trajets_);
 
     virtual ~TrajetCompose();
 
  protected:
-    //----------------------------------------------------- Attributs protégés+
+    std::string toStringFichier() const;
+    //----------------------------------------------------- Attributs protégés
     Liste* trajets;
 };
 
