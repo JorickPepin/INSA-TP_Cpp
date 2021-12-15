@@ -41,6 +41,9 @@ int main(int argc, char const *argv[]) {
             case 3:
                 Interface::RechercherTrajet(&catalogue);
                 break;
+            case 4:
+                Interface::SauvegarderCatalogue(&catalogue);
+                break;
             default:
                 Interface::AfficherMauvaisChoix();
                 break;

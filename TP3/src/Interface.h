@@ -61,6 +61,11 @@ class Interface {
      */
     static void RechercherTrajet(Liste* catalogue_);
 
+    /**
+     * Sauvegarde le catalogue dans un fichier texte.
+     */
+    static void SauvegarderCatalogue(Liste* catalogue_);
+
  private:
     //----------------------------------------------------- Méthodes privées
     /**

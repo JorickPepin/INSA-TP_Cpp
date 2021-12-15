@@ -33,7 +33,8 @@ void Interface::AfficherMenu() {
     std::cout << "\n0: Quitter" << std::endl;
     std::cout << "1: Ajouter un trajet" << std::endl;
     std::cout << "2: Afficher les trajets" << std::endl;
-    std::cout << "3: Rechercher un trajet\n" << std::endl;
+    std::cout << "3: Rechercher un trajet" << std::endl;
+    std::cout << "4: Sauvegarder le catalogue\n" << std::endl;
 }
 
 void Interface::AfficherMauvaisChoix() {
@@ -116,6 +117,10 @@ void Interface::RechercherTrajet(Liste* catalogue_) {
     if (!trajetTrouve) {
         std::cout << "\nAucun trajet n'a été trouvé." << std::endl;
     }
+}
+
+void Interface::SauvegarderCatalogue(Liste* catalogue_) {
+    std::cout << "\nsauvegarder" << std::endl;
 }
 
 //------------------------------------------------------------------ PRIVE
