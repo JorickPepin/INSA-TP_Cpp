@@ -14,6 +14,7 @@
 #include <cstring>
 //------------------------------------------------------ Include personnel
 #include "Interface.h"
+#include "Sauvegarde.h"
 #include "modeles/TrajetSimple.h"
 #include "modeles/TrajetCompose.h"
 
@@ -120,7 +121,7 @@ void Interface::RechercherTrajet(Liste* catalogue_) {
 }
 
 void Interface::SauvegarderCatalogue(Liste* catalogue_) {
-    std::cout << "\nsauvegarder" << std::endl;
+    Sauvegarde::Sauvegarder(catalogue_);
 }
 
 //------------------------------------------------------------------ PRIVE
