@@ -1,4 +1,4 @@
-CXXFLAGS = -g -ansi -pedantic -Wall -std=c++11
+CXXFLAGS = -g -ansi -pedantic -Wall -std=c++11 -MMD -MP
 CC := g++
 
 SRC := src
@@ -7,6 +7,7 @@ OBJ := obj
 
 SOURCES := $(wildcard $(SRC)/*.cpp $(SRC)/*/*.cpp)
 OBJECTS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SOURCES))
+DEPENDS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.d, $(SOURCES))
 EXECUTABLE := sejours
 
 TEST_SOURCES := $(wildcard $(TESTS)/*.cpp $(TESTS)/*/*.cpp)
@@ -27,6 +28,8 @@ $(EXECUTABLE): $(OBJECTS)
 
 test: $(filter-out $(OBJ)/main.o, $(OBJECTS)) $(TEST_OBJECTS)
 	$(CC) -o $(TEST_EXECUTABLE) $^ $(CXXFLAGS)
+
+-include $(DEPENDS)
 
 $(OBJ)/%.o: $(SRC)/%.cpp
 	mkdir -p $(@D)
