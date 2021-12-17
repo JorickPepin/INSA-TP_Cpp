@@ -28,11 +28,11 @@ $(EXECUTABLE): $(OBJECTS)
 test: $(filter-out $(OBJ)/main.o, $(OBJECTS)) $(TEST_OBJECTS)
 	$(CC) -o $(TEST_EXECUTABLE) $^ $(CXXFLAGS)
 
-$(OBJ)/%.o: $(SRC)/%.cpp $(SRC)/%.h
+$(OBJ)/%.o: $(SRC)/%.cpp
 	mkdir -p $(@D)
 	$(CC) -c $< -o $@ $(CXXFLAGS)
 
-$(OBJ)/%.o: $(TESTS)/%.cpp $(TESTS)/%.h
+$(OBJ)/%.o: $(TESTS)/%.cpp
 	mkdir -p $(@D)
 	$(CC) -c $< -o $@ $(CXXFLAGS)
 
