@@ -1,4 +1,5 @@
-CXXFLAGS = -g -ansi -pedantic -Wall -std=c++11 -MMD -MP
+CXXFLAGS = -g -ansi -pedantic -std=c++11 -MMD -MP
+WARNING = -Wall -Wextra
 CC := g++
 
 SRC := src
@@ -24,20 +25,21 @@ debug: $(EXECUTABLE)
 executable : $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
-	$(CC) -o $(EXECUTABLE) $^ $(CXXFLAGS)
+	$(CC) -o $(EXECUTABLE) $^ $(WARNING) $(CXXFLAGS)
 
+test : WARNING = 
 test: $(filter-out $(OBJ)/main.o, $(OBJECTS)) $(TEST_OBJECTS)
-	$(CC) -o $(TEST_EXECUTABLE) $^ $(CXXFLAGS)
+	$(CC) -o $(TEST_EXECUTABLE) $^ $(WARNING) $(CXXFLAGS)
 
 -include $(DEPENDS)
 
-$(OBJ)/%.o: $(SRC)/%.cpp
+$(OBJ)/%.o: $(SRC)/%.cpp makefile
 	mkdir -p $(@D)
-	$(CC) -c $< -o $@ $(CXXFLAGS)
+	$(CC) -c $< -o $@ $(WARNING) $(CXXFLAGS)
 
-$(OBJ)/%.o: $(TESTS)/%.cpp
+$(OBJ)/%.o: $(TESTS)/%.cpp makefile
 	mkdir -p $(@D)
-	$(CC) -c $< -o $@ $(CXXFLAGS)
+	$(CC) -c $< -o $@ $(WARNING) $(CXXFLAGS)
 
 clean:
 	rm -rf $(OBJ) $(EXECUTABLE) $(TEST_EXECUTABLE)
