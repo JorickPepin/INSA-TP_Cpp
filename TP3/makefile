@@ -27,17 +27,16 @@ executable : $(EXECUTABLE)
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) -o $(EXECUTABLE) $^ $(WARNING) $(CXXFLAGS)
 
-test : WARNING = 
 test: $(filter-out $(OBJ)/main.o, $(OBJECTS)) $(TEST_OBJECTS)
 	$(CC) -o $(TEST_EXECUTABLE) $^ $(WARNING) $(CXXFLAGS)
 
 -include $(DEPENDS)
 
-$(OBJ)/%.o: $(SRC)/%.cpp makefile
+$(OBJ)/%.o: $(SRC)/%.cpp
 	mkdir -p $(@D)
 	$(CC) -c $< -o $@ $(WARNING) $(CXXFLAGS)
 
-$(OBJ)/%.o: $(TESTS)/%.cpp makefile
+$(OBJ)/%.o: $(TESTS)/%.cpp
 	mkdir -p $(@D)
 	$(CC) -c $< -o $@ $(WARNING) $(CXXFLAGS)
 
