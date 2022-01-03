@@ -37,7 +37,15 @@ void Sauvegarde::SauvegarderSansCritere(const Liste& catalogue,
 
 void Sauvegarde::SauvegarderSelonType(const Liste& catalogue,
                                       const std::string& nomFichier,
-                                      const std::string& typeTrajet) {
+                                      TypeTrajet typeTrajet) {
+
+    if (typeTrajet == TypeTrajet::Simple) {
+        std::cout << "simple" << std::endl;
+    } else if (typeTrajet == TypeTrajet::Compose) {
+        std::cout << "composé" << std::endl;
+    }
+
+    std::cout << nomFichier << std::endl;
 /*
     Element* elem = catalogue.GetPremier();
 
@@ -53,9 +61,6 @@ void Sauvegarde::SauvegarderSelonType(const Liste& catalogue,
     std::cout << "pas encore implémenté" << std::endl;
 }
                                     
-
-
-
 //------------------------------------------------------------------ PRIVE
 //------------------------------------------------------- Méthodes privées
 

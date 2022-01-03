@@ -121,11 +121,17 @@ void Interface::RechercherTrajet(Liste* catalogue_) {
 }
 
 void Interface::SauvegarderCatalogue(Liste* catalogue_) {
+    std::string nomFichier = recupererNomFichier();
+
+    if (nomFichier.empty()) {
+        return;
+    }
+
     int choix;
 
     do {
         std::cout << "\nQuel type de sauvegarde souhaitez-vous utiliser ?\n" << std::endl;
-        std::cout << "0: Quitte" << std::endl;
+        std::cout << "0: Quitter" << std::endl;
         std::cout << "1: Sauvegarder sans critère" << std::endl;
         std::cout << "2: Sauvegarder un certain type de trajet\n" << std::endl;
 
@@ -136,9 +142,27 @@ void Interface::SauvegarderCatalogue(Liste* catalogue_) {
             case 0:
                 break;
             case 1:
-                Sauvegarde::SauvegarderSansCritere(*catalogue_, "test");
+                Sauvegarde::SauvegarderSansCritere(*catalogue_, nomFichier);
                 break;
             case 2:
+                std::cout << "\nQuel type de trajet souhaitez-vous sauvegarder?\n" << std::endl;
+                std::cout << "0: Quitter" << std::endl;
+                std::cout << "1: Simple" << std::endl;
+                std::cout << "2: Composé\n" << std::endl;
+
+                std::cout << "Choix : ";
+                std::cin >> choix;
+
+                switch (choix) {
+                    case 0:
+                        break;
+                    case 1:
+                        Sauvegarde::SauvegarderSelonType(*catalogue_, nomFichier, TypeTrajet::Simple);
+                        break;
+                    case 2:
+                        Sauvegarde::SauvegarderSelonType(*catalogue_, nomFichier, TypeTrajet::Compose);
+                        break;
+                }
                 break;
             default:
                 Interface::AfficherMauvaisChoix();
@@ -205,4 +229,24 @@ void Interface::ajouterTrajetCompose(Liste* catalogue_) {
     if (trajets->Taille() > 0) {  // l'utilisateur a saisi au moins un trajet
         catalogue_->Ajouter(new TrajetCompose(trajets));
     }
+}
+
+std::string Interface::recupererNomFichier() {
+    std::string nomFichier;
+
+    std::cout << "\nVeuillez entrer un nom de fichier (ou 'q' pour quitter) :\n" << std::endl;
+    std::cout << "Nom : ";
+
+    std::cin >> nomFichier;
+
+    if (nomFichier == "q") {
+        return "";
+    }
+
+    if (nomFichier.find('.') != std::string::npos) {  // un point est présent dans le nom du fichier
+        std::cout << "\nLe nom du fichier ne peut pas contenir de caractères '.'" << std::endl;
+        return recupererNomFichier();
+    }
+
+    return nomFichier;
 }

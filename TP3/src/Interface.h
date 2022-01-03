@@ -12,6 +12,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "structures/Liste.h"
+#include <string.h>
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Interface>
@@ -87,6 +88,11 @@ class Interface {
      * Méthode privée car appelée par la méthode AjouterTrajet.
      */
     static void ajouterTrajetCompose(Liste* catalogue_);
+
+    /**
+     * Retourne un nom de fichier demandé à l'utilisateur
+     */
+    static std::string recupererNomFichier();
 
     //----------------------------------------------------- Attributs privés
     /**

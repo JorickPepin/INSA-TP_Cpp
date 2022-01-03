@@ -39,7 +39,7 @@ class Sauvegarde {
      */
     static void SauvegarderSelonType(const Liste& catalogue,
                                      const std::string& nomFichier,
-                                     const std::string& typeTrajet);
+                                     TypeTrajet typeTrajet);
 
     /**
      * Sauvegarde les trajets composés du catalogue dans un fichier.
