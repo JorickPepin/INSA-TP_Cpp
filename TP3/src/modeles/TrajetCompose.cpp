@@ -36,7 +36,7 @@ const char* TrajetCompose::GetVilleArrivee() const {
     return trajets->GetDernier()->GetTrajet()->GetVilleArrivee();;
 }
 
-const TypeTrajet TrajetCompose::GetType() const {
+TypeTrajet TrajetCompose::GetType() const {
     return TypeTrajet::Compose;
 }
 

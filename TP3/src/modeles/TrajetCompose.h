@@ -28,7 +28,7 @@ class TrajetCompose : public Trajet {
     const char* GetVilleDepart() const;
     const char* GetVilleArrivee() const;
 
-    const TypeTrajet GetType() const;
+    TypeTrajet GetType() const;
 
     //-------------------------------------------- Constructeurs - destructeur
     explicit TrajetCompose(Liste* trajets_);

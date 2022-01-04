@@ -30,7 +30,7 @@ const char* TrajetSimple::GetVilleArrivee() const {
     return villeArrivee;
 }
 
-const TypeTrajet TrajetSimple::GetType() const {
+TypeTrajet TrajetSimple::GetType() const {
     return TypeTrajet::Simple;
 }
 

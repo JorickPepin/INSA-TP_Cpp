@@ -34,7 +34,7 @@ class Trajet {
     virtual const char* GetVilleDepart() const = 0;
     virtual const char* GetVilleArrivee() const = 0;
 
-    virtual const TypeTrajet GetType() const = 0;
+    virtual TypeTrajet GetType() const = 0;
 
     friend std::ofstream & operator << (std::ofstream & out, const Trajet & trajet ){
         out << trajet.toStringFichier();
