@@ -13,6 +13,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
 #include "../structures/Liste.h"
+#include <fstream>
 
 //------------------------------------------------------------------------
 // Rôle de la classe <TrajetCompose>
@@ -35,10 +36,12 @@ class TrajetCompose : public Trajet {
 
     virtual ~TrajetCompose();
 
+    friend std::ofstream & operator << (std::ofstream & out, const TrajetCompose & trajet);
+   
  protected:
-    std::string toStringFichier() const;
     //----------------------------------------------------- Attributs protégés
     Liste* trajets;
+    std::ofstream & versFichier(std::ofstream & out) const;
 };
 
 #endif  // SRC_MODELES_TRAJETCOMPOSE_H_

@@ -11,9 +11,9 @@
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <fstream>
 //------------------------------------------------------ Include personnel
 #include "TrajetCompose.h"
-
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 void TrajetCompose::Afficher() const {
@@ -55,6 +55,21 @@ TrajetCompose::~TrajetCompose() {
     delete trajets;
 }
 
-std::string TrajetCompose::toStringFichier() const{
+std::ofstream & TrajetCompose::versFichier(std::ofstream & out) const{
     //TODO
+    out << "C:" << this->GetVilleDepart() << '%' << this->GetVilleArrivee() <<'{';
+
+    const Element *  el = trajets->GetPremier();
+    while (el != nullptr)
+    {
+        out << *el->GetTrajet();
+        el = el->GetSuivant();
+    }
+    out << '}';
+    return out;
+}
+
+std::ofstream & operator << (std::ofstream & out, const TrajetCompose & trajet){
+    trajet.versFichier(out);
+    return out;
 }

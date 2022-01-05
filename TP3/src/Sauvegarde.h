@@ -58,6 +58,8 @@ class Sauvegarde {
      */
     Sauvegarde();
 
+    static void sauvegarde(const Liste& catalogue, const std::string& nomFichier);
+
     //----------------------------------------------------- Attributs privés
 
 };
