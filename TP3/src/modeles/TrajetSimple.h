@@ -52,12 +52,15 @@ class TrajetSimple : public Trajet {
 
     virtual ~TrajetSimple();
 
+    friend std::ofstream & operator << (std::ofstream & out, const TrajetSimple & trajet);
+
  protected:
-   std::string toStringFichier() const;
     //----------------------------------------------------- Attributs protégés
     char* moyenDeTransport;
     char* villeDepart;
     char* villeArrivee;
+
+   std::ofstream & versFichier(std::ofstream & out) const;
 };
 
 #endif  // SRC_MODELES_TRAJETSIMPLE_H_

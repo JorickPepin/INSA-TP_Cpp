@@ -12,9 +12,9 @@
 //-------------------------------------------------------- Include système
 #include <cstring>
 #include <iostream>
+#include <fstream>
 //------------------------------------------------------ Include personnel
 #include "TrajetSimple.h"
-
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 void TrajetSimple::Afficher() const {
@@ -68,9 +68,13 @@ TrajetSimple::~TrajetSimple() {
     delete [] villeArrivee;
 }
 
-std::string TrajetSimple::toStringFichier() const {
+std::ofstream & TrajetSimple::versFichier(std::ofstream & out) const {
     // TODO
-    std::string toString("S:");
-    toString = toString + villeDepart + '%' + villeArrivee;
-    return toString;
+    out << "S:" << villeDepart << '%' << villeArrivee << '%' << moyenDeTransport << "/";
+    return out;
+}
+
+std::ofstream & operator << (std::ofstream & out, const TrajetSimple & trajet){
+    trajet.versFichier(out);
+    return out;
 }

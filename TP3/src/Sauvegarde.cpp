@@ -11,6 +11,7 @@
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <fstream>
 #include <string.h>
 //------------------------------------------------------ Include personnel
 #include "Sauvegarde.h"
@@ -20,47 +21,58 @@
 //----------------------------------------------------- Méthodes publiques
 void Sauvegarde::SauvegarderSansCritere(const Liste& catalogue,
                                         const std::string& nomFichier) {
+    if(catalogue.EstVide())
+        return;
+    std::ofstream file(nomFichier);
+    if(file.good()){
+        const Element * el = catalogue.GetPremier();
+        while (el != nullptr && file.good())
+        {
+            file << *el->GetTrajet();
+            file << '\n';
+            if(!file.good()){
+                std::cerr << "Erreur lors de l'écriture d'un trajet" << std::endl;
+                break;
+            }
+            el = el->GetSuivant();
+        }
 
-    std::cout << "\nSauvegarder" << std::endl;
-    
-    
-        
-    Element * elem = catalogue.GetPremier();
-    while(elem){
-        // sauvegarde dans le fichier
-        //fichier << elem->GetTrajet();
-        // fichier         
-        // elem = elem->GetSuivant();
+    }else{
+        std::cerr << "Erreur lors de l'ouverture de <" << nomFichier <<">" << std::endl;
     }
-    // TODO(*): générer fichier .txt à partir du catalogue
+    file.close();
 }
 
 void Sauvegarde::SauvegarderSelonType(const Liste& catalogue,
                                       const std::string& nomFichier,
                                       TypeTrajet typeTrajet) {
+    if(catalogue.EstVide())
+            return;
 
-    if (typeTrajet == TypeTrajet::Simple) {
-        std::cout << "simple" << std::endl;
-    } else if (typeTrajet == TypeTrajet::Compose) {
-        std::cout << "composé" << std::endl;
-    }
+    std::ofstream file(nomFichier);
+    if(file.good()){
+        const Element * el = catalogue.GetPremier();
+        const Trajet * t = nullptr;
 
-    std::cout << nomFichier << std::endl;
-/*
-    Element* elem = catalogue.GetPremier();
-
-    while (elem) {
-
-        if (typeTrajet == elem->GetTrajet()->GetType()) {
-
+        while (el != nullptr && file.good())
+        {
+            t = el->GetTrajet();
+            if (t->GetType() == typeTrajet) {
+                file << *t;
+                file << '\n';
+                if(!file.good()){
+                    std::cerr << "Erreur lors de l'écriture d'un trajet" << std::endl;
+                    break;
+                }
+            }            
+            el = el->GetSuivant();
         }
 
-        elem = elem->GetSuivant();
-    }*/
-
-    std::cout << "pas encore implémenté" << std::endl;
+    }else{ // !file.good()
+        std::cerr << "Erreur lors de l'ouverture de <" << nomFichier <<">" << std::endl;
+    }
+    file.close();
 }
                                     
 //------------------------------------------------------------------ PRIVE
 //------------------------------------------------------- Méthodes privées
-

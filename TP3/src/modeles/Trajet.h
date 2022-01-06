@@ -37,7 +37,7 @@ class Trajet {
     virtual TypeTrajet GetType() const = 0;
 
     friend std::ofstream & operator << (std::ofstream & out, const Trajet & trajet ){
-        out << trajet.toStringFichier();
+        trajet.versFichier(out);
         return out;
     }
 
@@ -57,9 +57,8 @@ class Trajet {
 
     //-------------------------------------------- Constructeurs - destructeur
     virtual ~Trajet() {}
-
- protected:
-    virtual std::string toStringFichier() const = 0;
+protected:
+    virtual std::ofstream & versFichier(std::ofstream & out) const = 0;
 };
 
 #endif  // SRC_MODELES_TRAJET_H_
