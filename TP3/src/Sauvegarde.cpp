@@ -21,8 +21,26 @@
 //----------------------------------------------------- Méthodes publiques
 void Sauvegarde::SauvegarderSansCritere(const Liste& catalogue,
                                         const std::string& nomFichier) {
+    if(catalogue.EstVide())
+        return;
+    std::ofstream file(nomFichier);
+    if(file.good()){
+        const Element * el = catalogue.GetPremier();
+        while (el != nullptr && file.good())
+        {
+            file << *el->GetTrajet();
+            file << '\n';
+            if(!file.good()){
+                std::cerr << "Erreur lors de l'écriture d'un trajet" << std::endl;
+                break;
+            }
+            el = el->GetSuivant();
+        }
 
-    sauvegarde(catalogue, nomFichier);
+    }else{
+        std::cerr << "Erreur lors de l'ouverture de <" << nomFichier <<">" << std::endl;
+    }
+    file.close();
 }
 
 void Sauvegarde::SauvegarderSelonType(const Liste& catalogue,
@@ -58,25 +76,3 @@ void Sauvegarde::SauvegarderSelonType(const Liste& catalogue,
                                     
 //------------------------------------------------------------------ PRIVE
 //------------------------------------------------------- Méthodes privées
-void Sauvegarde::sauvegarde(const Liste& catalogue, const std::string& nomFichier){
-    if(catalogue.EstVide())
-        return;
-    std::ofstream file(nomFichier);
-    if(file.good()){
-        const Element * el = catalogue.GetPremier();
-        while (el != nullptr && file.good())
-        {
-            file << *el->GetTrajet();
-            file << '\n';
-            if(!file.good()){
-                std::cerr << "Erreur lors de l'écriture d'un trajet" << std::endl;
-                break;
-            }
-            el = el->GetSuivant();
-        }
-
-    }else{
-        std::cerr << "Erreur lors de l'ouverture de <" << nomFichier <<">" << std::endl;
-    }
-    file.close();
-}
