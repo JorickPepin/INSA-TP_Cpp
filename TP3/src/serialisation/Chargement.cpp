@@ -12,12 +12,12 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <fstream>
-#include <string.h>
+#include <string>
 //------------------------------------------------------ Include personnel
 #include "Chargement.h"
-#include "../src/modeles/TrajetSimple.h"
-#include "../src/modeles/TrajetCompose.h"
-#include "json.hpp"
+#include "../modeles/TrajetSimple.h"
+#include "../modeles/TrajetCompose.h"
+#include "../../libs/json.hpp"
 
 using json = nlohmann::ordered_json;
 //------------------------------------------------------------- CONSTANTES

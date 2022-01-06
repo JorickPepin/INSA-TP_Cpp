@@ -7,14 +7,14 @@
 *************************************************************************/
 
 //---- Interface de la classe <Sauvegarde> (fichier Sauvegarde.h) ----------
-#ifndef SRC_SAUVEGARDE_H_
-#define SRC_SAUVEGARDE_H_
+#ifndef SRC_SERIALISATION_SAUVEGARDE_H_
+#define SRC_SERIALISATION_SAUVEGARDE_H_
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
-#include "structures/Liste.h"
-#include "modeles/Trajet.h"
-#include "json.hpp"
+#include "../structures/Liste.h"
+#include "../modeles/Trajet.h"
+#include "../../libs/json.hpp"
 
 using json = nlohmann::ordered_json;
 
@@ -78,4 +78,4 @@ class Sauvegarde {
 
 };
 
-#endif  // SRC_SAUVEGARDE_H_
+#endif  // SRC_SERIALISATION_SAUVEGARDE_H_

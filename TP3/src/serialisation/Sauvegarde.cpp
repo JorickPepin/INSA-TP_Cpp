@@ -14,7 +14,7 @@
 #include <fstream>
 //------------------------------------------------------ Include personnel
 #include "Sauvegarde.h"
-#include "structures/Element.h"
+#include "../structures/Element.h"
 
 //------------------------------------------------------------- CONSTANTES
 static const std::string CHEMIN_SAUVEGARDE = "sauvegardes/";

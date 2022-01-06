@@ -7,12 +7,12 @@
 *************************************************************************/
 
 //---- Interface de la classe <Chargement> (fichier Chargement.h) ----------
-#ifndef SRC_CHARGEMENT_H_
-#define SRC_CHARGEMENT_H_
+#ifndef SRC_SERIALISATION_CHARGEMENT_H_
+#define SRC_SERIALISATION_CHARGEMENT_H_
 
 //--------------------------------------------------- Interfaces utilisées
-#include "structures/Liste.h"
-#include "modeles/Trajet.h"
+#include "../structures/Liste.h"
+#include "../modeles/Trajet.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Chargement>
@@ -41,4 +41,4 @@ class Chargement {
 
 };
 
-#endif  // SRC_CHARGEMENT_H_
+#endif  // SRC_SERIALISATION_CHARGEMENT_H_

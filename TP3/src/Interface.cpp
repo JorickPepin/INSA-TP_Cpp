@@ -13,8 +13,8 @@
 #include <iostream>
 //------------------------------------------------------ Include personnel
 #include "Interface.h"
-#include "Sauvegarde.h"
-#include "Chargement.h"
+#include "serialisation/Sauvegarde.h"
+#include "serialisation/Chargement.h"
 #include "modeles/TrajetSimple.h"
 #include "modeles/TrajetCompose.h"
 

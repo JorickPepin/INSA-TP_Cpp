@@ -8,7 +8,7 @@
 
 /////////////////////////////////////////////////////////////////  INCLUDE
 #include <string>
-#include "./acutest.h"
+#include "../libs/acutest.h"
 
 #include "../src/structures/Liste.h"
 #include "../src/modeles/TrajetSimple.h"
