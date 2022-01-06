@@ -69,9 +69,9 @@ void testConstructeurTrajetSimple() {
 
     TrajetSimple* t1 = new TrajetSimple(moyenDeTransport, villeDepart, villeArrivee);
 
-    TEST_CHECK_(moyenDeTransport.compare(t1->moyenDeTransport) == 0, "le moyen de transport est bien initialisé");
-    TEST_CHECK_(villeDepart.compare(t1->villeDepart) == 0, "la ville de départ est bien initialisée");
-    TEST_CHECK_(villeArrivee.compare(t1->villeArrivee) == 0, "la ville d'arrivée est bien initialisée");
+    TEST_CHECK_(moyenDeTransport == t1->moyenDeTransport, "le moyen de transport est bien initialisé");
+    TEST_CHECK_(villeDepart == t1->villeDepart, "la ville de départ est bien initialisée");
+    TEST_CHECK_(villeArrivee == t1->villeArrivee, "la ville d'arrivée est bien initialisée");
 
     delete t1;
 }

@@ -57,13 +57,54 @@ void Sauvegarde::SauvegarderSelonType(const Liste& catalogue,
     Sauvegarder(nomFichier, json);
 }
 
+void Sauvegarde::SauvegarderSelonVilles(const Liste& catalogue,
+                                        const std::string& nomFichier,
+                                        const std::string& villeDepart,
+                                        const std::string& villeArrivee) {
+
+    json json = json::array();
+
+    const Element* element = catalogue.GetPremier();
+
+    while (element) {
+        const Trajet* trajet = element->GetTrajet();
+
+        if (!villeDepart.empty() && !villeArrivee.empty()) {  // les deux villes sont précisées
+            if (trajet->GetVilleDepart() == villeDepart && trajet->GetVilleArrivee() == villeArrivee) {
+                json.push_back(trajet->ToJSON());
+            }
+
+        } else if (!villeDepart.empty()) {  // seule la ville de départ est précisée
+            if (trajet->GetVilleDepart() == villeDepart) {
+                json.push_back(trajet->ToJSON());
+            }
+
+        } else {  // seule la ville d'arrivée est précisée
+            if (trajet->GetVilleArrivee() == villeArrivee) {
+                json.push_back(trajet->ToJSON());
+            }
+        }
+
+        element = element->GetSuivant();
+    }
+
+    Sauvegarder(nomFichier, json);
+}
+
 //------------------------------------------------------------------ PRIVE
 //------------------------------------------------------- Méthodes privées
 void Sauvegarde::Sauvegarder(const std::string& nomFichier, const json json) {
+
+    if (json.empty()) {
+        std::cout << "\nImpossible de sauvegarder : votre sélection ne correspond à aucun trajet." << std::endl;
+        return;
+    }
+
     std::ofstream file(CHEMIN_SAUVEGARDE + nomFichier);
 
     if (file.good()) {
         file << std::setw(4) << json;
+        std::cout << "\nSauvegarde effectuée avec succés !" << std::endl;
     } else {
         ErreurOuverture(nomFichier);
     }

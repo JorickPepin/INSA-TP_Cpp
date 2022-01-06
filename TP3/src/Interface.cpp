@@ -36,7 +36,7 @@ void Interface::AfficherMenu() {
     std::cout << "2: Afficher les trajets" << std::endl;
     std::cout << "3: Rechercher un trajet" << std::endl;
     std::cout << "4: Sauvegarder le catalogue" << std::endl;
-    std::cout << "5: Charger le catalogue\n" << std::endl;
+    std::cout << "5: Charger un catalogue\n" << std::endl;
 }
 
 void Interface::AfficherMauvaisChoix() {
@@ -106,6 +106,7 @@ void Interface::RechercherTrajet(Liste* catalogue_) {
                     std::cout << "\nTrajet(s) trouvé(s) :" << std::endl;
                 }
 
+                std::cout << " ";
                 courant->Afficher();
                 std::cout << std::endl;
 
@@ -124,7 +125,7 @@ void Interface::RechercherTrajet(Liste* catalogue_) {
 void Interface::SauvegarderCatalogue(Liste* catalogue_) {
 
     if (catalogue_->EstVide()) {
-        std::cout << "\nVous ne pouvez pas sauvegarder car le catalogue est vide." << std::endl;
+        std::cout << "\nVous ne pouvez pas sauvegarder un catalogue vide." << std::endl;
         return;
     }
 
@@ -136,52 +137,76 @@ void Interface::SauvegarderCatalogue(Liste* catalogue_) {
 
     int choix;
 
-    do {
-        std::cout << "\nQuel type de sauvegarde souhaitez-vous utiliser ?\n" << std::endl;
-        std::cout << "0: Quitter" << std::endl;
-        std::cout << "1: Sauvegarder sans critère" << std::endl;
-        std::cout << "2: Sauvegarder un certain type de trajet" << std::endl;
-        std::cout << "3: Sauvegarder pour une certaine ville de départ et/ou d'arrivée\n" << std::endl;
+    std::cout << "\nQuel type de sauvegarde souhaitez-vous utiliser ?\n" << std::endl;
+    std::cout << "0: Quitter" << std::endl;
+    std::cout << "1: Sauvegarder sans critère" << std::endl;
+    std::cout << "2: Sauvegarder un certain type de trajet" << std::endl;
+    std::cout << "3: Sauvegarder pour une certaine ville de départ et/ou d'arrivée\n" << std::endl;
 
-        std::cout << "Choix : ";
-        std::cin >> choix;
+    std::cout << "Choix : ";
+    std::cin >> choix;
 
-        switch (choix) {
-            case 0:
-                break;
-            case 1:
-                Sauvegarde::SauvegarderSansCritere(*catalogue_, nomFichier);
-                break;
-            case 2:
-                std::cout << "\nQuel type de trajet souhaitez-vous sauvegarder?\n" << std::endl;
-                std::cout << "0: Quitter" << std::endl;
-                std::cout << "1: Simple" << std::endl;
-                std::cout << "2: Composé\n" << std::endl;
+    switch (choix) {
+        case 0:
+            break;
+        case 1:
+            Sauvegarde::SauvegarderSansCritere(*catalogue_, nomFichier);
+            break;
+        case 2:
+            std::cout << "\nQuel type de trajet souhaitez-vous sauvegarder ?\n" << std::endl;
+            std::cout << "0: Quitter" << std::endl;
+            std::cout << "1: Simple" << std::endl;
+            std::cout << "2: Composé\n" << std::endl;
 
-                std::cout << "Choix : ";
-                std::cin >> choix;
+            std::cout << "Choix : ";
+            std::cin >> choix;
 
-                switch (choix) {
-                    case 0:
-                        break;
-                    case 1:
-                        Sauvegarde::SauvegarderSelonType(*catalogue_, nomFichier, TypeTrajet::Simple);
-                        break;
-                    case 2:
-                        Sauvegarde::SauvegarderSelonType(*catalogue_, nomFichier, TypeTrajet::Compose);
-                        break;
-                }
+            switch (choix) {
+                case 0:
+                    break;
+                case 1:
+                    Sauvegarde::SauvegarderSelonType(*catalogue_, nomFichier, TypeTrajet::Simple);
+                    break;
+                case 2:
+                    Sauvegarde::SauvegarderSelonType(*catalogue_, nomFichier, TypeTrajet::Compose);
+                    break;
+            }
+            break;
+        case 3:
+        {
+            std::string villeDepart;
+            std::string villeArrivee;
+
+            std::cout << "\nQuelles villes souhaitez-vous sauvegarder ? (laisser vide pour ignorer)\n" << std::endl;
+
+            std::cin.ignore();
+
+            std::cout << "Ville de départ : ";
+            std::getline(std::cin, villeDepart);
+
+            std::cout << "Ville d'arrivée : ";
+            std::getline(std::cin, villeArrivee);
+
+            if (villeDepart.empty() && villeArrivee.empty()) {
+                std::cout << "\nVous devez préciser au moins une ville." << std::endl;
                 break;
-            default:
-                Interface::AfficherMauvaisChoix();
-                break;
+            }
+
+            Sauvegarde::SauvegarderSelonVilles(*catalogue_, nomFichier, villeDepart, villeArrivee);
+            break;
         }
-    } while (choix != 0);
-
+        default:
+            Interface::AfficherMauvaisChoix();
+            break;
+    }
 }
 
 void Interface::ChargerCatalogue(Liste* catalogue_) {
     std::string nomFichier = recupererNomFichier();
+
+    if (nomFichier.empty()) {
+        return;
+    }
 
     Chargement::ChargerCatalogue(catalogue_, nomFichier);
 }
@@ -258,7 +283,7 @@ std::string Interface::recupererNomFichier() {
     }
 
     if (nomFichier.find('.') != std::string::npos) {  // un point est présent dans le nom du fichier
-        std::cout << "\nLe nom du fichier ne peut pas contenir de caractères '.'" << std::endl;
+        std::cout << "\nLe nom du fichier ne peut pas contenir de caractères '.'." << std::endl;
         return recupererNomFichier();
     }
 
