@@ -50,8 +50,8 @@ class Trajet {
      *         à la ville d'arrivée, false sinon
      */
     virtual bool Correspond(const std::string villeDepart_, const std::string villeArrivee_) const {
-        return (!villeDepart_.compare(GetVilleDepart())) &&
-                !villeArrivee_.compare(GetVilleArrivee());
+        return (!villeDepart_.compare(GetVilleDepart()) &&
+                !villeArrivee_.compare(GetVilleArrivee()));
     }
 
     //-------------------------------------------- Constructeurs - destructeur

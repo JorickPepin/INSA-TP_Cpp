@@ -47,12 +47,12 @@ json TrajetSimple::ToJSON() const {
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple(std::string moyenDeTransport_,
                            std::string villeDepart_,
-                           std::string villeArrivee_) {
+                           std::string villeArrivee_)
+    : moyenDeTransport(moyenDeTransport_),
+      villeDepart(villeDepart_),
+      villeArrivee(villeArrivee_) {
+
     #ifdef MAP
         std::cout << "Appel au constructeur de <TrajetSimple>" << std::endl;
     #endif
-
-    moyenDeTransport = moyenDeTransport_;
-    villeDepart = villeDepart_;
-    villeArrivee = villeArrivee_;
 }

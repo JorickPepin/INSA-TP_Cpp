@@ -12,7 +12,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "structures/Liste.h"
-#include <string.h>
+#include <string>
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Interface>

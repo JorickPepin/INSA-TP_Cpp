@@ -11,8 +11,6 @@
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
 #include <iostream>
-#include <cstring>
-#include <fstream>
 //------------------------------------------------------ Include personnel
 #include "Interface.h"
 #include "Sauvegarde.h"
