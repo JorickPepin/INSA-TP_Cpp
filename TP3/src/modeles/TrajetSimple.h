@@ -27,40 +27,26 @@ class TrajetSimple : public Trajet {
     //----------------------------------------------------- Méthodes publiques
     void Afficher() const;
 
-    const char* GetVilleDepart() const;
-    const char* GetVilleArrivee() const;
+    const std::string GetVilleDepart() const;
+    const std::string GetVilleArrivee() const;
 
     TypeTrajet GetType() const;
+
+    json ToJSON() const;
 
     //-------------------------------------------------------- Tests unitaires
     friend void testConstructeurTrajetSimple();
 
-    //------------------------------------------------- Surcharge d'opérateurs
-    /**
-     * Permet de comparer deux trajets simples pour savoir
-     * si leurs composantes sont similaires
-     * 
-     * @return true si les deux trajets ont la même ville de départ, la même
-     *         ville d'arrivée et le même moyen de transport, false sinon
-     */
-    friend bool operator==(const TrajetSimple& t1, const TrajetSimple& t2);
-
     //-------------------------------------------- Constructeurs - destructeur
-    TrajetSimple(const char* moyenDeTransport_,
-                 const char* villeDepart_,
-                 const char* villeArrivee_);
-
-    virtual ~TrajetSimple();
-
-    friend std::ofstream & operator << (std::ofstream & out, const TrajetSimple & trajet);
+    TrajetSimple(const std::string moyenDeTransport_,
+                 const std::string villeDepart_,
+                 const std::string villeArrivee_);
 
  protected:
     //----------------------------------------------------- Attributs protégés
-    char* moyenDeTransport;
-    char* villeDepart;
-    char* villeArrivee;
-
-   std::ofstream & versFichier(std::ofstream & out) const;
+    std::string moyenDeTransport;
+    std::string villeDepart;
+    std::string villeArrivee;
 };
 
 #endif  // SRC_MODELES_TRAJETSIMPLE_H_

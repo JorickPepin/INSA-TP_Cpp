@@ -12,9 +12,11 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <cstring>
+#include <fstream>
 //------------------------------------------------------ Include personnel
 #include "Interface.h"
 #include "Sauvegarde.h"
+#include "Chargement.h"
 #include "modeles/TrajetSimple.h"
 #include "modeles/TrajetCompose.h"
 
@@ -35,7 +37,8 @@ void Interface::AfficherMenu() {
     std::cout << "1: Ajouter un trajet" << std::endl;
     std::cout << "2: Afficher les trajets" << std::endl;
     std::cout << "3: Rechercher un trajet" << std::endl;
-    std::cout << "4: Sauvegarder le catalogue\n" << std::endl;
+    std::cout << "4: Sauvegarder le catalogue" << std::endl;
+    std::cout << "5: Charger le catalogue\n" << std::endl;
 }
 
 void Interface::AfficherMauvaisChoix() {
@@ -121,6 +124,12 @@ void Interface::RechercherTrajet(Liste* catalogue_) {
 }
 
 void Interface::SauvegarderCatalogue(Liste* catalogue_) {
+
+    if (catalogue_->EstVide()) {
+        std::cout << "\nVous ne pouvez pas sauvegarder car le catalogue est vide." << std::endl;
+        return;
+    }
+
     std::string nomFichier = recupererNomFichier();
 
     if (nomFichier.empty()) {
@@ -133,7 +142,8 @@ void Interface::SauvegarderCatalogue(Liste* catalogue_) {
         std::cout << "\nQuel type de sauvegarde souhaitez-vous utiliser ?\n" << std::endl;
         std::cout << "0: Quitter" << std::endl;
         std::cout << "1: Sauvegarder sans critère" << std::endl;
-        std::cout << "2: Sauvegarder un certain type de trajet\n" << std::endl;
+        std::cout << "2: Sauvegarder un certain type de trajet" << std::endl;
+        std::cout << "3: Sauvegarder pour une certaine ville de départ et/ou d'arrivée\n" << std::endl;
 
         std::cout << "Choix : ";
         std::cin >> choix;
@@ -170,6 +180,12 @@ void Interface::SauvegarderCatalogue(Liste* catalogue_) {
         }
     } while (choix != 0);
 
+}
+
+void Interface::ChargerCatalogue(Liste* catalogue_) {
+    std::string nomFichier = recupererNomFichier();
+
+    Chargement::ChargerCatalogue(catalogue_, nomFichier);
 }
 
 //------------------------------------------------------------------ PRIVE
@@ -248,5 +264,5 @@ std::string Interface::recupererNomFichier() {
         return recupererNomFichier();
     }
 
-    return nomFichier;
+    return nomFichier + ".json";
 }

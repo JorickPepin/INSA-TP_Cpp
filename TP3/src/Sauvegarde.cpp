@@ -12,67 +12,66 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <fstream>
-#include <string.h>
 //------------------------------------------------------ Include personnel
 #include "Sauvegarde.h"
 #include "structures/Element.h"
+
+//------------------------------------------------------------- CONSTANTES
+static const std::string CHEMIN_SAUVEGARDE = "sauvegardes/";
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
 void Sauvegarde::SauvegarderSansCritere(const Liste& catalogue,
                                         const std::string& nomFichier) {
-    if(catalogue.EstVide())
-        return;
-    std::ofstream file(nomFichier);
-    if(file.good()){
-        const Element * el = catalogue.GetPremier();
-        while (el != nullptr && file.good())
-        {
-            file << *el->GetTrajet();
-            file << '\n';
-            if(!file.good()){
-                std::cerr << "Erreur lors de l'écriture d'un trajet" << std::endl;
-                break;
-            }
-            el = el->GetSuivant();
-        }
 
-    }else{
-        std::cerr << "Erreur lors de l'ouverture de <" << nomFichier <<">" << std::endl;
+    json json = json::array();
+
+    const Element* element = catalogue.GetPremier();
+
+    while (element) {
+        json.push_back(element->GetTrajet()->ToJSON());
+        element = element->GetSuivant();
     }
-    file.close();
+
+    Sauvegarder(nomFichier, json);
 }
 
 void Sauvegarde::SauvegarderSelonType(const Liste& catalogue,
                                       const std::string& nomFichier,
                                       TypeTrajet typeTrajet) {
-    if(catalogue.EstVide())
-            return;
 
-    std::ofstream file(nomFichier);
-    if(file.good()){
-        const Element * el = catalogue.GetPremier();
-        const Trajet * t = nullptr;
+    json json = json::array();
 
-        while (el != nullptr && file.good())
-        {
-            t = el->GetTrajet();
-            if (t->GetType() == typeTrajet) {
-                file << *t;
-                file << '\n';
-                if(!file.good()){
-                    std::cerr << "Erreur lors de l'écriture d'un trajet" << std::endl;
-                    break;
-                }
-            }            
-            el = el->GetSuivant();
+    const Element* element = catalogue.GetPremier();
+
+    while (element) {
+        const Trajet* trajet = element->GetTrajet();
+
+        if (trajet->GetType() == typeTrajet) {
+            json.push_back(trajet->ToJSON());
         }
 
-    }else{ // !file.good()
-        std::cerr << "Erreur lors de l'ouverture de <" << nomFichier <<">" << std::endl;
+        element = element->GetSuivant();
     }
-    file.close();
+
+    Sauvegarder(nomFichier, json);
 }
-                                    
+
 //------------------------------------------------------------------ PRIVE
 //------------------------------------------------------- Méthodes privées
+void Sauvegarde::Sauvegarder(const std::string& nomFichier, const json json) {
+    std::ofstream file(CHEMIN_SAUVEGARDE + nomFichier);
+
+    if (file.good()) {
+        file << std::setw(4) << json;
+    } else {
+        ErreurOuverture(nomFichier);
+    }
+
+    file.close();
+}
+
+void Sauvegarde::ErreurOuverture(const std::string& nomFichier) {
+    std::cerr << "\nErreur lors de l'ouverture de <" << nomFichier << ">" << std::endl;
+    std::cerr << "Vérifiez que le dossier <" << CHEMIN_SAUVEGARDE << "> est bien présent à la racine" << std::endl;
+}

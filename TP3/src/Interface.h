@@ -63,9 +63,14 @@ class Interface {
     static void RechercherTrajet(Liste* catalogue_);
 
     /**
-     * Sauvegarde le catalogue dans un fichier texte.
+     * Sauvegarde le catalogue dans un fichier JSON.
      */
     static void SauvegarderCatalogue(Liste* catalogue_);
+
+    /**
+     * Charge un catalogue présent dans un fichier JSON.
+     */
+    static void ChargerCatalogue(Liste* catalogue_);
 
  private:
     //----------------------------------------------------- Méthodes privées

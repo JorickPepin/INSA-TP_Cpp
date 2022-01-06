@@ -11,9 +11,11 @@
 #define SRC_MODELES_TRAJET_H_
 
 //--------------------------------------------------- Interfaces utilisées
-#include <cstring>
 #include <fstream>
 #include <string>
+#include "../json.hpp"
+
+using json = nlohmann::ordered_json;
 
 //------------------------------------------------------------------ Types
 enum TypeTrajet { Simple, Compose };
@@ -31,15 +33,12 @@ class Trajet {
      */
     virtual void Afficher() const = 0;
     
-    virtual const char* GetVilleDepart() const = 0;
-    virtual const char* GetVilleArrivee() const = 0;
+    virtual const std::string GetVilleDepart() const = 0;
+    virtual const std::string GetVilleArrivee() const = 0;
 
     virtual TypeTrajet GetType() const = 0;
 
-    friend std::ofstream & operator << (std::ofstream & out, const Trajet & trajet ){
-        trajet.versFichier(out);
-        return out;
-    }
+    virtual json ToJSON() const = 0;
 
     /**
      * Indique si le trajet invoquant la méthode permet de se déplacer
@@ -50,15 +49,13 @@ class Trajet {
      * @return true si le trajet permet d'aller de la ville de départ
      *         à la ville d'arrivée, false sinon
      */
-    virtual bool Correspond(const char* villeDepart_, const char* villeArrivee_) const {
-        return (!strcmp(GetVilleDepart(), villeDepart_) &&
-                !strcmp(GetVilleArrivee(), villeArrivee_));
+    virtual bool Correspond(const std::string villeDepart_, const std::string villeArrivee_) const {
+        return (!villeDepart_.compare(GetVilleDepart())) &&
+                !villeArrivee_.compare(GetVilleArrivee());
     }
 
     //-------------------------------------------- Constructeurs - destructeur
     virtual ~Trajet() {}
-protected:
-    virtual std::ofstream & versFichier(std::ofstream & out) const = 0;
 };
 
 #endif  // SRC_MODELES_TRAJET_H_

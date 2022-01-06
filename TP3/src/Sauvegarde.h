@@ -11,12 +11,16 @@
 #define SRC_SAUVEGARDE_H_
 
 //--------------------------------------------------- Interfaces utilisées
+#include <string>
 #include "structures/Liste.h"
 #include "modeles/Trajet.h"
+#include "json.hpp"
+
+using json = nlohmann::ordered_json;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Sauvegarde>
-// Classe statique sauvegardant un catalogue dans un fichier texte.
+// Classe statique sauvegardant un catalogue dans un fichier JSON.
 //------------------------------------------------------------------------
 
 class Sauvegarde {
@@ -48,7 +52,7 @@ class Sauvegarde {
      * @param nomFichier le nom du fichier
      */
     static void SauvegarderTrajetsComposes(const Liste& catalogue,
-                                          const std::string& nomFichier);
+                                           const std::string& nomFichier);
 
  private:
     //----------------------------------------------------- Méthodes privées
@@ -58,6 +62,18 @@ class Sauvegarde {
      */
     Sauvegarde();
 
+    /**
+     * Sauvegarde le contenu JSON dans un fichier.
+     * 
+     * @param nomFichier le nom du fichier
+     * @param json le contenu JSON à sauvegarder
+     */
+    static void Sauvegarder(const std::string& nomFichier, const json json);
+
+    /**
+     * Affiche les messages d'erreur lorsqu'un fichier n'a pas pu être ouvert.
+     */
+    static void ErreurOuverture(const std::string& nomFichier);
     //----------------------------------------------------- Attributs privés
 
 };
