@@ -10,7 +10,6 @@
 
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
-#include <cstring>
 #include <iostream>
 #include <fstream>
 //------------------------------------------------------ Include personnel
@@ -22,11 +21,11 @@ void TrajetSimple::Afficher() const {
         << " en " << moyenDeTransport;
 }
 
-const char* TrajetSimple::GetVilleDepart() const {
+const std::string TrajetSimple::GetVilleDepart() const {
     return villeDepart;
 }
 
-const char* TrajetSimple::GetVilleArrivee() const {
+const std::string TrajetSimple::GetVilleArrivee() const {
     return villeArrivee;
 }
 
@@ -34,47 +33,26 @@ TypeTrajet TrajetSimple::GetType() const {
     return TypeTrajet::Simple;
 }
 
-//------------------------------------------------- Surcharge d'opérateurs
-bool operator==(const TrajetSimple& t1, const TrajetSimple& t2) {
-    return (!strcmp(t1.moyenDeTransport, t2.moyenDeTransport) &&
-            !strcmp(t1.villeDepart, t2.villeDepart) &&
-            !strcmp(t1.villeArrivee, t2.villeArrivee));
+json TrajetSimple::ToJSON() const {
+    json json;
+
+    json["type"] = GetType();
+    json["transport"] = moyenDeTransport;
+    json["villeDepart"] = villeDepart;
+    json["villeArrivee"] = villeArrivee;
+
+    return json;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetSimple::TrajetSimple(const char* moyenDeTransport_,
-                           const char* villeDepart_,
-                           const char* villeArrivee_) {
+TrajetSimple::TrajetSimple(std::string moyenDeTransport_,
+                           std::string villeDepart_,
+                           std::string villeArrivee_)
+    : moyenDeTransport(moyenDeTransport_),
+      villeDepart(villeDepart_),
+      villeArrivee(villeArrivee_) {
+
     #ifdef MAP
         std::cout << "Appel au constructeur de <TrajetSimple>" << std::endl;
     #endif
-
-    moyenDeTransport = new char[strlen(moyenDeTransport_) + 1];
-    villeDepart = new char[strlen(villeDepart_) + 1];
-    villeArrivee = new char[strlen(villeArrivee_) + 1];
-
-    strcpy(moyenDeTransport, moyenDeTransport_);
-    strcpy(villeDepart, villeDepart_);
-    strcpy(villeArrivee, villeArrivee_);
-}
-
-TrajetSimple::~TrajetSimple() {
-    #ifdef MAP
-        std::cout << "Appel au destructeur de <TrajetSimple>" << std::endl;
-    #endif
-
-    delete [] moyenDeTransport;
-    delete [] villeDepart;
-    delete [] villeArrivee;
-}
-
-std::ofstream & TrajetSimple::versFichier(std::ofstream & out) const {
-    // TODO
-    out << "S:" << villeDepart << '%' << villeArrivee << '%' << moyenDeTransport << "/";
-    return out;
-}
-
-std::ofstream & operator << (std::ofstream & out, const TrajetSimple & trajet){
-    trajet.versFichier(out);
-    return out;
 }

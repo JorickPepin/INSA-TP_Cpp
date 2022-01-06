@@ -26,22 +26,21 @@ class TrajetCompose : public Trajet {
     //----------------------------------------------------- Méthodes publiques
     void Afficher() const;
 
-    const char* GetVilleDepart() const;
-    const char* GetVilleArrivee() const;
+    const std::string GetVilleDepart() const;
+    const std::string GetVilleArrivee() const;
 
     TypeTrajet GetType() const;
+
+    json ToJSON() const;
 
     //-------------------------------------------- Constructeurs - destructeur
     explicit TrajetCompose(Liste* trajets_);
 
     virtual ~TrajetCompose();
 
-    friend std::ofstream & operator << (std::ofstream & out, const TrajetCompose & trajet);
-   
  protected:
     //----------------------------------------------------- Attributs protégés
     Liste* trajets;
-    std::ofstream & versFichier(std::ofstream & out) const;
 };
 
 #endif  // SRC_MODELES_TRAJETCOMPOSE_H_

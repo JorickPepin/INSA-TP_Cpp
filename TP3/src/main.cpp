@@ -16,7 +16,7 @@
 #include "structures/Liste.h"
 //------------------------------------------------------------------------
 
-int main(int argc, char const *argv[]) {
+int main() {
     Liste catalogue;
     int choix;
 
@@ -43,6 +43,9 @@ int main(int argc, char const *argv[]) {
                 break;
             case 4:
                 Interface::SauvegarderCatalogue(&catalogue);
+                break;
+            case 5:
+                Interface::ChargerCatalogue(&catalogue);
                 break;
             default:
                 Interface::AfficherMauvaisChoix();

@@ -28,16 +28,32 @@ void TrajetCompose::Afficher() const {
     }
 }
 
-const char* TrajetCompose::GetVilleDepart() const {
+const std::string TrajetCompose::GetVilleDepart() const {
     return trajets->GetPremier()->GetTrajet()->GetVilleDepart();
 }
 
-const char* TrajetCompose::GetVilleArrivee() const {
+const std::string TrajetCompose::GetVilleArrivee() const {
     return trajets->GetDernier()->GetTrajet()->GetVilleArrivee();;
 }
 
 TypeTrajet TrajetCompose::GetType() const {
     return TypeTrajet::Compose;
+}
+
+json TrajetCompose::ToJSON() const {
+    json json;
+
+    json["type"] = GetType();
+    json["trajets"] = json::array();
+
+    Element* element = trajets->GetPremier();
+
+    while (element) {
+        json["trajets"].push_back(element->GetTrajet()->ToJSON());
+        element = element->GetSuivant();
+    }
+
+    return json;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -53,23 +69,4 @@ TrajetCompose::~TrajetCompose() {
     #endif
 
     delete trajets;
-}
-
-std::ofstream & TrajetCompose::versFichier(std::ofstream & out) const{
-    //TODO
-    out << "C:" << this->GetVilleDepart() << '%' << this->GetVilleArrivee() <<'{';
-
-    const Element *  el = trajets->GetPremier();
-    while (el != nullptr)
-    {
-        out << *el->GetTrajet();
-        el = el->GetSuivant();
-    }
-    out << '}';
-    return out;
-}
-
-std::ofstream & operator << (std::ofstream & out, const TrajetCompose & trajet){
-    trajet.versFichier(out);
-    return out;
 }

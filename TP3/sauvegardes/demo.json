@@ -1,0 +1,31 @@
+[
+    {
+        "type": 0,
+        "transport": "Train",
+        "villeDepart": "Lyon",
+        "villeArrivee": "Bordeaux"
+    },
+    {
+        "type": 1,
+        "trajets": [
+            {
+                "type": 0,
+                "transport": "Bateau",
+                "villeDepart": "Lyon",
+                "villeArrivee": "Marseille"
+            },
+            {
+                "type": 0,
+                "transport": "Avion",
+                "villeDepart": "Marseille",
+                "villeArrivee": "Paris"
+            }
+        ]
+    },
+    {
+        "type": 0,
+        "transport": "Auto",
+        "villeDepart": "Lyon",
+        "villeArrivee": "Paris"
+    }
+]
