@@ -139,7 +139,7 @@ void Interface::SauvegarderCatalogue(Liste* catalogue_) {
 
     std::cout << "\nQuel type de sauvegarde souhaitez-vous utiliser ?\n" << std::endl;
     std::cout << "0: Quitter" << std::endl;
-    std::cout << "1: Sauvegarder sans critère" << std::endl;
+    std::cout << "1: Sauvegarder tous les trajets" << std::endl;
     std::cout << "2: Sauvegarder un certain type de trajet" << std::endl;
     std::cout << "3: Sauvegarder pour une certaine ville de départ et/ou d'arrivée\n" << std::endl;
 
@@ -208,7 +208,70 @@ void Interface::ChargerCatalogue(Liste* catalogue_) {
         return;
     }
 
-    Chargement::ChargerCatalogue(catalogue_, nomFichier);
+    int choix;
+
+    std::cout << "\nQuel type de chargement souhaitez-vous utiliser ?\n" << std::endl;
+    std::cout << "0: Quitter" << std::endl;
+    std::cout << "1: Charger le catalogue en entier" << std::endl;
+    std::cout << "2: Charger seulement un certain type de trajet" << std::endl;
+    std::cout << "3: Charger les trajets selon une certaine ville de départ et/ou d'arrivée\n" << std::endl;
+
+    std::cout << "Choix : ";
+    std::cin >> choix;
+
+    switch (choix) {
+        case 0:
+            break;
+        case 1:
+            Chargement::ChargerSansCritere(*catalogue_, nomFichier);
+            break;
+        case 2:
+            std::cout << "\nQuel type de trajet souhaitez-vous charger ?\n" << std::endl;
+            std::cout << "0: Quitter" << std::endl;
+            std::cout << "1: Simple" << std::endl;
+            std::cout << "2: Composé\n" << std::endl;
+
+            std::cout << "Choix : ";
+            std::cin >> choix;
+
+            switch (choix) {
+                case 0:
+                    break;
+                case 1:
+                    Chargement::ChargerSelonType(*catalogue_, nomFichier, TypeTrajet::Simple);
+                    break;
+                case 2:
+                    Chargement::ChargerSelonType(*catalogue_, nomFichier, TypeTrajet::Compose);
+                    break;
+            }
+            break;
+        case 3:
+        {
+            std::string villeDepart;
+            std::string villeArrivee;
+
+            std::cout << "\nQuelles villes souhaitez-vous charger ? (laisser vide pour ignorer)\n" << std::endl;
+
+            std::cin.ignore();
+
+            std::cout << "Ville de départ : ";
+            std::getline(std::cin, villeDepart);
+
+            std::cout << "Ville d'arrivée : ";
+            std::getline(std::cin, villeArrivee);
+
+            if (villeDepart.empty() && villeArrivee.empty()) {
+                std::cout << "\nVous devez préciser au moins une ville." << std::endl;
+                break;
+            }
+
+            Chargement::ChargerSelonVilles(*catalogue_, nomFichier, villeDepart, villeArrivee);
+            break;
+        }
+        default:
+            Interface::AfficherMauvaisChoix();
+            break;
+    }
 }
 
 //------------------------------------------------------------------ PRIVE

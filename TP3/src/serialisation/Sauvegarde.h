@@ -40,6 +40,7 @@ class Sauvegarde {
      * 
      * @param catalogue le catalogue à sauvegarder
      * @param nomFichier le nom du fichier
+     * @param typeTrajet le type de trajet à sauvegarder
      */
     static void SauvegarderSelonType(const Liste& catalogue,
                                      const std::string& nomFichier,
@@ -70,19 +71,12 @@ class Sauvegarde {
     Sauvegarde();
 
     /**
-     * Sauvegarde le contenu JSON dans un fichier.
+     * Crée un fichier contenant le JSON à sauvegarder.
      * 
      * @param nomFichier le nom du fichier
      * @param json le contenu JSON à sauvegarder
      */
-    static void Sauvegarder(const std::string& nomFichier, const json json);
-
-    /**
-     * Affiche les messages d'erreur lorsqu'un fichier n'a pas pu être ouvert.
-     */
-    static void ErreurOuverture(const std::string& nomFichier);
-    //----------------------------------------------------- Attributs privés
-
+    static void creerFichier(const std::string& nomFichier, const json json);
 };
 
 #endif  // SRC_SERIALISATION_SAUVEGARDE_H_

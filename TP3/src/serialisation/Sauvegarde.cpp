@@ -33,7 +33,7 @@ void Sauvegarde::SauvegarderSansCritere(const Liste& catalogue,
         element = element->GetSuivant();
     }
 
-    Sauvegarder(nomFichier, json);
+    creerFichier(nomFichier, json);
 }
 
 void Sauvegarde::SauvegarderSelonType(const Liste& catalogue,
@@ -54,7 +54,7 @@ void Sauvegarde::SauvegarderSelonType(const Liste& catalogue,
         element = element->GetSuivant();
     }
 
-    Sauvegarder(nomFichier, json);
+    creerFichier(nomFichier, json);
 }
 
 void Sauvegarde::SauvegarderSelonVilles(const Liste& catalogue,
@@ -88,12 +88,12 @@ void Sauvegarde::SauvegarderSelonVilles(const Liste& catalogue,
         element = element->GetSuivant();
     }
 
-    Sauvegarder(nomFichier, json);
+    creerFichier(nomFichier, json);
 }
 
 //------------------------------------------------------------------ PRIVE
 //------------------------------------------------------- Méthodes privées
-void Sauvegarde::Sauvegarder(const std::string& nomFichier, const json json) {
+void Sauvegarde::creerFichier(const std::string& nomFichier, const json json) {
 
     if (json.empty()) {
         std::cout << "\nImpossible de sauvegarder : votre sélection ne correspond à aucun trajet." << std::endl;
@@ -106,13 +106,9 @@ void Sauvegarde::Sauvegarder(const std::string& nomFichier, const json json) {
         file << std::setw(4) << json;
         std::cout << "\nSauvegarde effectuée avec succés !" << std::endl;
     } else {
-        ErreurOuverture(nomFichier);
+        std::cerr << "\nErreur lors de l'ouverture de <" << nomFichier << ">." << std::endl;
+        std::cerr << "Vérifiez que le dossier <" << CHEMIN_SAUVEGARDE << "> est bien présent à la racine." << std::endl;
     }
 
     file.close();
-}
-
-void Sauvegarde::ErreurOuverture(const std::string& nomFichier) {
-    std::cerr << "\nErreur lors de l'ouverture de <" << nomFichier << ">" << std::endl;
-    std::cerr << "Vérifiez que le dossier <" << CHEMIN_SAUVEGARDE << "> est bien présent à la racine" << std::endl;
 }
