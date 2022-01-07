@@ -7,14 +7,14 @@
 *************************************************************************/
 
 //---- Interface de la classe <Sauvegarde> (fichier Sauvegarde.h) ----------
-#ifndef SRC_SAUVEGARDE_H_
-#define SRC_SAUVEGARDE_H_
+#ifndef SRC_SERIALISATION_SAUVEGARDE_H_
+#define SRC_SERIALISATION_SAUVEGARDE_H_
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
-#include "structures/Liste.h"
-#include "modeles/Trajet.h"
-#include "json.hpp"
+#include "../structures/Liste.h"
+#include "../modeles/Trajet.h"
+#include "../../libs/json.hpp"
 
 using json = nlohmann::ordered_json;
 
@@ -36,23 +36,31 @@ class Sauvegarde {
                                        const std::string& nomFichier);
 
     /**
-     * Sauvegarde les trajets simples du catalogue dans un fichier.
+     * Sauvegarde les trajets d'un certain type dans un fichier.
      * 
      * @param catalogue le catalogue à sauvegarder
      * @param nomFichier le nom du fichier
+     * @param typeTrajet le type de trajet à sauvegarder
      */
     static void SauvegarderSelonType(const Liste& catalogue,
                                      const std::string& nomFichier,
                                      TypeTrajet typeTrajet);
 
     /**
-     * Sauvegarde les trajets composés du catalogue dans un fichier.
+     * Sauvegarde les trajets du catalogue dans un fichier selon une
+     * certaine ville de départ et/ou d'arrivée.
      * 
      * @param catalogue le catalogue à sauvegarder
      * @param nomFichier le nom du fichier
+     * @param villeDepart la ville de départ souhaitée ou "" si le
+     *                    paramètre est à ignorer
+     * @param villeArrivee la ville d'arrivée souhaitée ou "" si le
+     *                     paramètre est à ignorer
      */
-    static void SauvegarderTrajetsComposes(const Liste& catalogue,
-                                           const std::string& nomFichier);
+    static void SauvegarderSelonVilles(const Liste& catalogue,
+                                       const std::string& nomFichier,
+                                       const std::string& villeDepart,
+                                       const std::string& villeArrivee);
 
  private:
     //----------------------------------------------------- Méthodes privées
@@ -63,19 +71,12 @@ class Sauvegarde {
     Sauvegarde();
 
     /**
-     * Sauvegarde le contenu JSON dans un fichier.
+     * Crée un fichier contenant le JSON à sauvegarder.
      * 
      * @param nomFichier le nom du fichier
      * @param json le contenu JSON à sauvegarder
      */
-    static void Sauvegarder(const std::string& nomFichier, const json json);
-
-    /**
-     * Affiche les messages d'erreur lorsqu'un fichier n'a pas pu être ouvert.
-     */
-    static void ErreurOuverture(const std::string& nomFichier);
-    //----------------------------------------------------- Attributs privés
-
+    static void creerFichier(const std::string& nomFichier, const json json);
 };
 
-#endif  // SRC_SAUVEGARDE_H_
+#endif  // SRC_SERIALISATION_SAUVEGARDE_H_

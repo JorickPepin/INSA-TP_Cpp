@@ -8,10 +8,11 @@
 
 /////////////////////////////////////////////////////////////////  INCLUDE
 #include <string>
-#include "./acutest.h"
+#include "../libs/acutest.h"
 
 #include "../src/structures/Liste.h"
 #include "../src/modeles/TrajetSimple.h"
+#include "../src/serialisation/Chargement.h"
 
 /////////////////////////////////////////////////////////////////    TESTS
 //------------------------------------------------------------------ Liste
@@ -69,11 +70,61 @@ void testConstructeurTrajetSimple() {
 
     TrajetSimple* t1 = new TrajetSimple(moyenDeTransport, villeDepart, villeArrivee);
 
-    TEST_CHECK_(moyenDeTransport.compare(t1->moyenDeTransport) == 0, "le moyen de transport est bien initialisé");
-    TEST_CHECK_(villeDepart.compare(t1->villeDepart) == 0, "la ville de départ est bien initialisée");
-    TEST_CHECK_(villeArrivee.compare(t1->villeArrivee) == 0, "la ville d'arrivée est bien initialisée");
+    TEST_CHECK_(moyenDeTransport == t1->moyenDeTransport, "le moyen de transport est bien initialisé");
+    TEST_CHECK_(villeDepart == t1->villeDepart, "la ville de départ est bien initialisée");
+    TEST_CHECK_(villeArrivee == t1->villeArrivee, "la ville d'arrivée est bien initialisée");
 
     delete t1;
+}
+//------------------------------------------------------------- Chargement
+void testChargementSansCritere() {
+    Liste catalogue;
+    const std::string nomFichier = "demo.json";
+
+    Chargement::ChargerSansCritere(catalogue, nomFichier);
+
+    TEST_CHECK_(catalogue.Taille() == 3, "le catalogue contient 3 trajets");
+}
+
+void testChargementSelonType() {
+    Liste catalogue1;
+    Liste catalogue2;
+    const std::string nomFichier = "demo.json";
+
+    Chargement::ChargerSelonType(catalogue1, nomFichier, TypeTrajet::Simple);
+    Chargement::ChargerSelonType(catalogue2, nomFichier, TypeTrajet::Compose);
+
+    TEST_CHECK_(catalogue1.Taille() == 2, "le catalogue contient 2 trajets simples");
+    TEST_CHECK_(catalogue2.Taille() == 1, "le catalogue contient 1 trajet composé");
+}
+
+void testChargementSelonVilles() {
+    Liste catalogue1;
+    Liste catalogue2;
+    Liste catalogue3;
+
+    const std::string nomFichier = "demo.json";
+
+    std::string villeDepart = "Lyon";
+    std::string villeArrivee = "";
+
+    Chargement::ChargerSelonVilles(catalogue1, nomFichier, villeDepart, villeArrivee);
+
+    TEST_CHECK_(catalogue1.Taille() == 3, "le catalogue contient 3 trajets pour Lyon en ville de départ");
+
+    villeDepart = "";
+    villeArrivee = "Bordeaux";
+
+    Chargement::ChargerSelonVilles(catalogue2, nomFichier, villeDepart, villeArrivee);
+
+    TEST_CHECK_(catalogue2.Taille() == 1, "le catalogue contient 1 trajet pour Bordeaux en ville d'arrivée");
+
+    villeDepart = "Lyon";
+    villeArrivee = "Paris";
+
+    Chargement::ChargerSelonVilles(catalogue3, nomFichier, villeDepart, villeArrivee);
+
+    TEST_CHECK_(catalogue3.Taille() == 2, "le catalogue contient 2 trajets pour Lyon en ville de départ et Paris en ville d'arrivée");
 }
 //------------------------------------------------------------------------
 
@@ -83,5 +134,8 @@ TEST_LIST = {
     // { "Getter d'une liste", testGetTrajet },
     { "Méthode EstVide d'une liste", testEstVide },
     { "Constructeur d'un trajet simple", testConstructeurTrajetSimple },
+    { "Chargement de tous les trajets du catalogue demo", testChargementSansCritere },
+    { "Chargement des trajets du catalogue demo selon leur type", testChargementSelonType },
+    { "Chargement des trajets du catalogue demo selon une ville de départ et/ou d'arrivée", testChargementSelonVilles },
     { NULL, NULL }
 };

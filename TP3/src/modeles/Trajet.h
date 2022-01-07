@@ -13,7 +13,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <fstream>
 #include <string>
-#include "../json.hpp"
+#include "../../libs/json.hpp"
 
 using json = nlohmann::ordered_json;
 
@@ -50,8 +50,7 @@ class Trajet {
      *         à la ville d'arrivée, false sinon
      */
     virtual bool Correspond(const std::string villeDepart_, const std::string villeArrivee_) const {
-        return (!villeDepart_.compare(GetVilleDepart()) &&
-                !villeArrivee_.compare(GetVilleArrivee()));
+        return (villeDepart_ == GetVilleDepart() && villeArrivee_ == GetVilleArrivee());
     }
 
     //-------------------------------------------- Constructeurs - destructeur
