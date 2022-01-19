@@ -31,8 +31,50 @@ class ApacheLog {
 
  private:
     //------------------------------------------------------- Attributs privés
+    /**
+     * Adresse IP du client
+     */
+    std::string adresseIP;
+
+    /**
+     * L'heure à laquelle la requête a été reçue
+     */
+    std::string dateHeure;
+
+    /**
+     * Méthode utilisée par le client (GET, HEAD, POST, etc.)
+     */
+    std::string methode;
     
-    
+    /**
+     * Ressource demandée par le client
+     */
+    std::string ressource;
+
+    /**
+     * Protocole HTTP utilisé
+     */
+    std::string protocole;
+
+    /**
+     * Code de statut HTTP     
+     */
+    int code;
+
+    /**
+     * Taille de l'objet retourné au client
+     */
+    int taille;
+
+    /**
+     * Site depuis lequel le client prétend avoir lancé sa requête
+     */
+    std::string referent;
+
+    /**
+     * L'en-tête User-Agent de la requête
+     */
+    std::string userAgent;
 };
 
 #endif  // SRC_MODELES_APACHELOG_H_

@@ -15,7 +15,7 @@
 #include "ApacheLog.h"
 
 //------------------------------------------------------------- Constantes
-const std::string PATTERN = "(.*?) - - \\[(.*?)(?= ) (.*?)\\] \"(.*?) (.*?) (HTTP/.*)?\" (.*?) (.*?) \"(.*?)\" \"(.*?)\"";
+const std::string PATTERN = "(.*?) - - \\[(.*?)\\] \"(.*?) (.*?) (HTTP/.*)?\" (.*?) (.*?) \"(.*?)\" \"(.*?)\"";
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
@@ -31,9 +31,23 @@ ApacheLog::ApacheLog(const std::string ligne) {
     std::smatch matches;
 
     if (std::regex_search(ligne, matches, rgx)) {
-        for (size_t i = 0; i < matches.size(); ++i) {
-            std::cout << i << ": '" << matches[i].str() << "'\n";
-        }
+
+        this->adresseIP = matches[1].str();
+        this->dateHeure = matches[2].str();
+        this->methode = matches[3].str();
+        this->ressource = matches[4].str();
+        this->protocole = matches[5].str();
+        this->code = std::stoi(matches[6].str());
+
+        // TODO check taille car peut être "-"
+        this->taille = std::stoi(matches[7].str());
+
+        // TODO supprimer domaine de base du référent
+        this->referent = matches[8].str();
+
+        this->userAgent = matches[9].str();
+
+        std::cout << this->referent << " " << this->ressource << std::endl;
     } else {
         std::cout << "Match not found\n";
     }
