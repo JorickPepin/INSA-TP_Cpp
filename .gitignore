@@ -32,6 +32,7 @@
 *.app
 sejours
 test
+analog
 
 # IDE
 .vscode
