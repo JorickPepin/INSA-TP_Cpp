@@ -24,7 +24,8 @@ extern const std::string PATTERN;
 class ApacheLog {
  public:
     //----------------------------------------------------- Méthodes publiques
-
+    std::string GetRessource() const { return ressource; }
+    tm GetDateHeure() const { return dateHeure; }
 
     //-------------------------------------------- Constructeurs - destructeur
     ApacheLog(const std::string ligne);
@@ -37,9 +38,9 @@ class ApacheLog {
     std::string adresseIP;
 
     /**
-     * L'heure à laquelle la requête a été reçue
+     * La date à laquelle la requête a été reçue
      */
-    std::string dateHeure;
+    tm dateHeure;
 
     /**
      * Méthode utilisée par le client (GET, HEAD, POST, etc.)

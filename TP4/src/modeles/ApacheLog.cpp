@@ -10,12 +10,13 @@
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
 #include <iostream> 
+#include <iomanip>
 #include <regex> 
 //------------------------------------------------------ Include personnel
 #include "ApacheLog.h"
 
 //------------------------------------------------------------- Constantes
-const std::string PATTERN = "(.*?) - - \\[(.*?)\\] \"(.*?) (.*?) (HTTP/.*)?\" (.*?) (.*?) \"(.*?)\" \"(.*?)\"";
+const std::string PATRON = "(.*?) - - \\[(.*?) \\+\\d+\\] \"(.*?) (.*?) (HTTP/.*)?\" (.*?) (.*?) \"(.*?)\" \"(.*?)\"";
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
@@ -27,25 +28,28 @@ ApacheLog::ApacheLog(const std::string ligne) {
         std::cout << "Appel au constructeur de <ApacheLog>" << std::endl;
     #endif
 
-    std::regex rgx(PATTERN);
-    std::smatch matches;
+    std::regex rgx(PATRON);
+    std::smatch matchs;
 
-    if (std::regex_search(ligne, matches, rgx)) {
+    if (std::regex_search(ligne, matchs, rgx)) {
 
-        this->adresseIP = matches[1].str();
-        this->dateHeure = matches[2].str();
-        this->methode = matches[3].str();
-        this->ressource = matches[4].str();
-        this->protocole = matches[5].str();
-        this->code = std::stoi(matches[6].str());
+        this->adresseIP = matchs[1].str();
+
+        std::istringstream ss(matchs[2].str());
+        ss >> std::get_time(&this->dateHeure, "%d/%b/%Y:%H:%M:%S");
+
+        this->methode = matchs[3].str();
+        this->ressource = matchs[4].str();
+        this->protocole = matchs[5].str();
+        this->code = std::stoi(matchs[6].str());
 
         // TODO check taille car peut être "-"
-        this->taille = std::stoi(matches[7].str());
+        this->taille = std::stoi(matchs[7].str());
 
         // TODO supprimer domaine de base du référent
-        this->referent = matches[8].str();
+        this->referent = matchs[8].str();
 
-        this->userAgent = matches[9].str();
+        this->userAgent = matchs[9].str();
 
         std::cout << this->referent << " " << this->ressource << std::endl;
     } else {
