@@ -1,14 +1,14 @@
 /*************************************************************************
-                           AnalyseLogController  -  description
+                           SiteGraph  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 03/02/2021
+    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <AnalyseLogController> (fichier AnalyseLogController.h) ----------------
-#ifndef AnalyseLogController_H_
-#define AnalyseLogController_H_
+//---------- Interface de la classe <SiteGraph> (fichier SiteGraph.h) ----------------
+#ifndef SRC_SITEGRAPH_H_
+#define SRC_SITEGRAPH_H_
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -17,12 +17,12 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <AnalyseLogController>
+// Rôle de la classe <SiteGraph>
 //
 //
 //------------------------------------------------------------------------
 
-class AnalyseLogController : public Ancetre {
+class SiteGraph {
  public:
     //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
@@ -33,7 +33,7 @@ class AnalyseLogController : public Ancetre {
 
 
     //------------------------------------------------- Surcharge d'opérateurs
-    AnalyseLogController& operator=(const AnalyseLogController& _AnalyseLogController);
+    SiteGraph& operator=(const SiteGraph& _SiteGraph);
     // Mode d'emploi :
     //
     // Contrat :
@@ -41,19 +41,19 @@ class AnalyseLogController : public Ancetre {
 
 
     //-------------------------------------------- Constructeurs - destructeur
-    AnalyseLogController(const AnalyseLogController& _AnalyseLogController);
+    SiteGraph(const SiteGraph& _SiteGraph);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    AnalyseLogController();
+    SiteGraph();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~AnalyseLogController();
+    virtual ~SiteGraph();
     // Mode d'emploi :
     //
     // Contrat :
@@ -65,6 +65,6 @@ class AnalyseLogController : public Ancetre {
     //----------------------------------------------------- Attributs protégés
 };
 
-//-------------------------------- Autres définitions dépendantes de <AnalyseLogController>
+//-------------------------------- Autres définitions dépendantes de <SiteGraph>
 
-#endif  // AnalyseLogController_H_
+#endif  // SRC_SITEGRAPH_H_
