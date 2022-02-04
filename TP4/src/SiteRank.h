@@ -1,14 +1,14 @@
 /*************************************************************************
                            SiteRank  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 03/02/2021
+    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <SiteRank> (fichier SiteRank.h) ----------------
-#ifndef SiteRank_H_
-#define SiteRank_H_
+#ifndef SRC_SITERANK_H_
+#define SRC_SITERANK_H_
 
 //--------------------------------------------------- Interfaces utilisées
 #include <map>
@@ -102,4 +102,4 @@ class SiteRank {
 
 //-------------------------------- Autres définitions dépendantes de <SiteRank>
 
-#endif  // SiteRank_H_
+#endif  // SRC_SITERANK_H_
