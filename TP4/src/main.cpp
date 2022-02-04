@@ -1,8 +1,12 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <unistd.h>
 #include "modeles/ApacheLog.h"
 
+
+// TODO testing
+#include "modeles/SiteRank.h"
 int main(int argc, char *argv[]) {
 
     std::string utilisation = "Utilisation : ./analog [-e | -g fichier.dot | -t heure] fichier.log";
@@ -35,11 +39,42 @@ int main(int argc, char *argv[]) {
     }
 
     if (!argv[optind]) {
-        std::cout << "Fichier .log manquant\n" << utilisation << std::endl;
+        std::cerr << "Fichier .log manquant\n" << utilisation << std::endl;
         exit(1);
     }
 
-    std::cout << "Nom fichier: " << argv[optind] << std::endl;
+    SiteRank sr;
+    sr.add1HittoSite("test");
+    sr.add1HittoSite("test");
+    sr.add1HittoSite("test");   
+    sr.add1HittoSite("test2");
+    sr.add1HittoSite("test2");
+    sr.add1HittoSite("test2");
+    sr.add1HittoSite("test2");  
+    sr.add1HittoSite("test5");
+    std::cout << sr << std::endl;
+    sr.PrintRank(std::cout,10);
 
-    new ApacheLog(R"(192.168.0.0 - - [08/Sep/2012:11:16:02 +0200] "GET /temps/4IF16.html HTTP/1.1" 200 12106 "http://intranet-if.insa-lyon.fr/temps/4IF15.html" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:14.0) Gecko/20100101 Firefox/14.0.1")");
+    /*
+    std::cout << "Nom fichier: " << argv[optind] << std::endl;
+    const std::string fileName(argv[optind]);
+
+    //new ApacheLog(R"(192.168.0.0 - - [08/Sep/2012:11:16:02 +0200] "GET /temps/4IF16.html HTTP/1.1" 200 12106 "http://intranet-if.insa-lyon.fr/temps/4IF15.html" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:14.0) Gecko/20100101 Firefox/14.0.1")");
+    std::ifstream file;
+
+    file.open(fileName);
+    if(!file.good()){
+        std::cerr << "Erreur lors de l'ouverture du fichier" << "\n";
+        exit(2);
+    }
+    
+    ApacheLog al;
+    while (file.good()){
+        file >> al;
+        //add1tosite(string); // top 10
+        //add1tosite(referent,site);
+        std::cout << al << "\n";
+    }*/
+
+
 } 
