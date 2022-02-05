@@ -6,7 +6,7 @@
 
 
 // TODO testing
-#include "modeles/SiteRank.h"
+#include "SiteRank.h"
 int main(int argc, char *argv[]) {
 
     std::string utilisation = "Utilisation : ./analog [-e | -g fichier.dot | -t heure] fichier.log";

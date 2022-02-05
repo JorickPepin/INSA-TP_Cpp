@@ -1,8 +1,8 @@
 /*************************************************************************
                            SiteGraph  -  Représente un graph de site
                              -------------------
-    début                : 04/02/2022
-    copyright            : (C) 2022 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    début                : 03/02/2021
+    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
     e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
