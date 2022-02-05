@@ -1,5 +1,5 @@
 /*************************************************************************
-                           SiteRank  -  description
+                           SiteRank  -  Ranking des sites selon le nombre de hits
                              -------------------
     début                : 03/02/2021
     copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin

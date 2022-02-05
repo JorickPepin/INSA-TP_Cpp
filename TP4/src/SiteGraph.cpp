@@ -1,5 +1,5 @@
 /*************************************************************************
-                           SiteGraph  -  description
+                           SiteGraph  -  Représente un graph de site
                              -------------------
     début                : 03/02/2021
     copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
@@ -24,15 +24,8 @@
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-SiteGraph & SiteGraph::operator=(const SiteGraph& _SiteGraph) {
-}
 
 //-------------------------------------------- Constructeurs - destructeur
-SiteGraph::SiteGraph(const SiteGraph& _SiteGraph) {
-    #ifdef MAP
-        std::cout << "Appel au constructeur de copie de <SiteGraph>" << std::endl;
-    #endif
-}
 
 SiteGraph::SiteGraph() {
     #ifdef MAP

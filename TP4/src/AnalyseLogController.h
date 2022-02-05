@@ -1,5 +1,5 @@
 /*************************************************************************
-                           AnalyseLogController  -  description
+                           AnalyseLogController  -  Controller
                              -------------------
     début                : 03/02/2021
     copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin

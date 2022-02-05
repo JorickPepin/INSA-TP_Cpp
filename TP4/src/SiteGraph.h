@@ -1,10 +1,11 @@
 /*************************************************************************
-                           SiteGraph  -  description
+                           SiteGraph  -  Représente un graph de site
                              -------------------
     début                : 03/02/2021
     copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
     e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
+
 
 //---------- Interface de la classe <SiteGraph> (fichier SiteGraph.h) ----------------
 #ifndef SRC_SITEGRAPH_H_
