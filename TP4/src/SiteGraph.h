@@ -7,7 +7,7 @@
 *************************************************************************/
 
 
-//---------- Interface de la classe <SiteGraph> (fichier SiteGraph.h) ----------------
+//---------- Interface de la classe <SiteGraph> (fichier SiteGraph.h) ----
 #ifndef SRC_SITEGRAPH_H_
 #define SRC_SITEGRAPH_H_
 
@@ -29,71 +29,41 @@
 class SiteGraph {
  public:
     //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    void AddSite(const std::string & referant, const std::string & cible);
 
-    void addSite(const std::string & referant, const std::string & cible);
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    
     //------------------------------------------------- Surcharge d'opérateurs
     SiteGraph& operator=(const SiteGraph& _SiteGraph);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
-    friend std::ofstream & operator <<(std::ofstream & os, const SiteGraph & _SiteGraph);
+    friend std::ofstream & operator << (std::ofstream & os,
+                                        const SiteGraph & _SiteGraph);
     // Mode d'emploi :
     //  écrit le graph au format GraphViz dans le fichier
     // Contrat :
-    //   le fichier doit être ouvert en écriture et vide pour le que le format soit respecter
+    //   le fichier doit être ouvert en écriture et vide pour le que le format
+    //   soit respecté
     //   mode d'ouverture suggeré std::ofstream::trunc
-    //
 
-    friend std::ostream & operator <<(std::ostream & os, const SiteGraph & _SiteGraph);
+    friend std::ostream & operator << (std::ostream & os,
+                                       const SiteGraph & _SiteGraph);
     // Mode d'emploi :
-    //  print la multi map 
-    // Contrat :
-    //   
-    //
+    //  print la multi map
 
     //-------------------------------------------- Constructeurs - destructeur
     SiteGraph(const SiteGraph& _SiteGraph);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
 
     SiteGraph();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     virtual ~SiteGraph();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
- protected:
-    //----------------------------------------------------- Méthodes protégées
+ private:
+    //------------------------------------------------------- Méthodes privées
 
-    //----------------------------------------------------- Attributs protégés
+    //------------------------------------------------------- Attributs privés
     // cible    : page demandé
     // referant : page où était le navigateur, quand la cible a été demandé
-    // <referant,<cible,uint>> : on sait pour site combien de fois il a été referent pour une cible
-    std::unordered_map<std::string,std::unordered_map<std::string,unsigned int>> graph;
+    // <referant, <cible, uint>> : on sait pour site combien de fois il a été
+    //                             referent pour une cible
+    std::unordered_map<std::string, std::unordered_map<std::string, unsigned int>> graph;
 };
-
-//-------------------------------- Autres définitions dépendantes de <SiteGraph>
 
 #endif  // SRC_SITEGRAPH_H_

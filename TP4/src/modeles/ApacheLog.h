@@ -15,7 +15,7 @@
 #include <string>
 
 //------------------------------------------------------------- Constantes
-extern const std::string PATTERN;
+extern const char* PATRON;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <ApacheLog>
@@ -30,14 +30,17 @@ class ApacheLog {
 
     //-------------------------------------------- Constructeurs - destructeur
     ApacheLog & operator = (const ApacheLog & unApacheLog);
-    ApacheLog ();
-    ApacheLog (const ApacheLog & unApacheLog); 
+    ApacheLog();
+    ApacheLog(const ApacheLog & unApacheLog);
     virtual ~ApacheLog();
 
-    ApacheLog(const std::string & ligne);
+    explicit ApacheLog(const std::string & ligne);
 
-    friend std::istream & operator >> (std::istream & is, ApacheLog & apacheLog);
-    friend std::ostream & operator << (std::ostream & os, const ApacheLog & apacheLog);
+    friend std::istream & operator >> (std::istream & is,
+                                       ApacheLog & apacheLog);
+
+    friend std::ostream & operator << (std::ostream & os,
+                                       const ApacheLog & apacheLog);
 
  private:
     //------------------------------------------------------- Attributs privés
@@ -55,7 +58,7 @@ class ApacheLog {
      * Méthode utilisée par le client (GET, HEAD, POST, etc.)
      */
     std::string methode;
-    
+
     /**
      * Ressource demandée par le client
      */
@@ -86,8 +89,8 @@ class ApacheLog {
      */
     std::string userAgent;
 
-    //----------------------------------------------------- Méthodes publiques
-   ApacheLog & hydrate(const std::string & ligne);
+    //----------------------------------------------------- Méthodes privées
+    ApacheLog & hydrate(const std::string & ligne);
 };
 
 #endif  // SRC_MODELES_APACHELOG_H_

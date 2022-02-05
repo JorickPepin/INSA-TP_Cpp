@@ -24,15 +24,23 @@ const std::vector<std::string> EXTENSIONS_A_EXCLURE = {
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
-bool Options::ExtensionValide(ApacheLog& log) {
+bool Options::ExtensionValide(const ApacheLog& log) {
     std::string ressource = log.GetRessource();
     std::string extension = ressource.substr(ressource.find_last_of(".") + 1);
 
     return !(std::find(EXTENSIONS_A_EXCLURE.begin(), EXTENSIONS_A_EXCLURE.end(), extension) != EXTENSIONS_A_EXCLURE.end());
 }
 
-bool Options::HeureValide(ApacheLog& log, int heure) {
-    return log.GetDateHeure().tm_hour == heure;
+bool Options::HeureValide(const ApacheLog& log) {
+    return log.GetDateHeure().tm_hour == this->heure;
+}
+
+Options::Options(bool optionG, bool optionE, bool optionT, int heure)
+    : optionG(optionG), optionE(optionE), optionT(optionT), heure(heure) {
+
+    #ifdef MAP
+        std::cout << "Appel au constructeur de <Options>" << std::endl;
+    #endif
 }
 
 //------------------------------------------------------------------ PRIVE

@@ -11,9 +11,9 @@
 #define SRC_OPTIONS_H_
 
 //--------------------------------------------------- Interfaces utilisées
-#include "modeles/ApacheLog.h"
 #include <vector>
 #include <string>
+#include "modeles/ApacheLog.h"
 
 //------------------------------------------------------------- Constantes
 /**
@@ -24,7 +24,13 @@ extern const std::vector<std::string> EXTENSIONS_A_EXCLURE;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Options>
-// 
+// Gestion des options potentiellement utilisées par l'utilisateur
+// Options :
+//  -g        permet de produire un fichier au format GraphViz du graphe analysé
+//  -e        permet d’exclure tous les documents qui ont une extension de type
+//            image, CSS ou JS
+//  -t heure  permet de ne prendre en compte que les hits qui sont dans le créneau
+//            horaire correspondant à l’intervalle [heure, heure+1[
 //------------------------------------------------------------------------
 
 class Options {
@@ -36,7 +42,7 @@ class Options {
      * @param log le log à vérifier
      * @return true si l'extension ne fait pas partie des extensions à exclure, false sinon
      */
-    static bool ExtensionValide(ApacheLog& log);
+    bool ExtensionValide(const ApacheLog& log);
 
     /**
      * Indique si l'heure du log correspond à l'intervalle [heure, heure + 1[
@@ -45,16 +51,22 @@ class Options {
      * @param heure l'heure souhaitée
      * @return true si l'heure est dans l'intervalle, false sinon
      */
-    static bool HeureValide(ApacheLog& log, int heure);
+    bool HeureValide(const ApacheLog& log);
+
+    bool OptionsG() const { return optionG; }
+    bool OptionsE() const { return optionE; }
+    bool OptionsT() const { return optionT; }
+
+    Options(bool optionG, bool optionE, bool optionT, int heure);
+
+    Options();
 
  private:
     //----------------------------------------------------- Méthodes privées
-    /**
-     * Constructeur par défaut mis en privé afin d'éviter une instanciation
-     * de la classe et garder ainsi un comportement statique.
-     */
-    Options();
-
+    bool optionG;
+    bool optionE;
+    bool optionT;
+    int heure;
 };
 
 #endif  // SRC_OPTIONS_H_
