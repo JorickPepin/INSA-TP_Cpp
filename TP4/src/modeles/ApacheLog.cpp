@@ -10,6 +10,7 @@
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
 #include <iostream> 
+#include <string>
 #include <regex> 
 //------------------------------------------------------ Include personnel
 #include "ApacheLog.h"
@@ -22,11 +23,27 @@ const std::string PATTERN = "(.*?) - - \\[(.*?)\\] \"(.*?) (.*?) (HTTP/.*)?\" (.
 
 
 //-------------------------------------------- Constructeurs - destructeur
-ApacheLog::ApacheLog(const std::string ligne) {
+
+ApacheLog::ApacheLog(){
     #ifdef MAP
         std::cout << "Appel au constructeur de <ApacheLog>" << std::endl;
     #endif
+}
 
+ApacheLog::~ApacheLog(){
+    #ifdef MAP
+        std::cout << "Appel au destructeur de <ApacheLog>" << std::endl;
+    #endif
+}
+
+ApacheLog::ApacheLog(const std::string & ligne) {
+    #ifdef MAP
+        std::cout << "Appel au constructeur de <ApacheLog>" << std::endl;
+    #endif
+    hydrate(ligne);    
+}
+
+ApacheLog & ApacheLog::hydrate(const std::string & ligne){
     std::regex rgx(PATTERN);
     std::smatch matches;
 
@@ -38,19 +55,28 @@ ApacheLog::ApacheLog(const std::string ligne) {
         this->ressource = matches[4].str();
         this->protocole = matches[5].str();
         this->code = std::stoi(matches[6].str());
-
-        // TODO check taille car peut être "-"
-        this->taille = std::stoi(matches[7].str());
-
+        this->taille = (matches[7].str() != "-" )? std::stoi(matches[7].str()) : 0;
         // TODO supprimer domaine de base du référent
         this->referent = matches[8].str();
-
         this->userAgent = matches[9].str();
-
-        std::cout << this->referent << " " << this->ressource << std::endl;
     } else {
-        std::cout << "Match not found\n";
+        std::cerr << "Match not found\n";
     }
+    return *this;
+}
+
+
+std::istream & operator >> (std::istream & is, ApacheLog & apacheLog){
+    std::string s;
+    std::getline(is,s);
+    apacheLog.hydrate(s);
+
+    return is;
+}
+
+std::ostream & operator << (std::ostream & os, const ApacheLog & apacheLog){
+    os << apacheLog.referent << " " <<apacheLog.ressource;
+    return os;
 }
 
 //------------------------------------------------------------------ PRIVE

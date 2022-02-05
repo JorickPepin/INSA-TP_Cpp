@@ -11,6 +11,7 @@
 #define SRC_MODELES_APACHELOG_H_
 
 //--------------------------------------------------- Interfaces utilisées
+#include <istream>
 #include <string>
 
 //------------------------------------------------------------- Constantes
@@ -27,7 +28,15 @@ class ApacheLog {
 
 
     //-------------------------------------------- Constructeurs - destructeur
-    ApacheLog(const std::string ligne);
+    ApacheLog & operator = (const ApacheLog & unApacheLog);
+    ApacheLog ();
+    ApacheLog (const ApacheLog & unApacheLog); 
+    virtual ~ApacheLog();
+
+    ApacheLog(const std::string & ligne);
+
+    friend std::istream & operator >> (std::istream & is, ApacheLog & apacheLog);
+    friend std::ostream & operator << (std::ostream & os, const ApacheLog & apacheLog);
 
  private:
     //------------------------------------------------------- Attributs privés
@@ -75,6 +84,9 @@ class ApacheLog {
      * L'en-tête User-Agent de la requête
      */
     std::string userAgent;
+
+    //----------------------------------------------------- Méthodes publiques
+   ApacheLog & hydrate(const std::string & ligne);
 };
 
 #endif  // SRC_MODELES_APACHELOG_H_

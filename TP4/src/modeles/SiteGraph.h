@@ -1,10 +1,11 @@
 /*************************************************************************
-                           SiteGraph  -  description
+                           SiteGraph  -  Représente un graph de site
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 04/02/2022
+    copyright            : (C) 2022 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
+
 
 //---------- Interface de la classe <SiteGraph> (fichier SiteGraph.h) ----------------
 #ifndef SiteGraph_H_
@@ -22,7 +23,7 @@
 //
 //------------------------------------------------------------------------
 
-class SiteGraph : public Ancetre {
+class SiteGraph {
  public:
     //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );

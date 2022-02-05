@@ -1,9 +1,9 @@
 /*************************************************************************
-                           AnalyseLogController  -  description
+                           AnalyseLogController  -  Controller
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 04/02/2022
+    copyright            : (C) 2022 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <AnalyseLogController> (fichier AnalyseLogController.cpp) ------------
@@ -24,15 +24,8 @@
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-AnalyseLogController & AnalyseLogController::operator=(const AnalyseLogController& _AnalyseLogController) {
-}
 
 //-------------------------------------------- Constructeurs - destructeur
-AnalyseLogController::AnalyseLogController(const AnalyseLogController& _AnalyseLogController) {
-    #ifdef MAP
-        std::cout << "Appel au constructeur de copie de <AnalyseLogController>" << std::endl;
-    #endif
-}
 
 AnalyseLogController::AnalyseLogController() {
     #ifdef MAP

@@ -1,9 +1,9 @@
 /*************************************************************************
-                           AnalyseLogController  -  description
+                           AnalyseLogController  -  Controller
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 04/02/2022
+    copyright            : (C) 2022 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <AnalyseLogController> (fichier AnalyseLogController.h) ----------------
@@ -22,7 +22,7 @@
 //
 //------------------------------------------------------------------------
 
-class AnalyseLogController : public Ancetre {
+class AnalyseLogController {
  public:
     //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
