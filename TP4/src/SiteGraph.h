@@ -12,6 +12,9 @@
 #define SRC_SITEGRAPH_H_
 
 //--------------------------------------------------- Interfaces utilisées
+#include <unordered_map>
+#include <string>
+#include <fstream>
 
 //------------------------------------------------------------- Constantes
 
@@ -32,7 +35,14 @@ class SiteGraph {
     // Contrat :
     //
 
+    void addSite(const std::string & referant, const std::string & cible);
+    // type Méthode ( liste des paramètres );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
+    
     //------------------------------------------------- Surcharge d'opérateurs
     SiteGraph& operator=(const SiteGraph& _SiteGraph);
     // Mode d'emploi :
@@ -40,6 +50,20 @@ class SiteGraph {
     // Contrat :
     //
 
+    friend std::ofstream & operator <<(std::ofstream & os, const SiteGraph & _SiteGraph);
+    // Mode d'emploi :
+    //  écrit le graph au format GraphViz dans le fichier
+    // Contrat :
+    //   le fichier doit être ouvert en écriture et vide pour le que le format soit respecter
+    //   mode d'ouverture suggeré std::ofstream::trunc
+    //
+
+    friend std::ostream & operator <<(std::ostream & os, const SiteGraph & _SiteGraph);
+    // Mode d'emploi :
+    //  print la multi map 
+    // Contrat :
+    //   
+    //
 
     //-------------------------------------------- Constructeurs - destructeur
     SiteGraph(const SiteGraph& _SiteGraph);
@@ -64,6 +88,10 @@ class SiteGraph {
     //----------------------------------------------------- Méthodes protégées
 
     //----------------------------------------------------- Attributs protégés
+    // cible    : page demandé
+    // referant : page où était le navigateur, quand la cible a été demandé
+    // <referant,<cible,uint>> : on sait pour site combien de fois il a été referent pour une cible
+    std::unordered_map<std::string,std::unordered_map<std::string,unsigned int>> graph;
 };
 
 //-------------------------------- Autres définitions dépendantes de <SiteGraph>

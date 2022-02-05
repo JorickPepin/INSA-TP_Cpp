@@ -22,8 +22,40 @@
 // type SiteGraph::Méthode(liste des paramètres) {
 //}
 
+// void SiteGraph::addSite(const std::string & referant, const std::string & cible) {
+//}
+void SiteGraph::addSite(const std::string & referant, const std::string & cible){
+    ++graph[referant][cible];
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
+std::ostream & operator <<(std::ostream & os, const SiteGraph & _SiteGraph){
+    std::unordered_map<std::string, std::unordered_map<std::string,unsigned int>>::const_iterator it1;
+    std::unordered_map<std::string, unsigned int>::const_iterator it2;
+    for(it1 = _SiteGraph.graph.cbegin(); it1 != _SiteGraph.graph.cend();++it1){
+        os << it1->first << '\n';
+        for(it2 = it1->second.cbegin(); it2 != it1->second.cend();++it2){
+            os << "\t" << it2->first << " : " << it2->second << '\n';
+        }
+    }
+    return os;
+}
+
+std::ofstream & operator <<(std::ofstream & os, const SiteGraph & _SiteGraph){
+    std::unordered_map<std::string, std::unordered_map<std::string,unsigned int>>::const_iterator it1;
+    std::unordered_map<std::string, unsigned int>::const_iterator it2;
+    os << "digraph{\n";
+    for(it1 = _SiteGraph.graph.cbegin(); it1 != _SiteGraph.graph.cend();++it1){
+        for(it2 = it1->second.cbegin(); it2 != it1->second.cend();++it2){
+            // WARNING le format pourrait ne pas être valide un site contient un ", mais normalement
+            // ce n'est pas possible http://www.faqs.org/rfcs/rfc1738.html
+            // format : "   "referant" -> "cible" [label="unsigned int"]\n"
+            os << "\t\"" << it1->first << "\"" << " -> "<< it2->first << "[label=\"" << it2->second <<"\"]\n";
+        }
+    }
+    os << "}\n";
+    return os;
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 
