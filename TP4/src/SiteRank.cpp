@@ -6,25 +6,29 @@
     e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <SiteRank> (fichier SiteRank.cpp) ------------
+//---------- Réalisation de la classe <SiteRank> (fichier SiteRank.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <utility>
 //------------------------------------------------------ Include personnel
 #include "SiteRank.h"
-//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
+using iterator = std::unordered_map<std::string, unsigned int>::const_iterator;
 
 //----------------------------------------------------------------- PUBLIC
-
 //----------------------------------------------------- Méthodes publiques
-void SiteRank::add1HittoSite(const std::string & site){
-    ++hitsBySite[site]; // insert si n'est pas dedans (avec initialisation à 0), puis incrémente
+void SiteRank::Add1HittoSite(const std::string & site) {
+    // insert si n'est pas dedans (avec initialisation à 0), puis incrémente
+    ++hitsBySite[site];
     needSwapMap = true;
 }
 
-std::ostream & SiteRank::PrintRank(std::ostream & os, unsigned int nbDisplayed){
+std::ostream & SiteRank::PrintRank(std::ostream & os,
+                                   unsigned int nbDisplayed) {
     std::multimap<unsigned int, const std::string *>::const_reverse_iterator it;
     unsigned int i(0);
 
@@ -32,27 +36,25 @@ std::ostream & SiteRank::PrintRank(std::ostream & os, unsigned int nbDisplayed){
     swapMap();
 
     // TODO est ce qu'on affiche les 10 premier (y compris les exe aequo ?)
-    for(it = siteRankbyHits.crbegin(); it != siteRankbyHits.crend() && i < nbDisplayed; ++it, ++i){
+    for (it = siteRankbyHits.crbegin(); it != siteRankbyHits.crend()
+                                        && i < nbDisplayed; ++it, ++i) {
         os << *it->second << " : " << it->first << '\n';
     }
 
     return os;
 }
 
-
 //------------------------------------------------- Surcharge d'opérateurs
-std::ostream & operator <<(std::ostream & os, const SiteRank & sr){
-    std::unordered_map<std::string, unsigned int>::const_iterator it;
-    for(it= sr.hitsBySite.cbegin(); it != sr.hitsBySite.cend();++it){
+std::ostream & operator <<(std::ostream & os, const SiteRank & sr) {
+    iterator it;
+    for (it = sr.hitsBySite.cbegin(); it != sr.hitsBySite.cend(); ++it) {
         os << it->first << ':' << it->second << '\n';
     }
     return os;
 }
-    
+
 //-------------------------------------------- Constructeurs - destructeur
-
-
-SiteRank::SiteRank() : needSwapMap(true){
+SiteRank::SiteRank() : needSwapMap(true) {
     #ifdef MAP
         std::cout << "Appel au constructeur de <SiteRank>" << std::endl;
     #endif
@@ -66,19 +68,19 @@ SiteRank::~SiteRank() {
 }
 
 //------------------------------------------------------------------ PRIVE
+//------------------------------------------------------- Méthodes privées
+void SiteRank::swapMap() {
+    if (!needSwapMap) {  // if no changed made
+        return;
+    }
 
-//----------------------------------------------------- Méthodes protégées
-
-void SiteRank::swapMap(){
-    if(!needSwapMap) return; // if no changed made
-
-    // don't need to free the pointers contained in 'siteRankByHits' multimap, because
-    // they are still stored in 'hitsBySite' and will be deleted when 
+    // don't need to free the pointers contained in 'siteRankByHits' multimap,
+    // because they are still stored in 'hitsBySite' and will be deleted when
     siteRankbyHits.clear();
 
-    for(std::unordered_map<std::string, unsigned int>::const_iterator it = hitsBySite.cbegin(); it != hitsBySite.cend();++it){
+    for (iterator it = hitsBySite.cbegin(); it != hitsBySite.cend(); ++it) {
         siteRankbyHits.insert(std::make_pair(it->second, &(it->first)));
-        //os << it->first << ':' << it->second << '\n';
+        // os << it->first << ':' << it->second << '\n';
     }
     needSwapMap = false;
 }

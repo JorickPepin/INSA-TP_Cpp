@@ -1,36 +1,41 @@
-#include <iostream>
-#include <fstream>
-#include <string>
+/*************************************************************************
+                                    main
+                             -------------------
+    début                : 12/01/2021
+    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
+*************************************************************************/
+
 #include <unistd.h>
-#include "modeles/ApacheLog.h"
+#include <iostream>
+#include <string>
+#include "AnalyseLogController.h"
 
-
-// TODO testing
-#include "SiteRank.h"
 int main(int argc, char *argv[]) {
-
-    std::string utilisation = "Utilisation : ./analog [-e | -g fichier.dot | -t heure] fichier.log";
+    std::string utilisation = "Utilisation : ./analog "
+                              "[-e | -g fichier.dot | -t heure] fichier.log";
     int option;
+
+    bool optionE = false, optionG = false, optionT = false;
+    int heure = -1;
+    std::string nomFichierDot = "";
 
     while ((option = getopt(argc, argv, "eg:t:")) != -1) {
         switch (option) {
             case 'e':
-                std::cout << "option e" << std::endl;
-                // exclure les doc avec une extension de type image, CSS ou JS
+                optionE = true;
                 continue;
             case 'g':
-                std::cout << "option g avec valeur : " << optarg << std::endl;
-                // produire un fichier .dot s'appelant [optarg]
+                optionG = true;
+                nomFichierDot = optarg;
                 continue;
             case 't':
-                std::cout << "option t avec valeur : " << optarg << std::endl;
-                // prendre en compte uniquement les logs correspondant à
-                // l'intervalle horaire [optarg, optarg + 1]
+                optionT = true;
+                heure = atoi(optarg);
                 continue;
-
             case '?':
             case 'h':
-            case  -1:  // no arg
+            case  -1:
             default :
                 std::cout << utilisation << std::endl;
                 break;
@@ -43,38 +48,10 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    SiteRank sr;
-    sr.add1HittoSite("test");
-    sr.add1HittoSite("test");
-    sr.add1HittoSite("test");   
-    sr.add1HittoSite("test2");
-    sr.add1HittoSite("test2");
-    sr.add1HittoSite("test2");
-    sr.add1HittoSite("test2");  
-    sr.add1HittoSite("test5");
-    std::cout << sr << std::endl;
-    sr.PrintRank(std::cout,10);
+    std::string nomFichierLog = argv[optind];
 
-    /*
-    std::cout << "Nom fichier: " << argv[optind] << std::endl;
-    const std::string fileName(argv[optind]);
+    AnalyseLogController controleur = AnalyseLogController(optionG, optionE,
+        optionT, heure, nomFichierDot, nomFichierLog);
 
-    //new ApacheLog(R"(192.168.0.0 - - [08/Sep/2012:11:16:02 +0200] "GET /temps/4IF16.html HTTP/1.1" 200 12106 "http://intranet-if.insa-lyon.fr/temps/4IF15.html" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:14.0) Gecko/20100101 Firefox/14.0.1")");
-    std::ifstream file;
-
-    file.open(fileName);
-    if(!file.good()){
-        std::cerr << "Erreur lors de l'ouverture du fichier" << "\n";
-        exit(2);
-    }
-    
-    ApacheLog al;
-    while (file.good()){
-        file >> al;
-        //add1tosite(string); // top 10
-        //add1tosite(referent,site);
-        std::cout << al << "\n";
-    }*/
-
-
-} 
+    controleur.Run();
+}

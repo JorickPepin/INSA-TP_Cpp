@@ -6,7 +6,7 @@
     e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <SiteGraph> (fichier SiteGraph.cpp) ------------
+//----- Réalisation de la classe <SiteGraph> (fichier SiteGraph.cpp) -----
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -14,43 +14,45 @@
 #include <iostream>
 //------------------------------------------------------ Include personnel
 #include "SiteGraph.h"
-//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
+using iterator_simple = std::unordered_map<std::string, unsigned int>::const_iterator;
+using iterator_double = std::unordered_map<std::string, std::unordered_map<std::string, unsigned int>>::const_iterator;
 
 //----------------------------------------------------------------- PUBLIC
-
 //----------------------------------------------------- Méthodes publiques
-// type SiteGraph::Méthode(liste des paramètres) {
-//}
-
-// void SiteGraph::addSite(const std::string & referant, const std::string & cible) {
-//}
-void SiteGraph::addSite(const std::string & referant, const std::string & cible){
+void SiteGraph::AddSite(const std::string & referant,
+                        const std::string & cible) {
     ++graph[referant][cible];
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-std::ostream & operator <<(std::ostream & os, const SiteGraph & _SiteGraph){
-    std::unordered_map<std::string, std::unordered_map<std::string,unsigned int>>::const_iterator it1;
-    std::unordered_map<std::string, unsigned int>::const_iterator it2;
-    for(it1 = _SiteGraph.graph.cbegin(); it1 != _SiteGraph.graph.cend();++it1){
+std::ostream & operator <<(std::ostream & os, const SiteGraph & _SiteGraph) {
+    iterator_double it1;
+    iterator_simple it2;
+
+    for (it1 = _SiteGraph.graph.cbegin(); it1 != _SiteGraph.graph.cend(); ++it1) {
         os << it1->first << '\n';
-        for(it2 = it1->second.cbegin(); it2 != it1->second.cend();++it2){
+        for (it2 = it1->second.cbegin(); it2 != it1->second.cend(); ++it2) {
             os << "\t" << it2->first << " : " << it2->second << '\n';
         }
     }
     return os;
 }
 
-std::ofstream & operator <<(std::ofstream & os, const SiteGraph & _SiteGraph){
-    std::unordered_map<std::string, std::unordered_map<std::string,unsigned int>>::const_iterator it1;
-    std::unordered_map<std::string, unsigned int>::const_iterator it2;
+std::ofstream & operator <<(std::ofstream & os, const SiteGraph & _SiteGraph) {
+    iterator_double it1;
+    iterator_simple it2;
+
     os << "digraph{\n";
-    for(it1 = _SiteGraph.graph.cbegin(); it1 != _SiteGraph.graph.cend();++it1){
-        for(it2 = it1->second.cbegin(); it2 != it1->second.cend();++it2){
-            // WARNING le format pourrait ne pas être valide un site contient un ", mais normalement
-            // ce n'est pas possible http://www.faqs.org/rfcs/rfc1738.html
+    for (it1 = _SiteGraph.graph.cbegin(); it1 != _SiteGraph.graph.cend(); ++it1) {
+        for (it2 = it1->second.cbegin(); it2 != it1->second.cend(); ++it2) {
+            // WARNING le format pourrait ne pas être valide un site contient
+            // un ", mais normalement ce n'est pas possible
+            // (http://www.faqs.org/rfcs/rfc1738.html)
             // format : "   "referant" -> "cible" [label="unsigned int"]\n"
-            os << "\t\"" << it1->first << "\"" << " -> "<< it2->first << "[label=\"" << it2->second <<"\"]\n";
+            os << "\t\"" << it1->first << "\"" << " -> "<< it2->first
+               << "[label=\"" << it2->second <<"\"]\n";
         }
     }
     os << "}\n";

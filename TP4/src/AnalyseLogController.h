@@ -6,15 +6,15 @@
     e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <AnalyseLogController> (fichier AnalyseLogController.h) ----------------
+//--------- Interface de la classe <AnalyseLogController> ----------------
 #ifndef SRC_ANALYSELOGCONTROLLER_H_
 #define SRC_ANALYSELOGCONTROLLER_H_
 
 //--------------------------------------------------- Interfaces utilisées
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
+#include <string>
+#include "SiteRank.h"
+#include "SiteGraph.h"
+#include "Options.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <AnalyseLogController>
@@ -25,46 +25,32 @@
 class AnalyseLogController {
  public:
     //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
+    void Run();
 
     //------------------------------------------------- Surcharge d'opérateurs
-    AnalyseLogController& operator=(const AnalyseLogController& _AnalyseLogController);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
+    AnalyseLogController& operator = (const AnalyseLogController& _AnalyseLogController);
 
     //-------------------------------------------- Constructeurs - destructeur
     AnalyseLogController(const AnalyseLogController& _AnalyseLogController);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
+
+    AnalyseLogController(bool optionG, bool optionE, bool optionT,
+                         int heure, std::string nomFichierDot,
+                         std::string nomFichierLog);
 
     AnalyseLogController();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     virtual ~AnalyseLogController();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
- protected:
-    //----------------------------------------------------- Méthodes protégées
+ private:
+    //------------------------------------------------------- Méthodes privées
 
-    //----------------------------------------------------- Attributs protégés
+    //------------------------------------------------------- Attributs privés
+    std::string nomFichierDot;
+    std::string nomFichierLog;
+
+    SiteRank* siteRank;
+    SiteGraph* siteGraph;
+    Options* options;
 };
-
-//-------------------------------- Autres définitions dépendantes de <AnalyseLogController>
 
 #endif  // SRC_ANALYSELOGCONTROLLER_H_
