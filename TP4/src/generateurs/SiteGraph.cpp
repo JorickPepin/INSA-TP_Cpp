@@ -1,15 +1,14 @@
 /*************************************************************************
                            SiteGraph  -  Représente un graph de site
                              -------------------
-    début                : 03/02/2021
-    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    début                : 03/02/2022
+    copyright            : (C) 2022 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
     e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 //----- Réalisation de la classe <SiteGraph> (fichier SiteGraph.cpp) -----
 
 //---------------------------------------------------------------- INCLUDE
-
 //-------------------------------------------------------- Include système
 #include <iostream>
 //------------------------------------------------------ Include personnel
@@ -36,7 +35,7 @@ std::ostream & SiteGraph::PrintDotGraphTo(std::ostream & os) const {
             // WARNING le format pourrait ne pas être valide un site contient
             // un ", mais normalement ce n'est pas possible
             // (http://www.faqs.org/rfcs/rfc1738.html)
-            // format GraphViz: "   "referant" -> "cible" [label="unsigned int"]\n"
+            // format DOT: "   "referant" -> "cible" [label="unsigned int"]\n"
             os << "\t\"" << it1->first << "\"" << " -> \""<< it2->first
                << "\"[label=\"" << it2->second <<"\"]\n";
         }
@@ -46,7 +45,7 @@ std::ostream & SiteGraph::PrintDotGraphTo(std::ostream & os) const {
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-std::ostream & operator <<(std::ostream & os, const SiteGraph & _SiteGraph) {
+std::ostream & operator << (std::ostream & os, const SiteGraph & _SiteGraph) {
     iterator_double it1;
     iterator_simple it2;
 
@@ -60,7 +59,6 @@ std::ostream & operator <<(std::ostream & os, const SiteGraph & _SiteGraph) {
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-
 SiteGraph::SiteGraph() {
     #ifdef MAP
         std::cout << "Appel au constructeur de <SiteGraph>" << std::endl;
@@ -72,7 +70,3 @@ SiteGraph::~SiteGraph() {
         std::cout << "Appel au destructeur de <SiteGraph>" << std::endl;
     #endif
 }
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

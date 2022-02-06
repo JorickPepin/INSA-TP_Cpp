@@ -1,15 +1,14 @@
 /*************************************************************************
                            SiteRank  -  Ranking des sites selon le nombre de hits
                              -------------------
-    début                : 03/02/2021
-    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    début                : 03/02/2022
+    copyright            : (C) 2022 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
     e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <SiteRank> (fichier SiteRank.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
-
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <utility>
@@ -45,7 +44,7 @@ std::ostream & SiteRank::PrintRank(std::ostream & os,
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-std::ostream & operator <<(std::ostream & os, const SiteRank & sr) {
+std::ostream & operator << (std::ostream & os, const SiteRank & sr) {
     iterator it;
     for (it = sr.hitsBySite.cbegin(); it != sr.hitsBySite.cend(); ++it) {
         os << it->first << ':' << it->second << '\n';
@@ -80,7 +79,6 @@ void SiteRank::swapMap() {
 
     for (iterator it = hitsBySite.cbegin(); it != hitsBySite.cend(); ++it) {
         siteRankbyHits.insert(std::make_pair(it->second, &(it->first)));
-        // os << it->first << ':' << it->second << '\n';
     }
     needSwapMap = false;
 }

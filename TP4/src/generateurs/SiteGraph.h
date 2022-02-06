@@ -1,29 +1,24 @@
 /*************************************************************************
                            SiteGraph  -  Représente un graph de site
                              -------------------
-    début                : 03/02/2021
-    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    début                : 03/02/2022
+    copyright            : (C) 2022 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
     e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
 
 //---------- Interface de la classe <SiteGraph> (fichier SiteGraph.h) ----
-#ifndef SRC_SITEGRAPH_H_
-#define SRC_SITEGRAPH_H_
+#ifndef SRC_GENERATEURS_SITEGRAPH_H_
+#define SRC_GENERATEURS_SITEGRAPH_H_
 
 //--------------------------------------------------- Interfaces utilisées
 #include <unordered_map>
 #include <string>
 #include <fstream>
 
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
-
 //------------------------------------------------------------------------
 // Rôle de la classe <SiteGraph>
-//
-//
+// Génère le contenu d'un fichier .dot représentant un graphe de parcours.
 //------------------------------------------------------------------------
 
 class SiteGraph {
@@ -39,7 +34,7 @@ class SiteGraph {
     //   mode d'ouverture suggeré std::ofstream::trunc
 
     //------------------------------------------------- Surcharge d'opérateurs
-    SiteGraph& operator=(const SiteGraph& _SiteGraph);
+    SiteGraph & operator = (const SiteGraph & _SiteGraph);
 
     friend std::ostream & operator << (std::ostream & os,
                                        const SiteGraph & _SiteGraph);
@@ -47,15 +42,13 @@ class SiteGraph {
     //  print la multi map
 
     //-------------------------------------------- Constructeurs - destructeur
-    SiteGraph(const SiteGraph& _SiteGraph);
+    SiteGraph(const SiteGraph & _SiteGraph);
 
     SiteGraph();
 
     virtual ~SiteGraph();
 
  private:
-    //------------------------------------------------------- Méthodes privées
-
     //------------------------------------------------------- Attributs privés
     // cible    : page demandé
     // referant : page où était le navigateur, quand la cible a été demandé
@@ -64,4 +57,4 @@ class SiteGraph {
     std::unordered_map<std::string, std::unordered_map<std::string, unsigned int>> graph;
 };
 
-#endif  // SRC_SITEGRAPH_H_
+#endif  // SRC_GENERATEURS_SITEGRAPH_H_

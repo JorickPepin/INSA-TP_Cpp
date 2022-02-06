@@ -15,10 +15,22 @@
 #include <regex>
 //------------------------------------------------------ Include personnel
 #include "ApacheLog.h"
+#include "../config/Config.h"
 
-//------------------------------------------------------------- Constantes
-const char* PATRON = "(.*?) - - \\[(.*?) \\+\\d+\\] \"(.*?) "
-                     "(.*?) (HTTP/.*)?\" (.*?) (.*?) \"(.*?)\" \"(.*?)\"";
+//----------------------------------------------------------------- PUBLIC
+//------------------------------------------------- Surcharge d'opérateurs
+std::istream & operator >> (std::istream & is, ApacheLog & apacheLog) {
+    std::string s;
+    std::getline(is, s);
+    apacheLog.hydrate(s);
+
+    return is;
+}
+
+std::ostream & operator << (std::ostream & os, const ApacheLog & apacheLog) {
+    os << apacheLog.referent << " " <<apacheLog.ressource;
+    return os;
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 ApacheLog::ApacheLog() {
@@ -41,6 +53,8 @@ ApacheLog::ApacheLog(const std::string & ligne) {
     hydrate(ligne);
 }
 
+//------------------------------------------------------------------ PRIVE
+//------------------------------------------------------- Méthodes privées
 ApacheLog & ApacheLog::hydrate(const std::string & ligne) {
     std::regex rgx(PATRON);
     std::smatch matchs;
@@ -49,8 +63,7 @@ ApacheLog & ApacheLog::hydrate(const std::string & ligne) {
         this->adresseIP = matchs[1].str();
 
         std::istringstream ss(matchs[2].str());
-        // TODO rajouter format dans fichier config
-        ss >> std::get_time(&this->dateHeure, "%d/%b/%Y:%H:%M:%S");
+        ss >> std::get_time(&this->dateHeure, FORMAT_DATE);
 
         this->methode = matchs[3].str();
         this->ressource = matchs[4].str();
@@ -60,24 +73,18 @@ ApacheLog & ApacheLog::hydrate(const std::string & ligne) {
         // prise en compte du cas où la taille est "-"
         this->taille = matchs[7].str() != "-" ? std::stoi(matchs[7].str()) : 0;
 
-        // TODO supprimer domaine de base du référent à faire dans Controller !
-        this->referent = matchs[8].str();
+        std::string referentBrut = matchs[8].str();
+        size_t pos = referentBrut.find(DOMAINE);
 
+        // si le référent commence par le domaine défini dans le
+        // fichier de configuration, on l'enlève
+        if (pos == 0) {
+            referentBrut.erase(pos, strlen(DOMAINE));
+        }
+
+        this->referent = referentBrut;
         this->userAgent = matchs[9].str();
     }
 
     return *this;
-}
-
-std::istream & operator >> (std::istream & is, ApacheLog & apacheLog) {
-    std::string s;
-    std::getline(is, s);
-    apacheLog.hydrate(s);
-
-    return is;
-}
-
-std::ostream & operator << (std::ostream & os, const ApacheLog & apacheLog) {
-    os << apacheLog.referent << " " <<apacheLog.ressource;
-    return os;
 }

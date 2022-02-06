@@ -1,8 +1,8 @@
 /*************************************************************************
                            AnalyseLogController  -  Controller
                              -------------------
-    début                : 03/02/2021
-    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    début                : 03/02/2022
+    copyright            : (C) 2022 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
     e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
@@ -14,7 +14,7 @@
 #include <fstream>
 //------------------------------------------------------ Include personnel
 #include "AnalyseLogController.h"
-#include "modeles/ApacheLog.h"
+#include "../modeles/ApacheLog.h"
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
@@ -23,32 +23,32 @@ void AnalyseLogController::Run() {
 
     fichierLog.open(this->nomFichierLog);
     if (!fichierLog.good()) {
-        std::cerr << "Erreur lors de l'ouverture du fichier" << "\n";
-        exit(2);
+        std::cerr << "Erreur lors de l'ouverture du fichier de logs." << "\n";
+        exit(EXIT_FAILURE);
     }
 
     ApacheLog al;
     while (fichierLog.good()) {
         fichierLog >> al;
 
-        if (this->options->OptionsE() && !this->options->ExtensionValide(al)) {
+        if (this->options->OptionE() && !this->options->ExtensionValide(al)) {
             continue;
         }
 
-        if (this->options->OptionsT() && !this->options->HeureValide(al)) {
+        if (this->options->OptionT() && !this->options->HeureValide(al)) {
             continue;
         }
 
-        if (this->options->OptionsG()) {
+        if (this->options->OptionG()) {
             siteGraph->AddSite(al.GetReferent(), al.GetRessource());
         }
 
         this->siteRank->Add1HittoSite(al.GetRessource());
     }
 
-    this->siteRank->PrintRank(std::cout, 10) << std::endl;
+    this->siteRank->PrintRank(std::cout) << std::endl;
 
-    if (options->OptionsG()) {
+    if (options->OptionG()) {
         std::ofstream dotfile(nomFichierDot, std::ofstream::trunc);
         if (dotfile.good()) {
             siteGraph->PrintDotGraphTo(dotfile);

@@ -36,3 +36,6 @@ analog
 
 # IDE
 .vscode
+
+# Environments
+.env
