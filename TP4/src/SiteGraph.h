@@ -30,18 +30,16 @@ class SiteGraph {
  public:
     //----------------------------------------------------- Méthodes publiques
     void AddSite(const std::string & referant, const std::string & cible);
-
-    //------------------------------------------------- Surcharge d'opérateurs
-    SiteGraph& operator=(const SiteGraph& _SiteGraph);
-
-    friend std::ofstream & operator << (std::ofstream & os,
-                                        const SiteGraph & _SiteGraph);
+    std::ostream & PrintDotGraphTo(std::ostream & os) const;
     // Mode d'emploi :
     //  écrit le graph au format GraphViz dans le fichier
     // Contrat :
     //   le fichier doit être ouvert en écriture et vide pour le que le format
     //   soit respecté
     //   mode d'ouverture suggeré std::ofstream::trunc
+
+    //------------------------------------------------- Surcharge d'opérateurs
+    SiteGraph& operator=(const SiteGraph& _SiteGraph);
 
     friend std::ostream & operator << (std::ostream & os,
                                        const SiteGraph & _SiteGraph);
