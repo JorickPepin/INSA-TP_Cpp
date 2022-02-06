@@ -36,7 +36,6 @@ std::ostream & SiteRank::PrintRank(std::ostream & os,
 
     os << "Top " << nbDisplayed << " :\n";
 
-    // TODO est ce qu'on affiche les 10 premier (y compris les exe aequo ?)
     for (it = siteRankbyHits.crbegin(); it != siteRankbyHits.crend()
                                         && i < nbDisplayed; ++it, ++i) {
         os << *it->second << " (" << it->first << " requête" << (it->first > 1 ? "s)" : ")") << '\n';

@@ -33,6 +33,8 @@ int main(int argc, char *argv[]) {
     int heure = -1;
     std::string nomFichierDot = "";
 
+    opterr = 0;  // enlève les affichages d'erreurs de getopt
+
     while ((option = getopt(argc, argv, "eg:t:")) != -1) {
         switch (option) {
             case 'e':
