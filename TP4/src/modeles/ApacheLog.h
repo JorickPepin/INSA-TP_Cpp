@@ -28,8 +28,9 @@ class ApacheLog {
  public:
     //----------------------------------------------------- Méthodes publiques
     std::string GetRessource() const { return ressource; }
-    std::string GetReferent() const  { return referent;}
+    std::string GetReferent() const  { return referent; }
     tm GetDateHeure() const { return dateHeure; }
+    int GetCode() const  { return code; }
 
     //-------------------------------------------- Constructeurs - destructeur
     ApacheLog & operator = (const ApacheLog & unApacheLog);

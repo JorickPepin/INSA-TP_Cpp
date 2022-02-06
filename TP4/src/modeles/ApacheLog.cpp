@@ -84,6 +84,8 @@ ApacheLog & ApacheLog::hydrate(const std::string & ligne) {
 
         this->referent = referentBrut;
         this->userAgent = matchs[9].str();
+    } else {
+        this->code = -1;
     }
 
     return *this;

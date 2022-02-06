@@ -17,8 +17,9 @@ void utilisation() {
         "Utilisation :\n" <<
         "./analog [-e] [-g fichier.dot] [-t heure] fichier.log\n\n" <<
         "Options :\n" <<
-        "-e           exclut les documents qui ont une extension de type image, CSS ou JS\n" <<
+        "-e           exclut les documents qui ont une extension de type image, CSS ou JS\n\n" <<
         "-t heure     exclut les logs n'étant pas dans l’intervalle horaire [heure, heure+1[\n" <<
+        "             l'heure doit être un entier compris entre 0 et 23\n\n" <<
         "-g fichier   produit un fichier au format DOT du graphe de parcours des logs" << std::endl;
 }
 
@@ -44,6 +45,10 @@ int main(int argc, char *argv[]) {
             case 't':
                 optionT = true;
                 heure = atoi(optarg);
+
+                if (heure > 23 || heure < 0) {
+                    erreur = true;
+                }
                 continue;
             default:
                 erreur = true;

@@ -31,6 +31,10 @@ void AnalyseLogController::Run() {
     while (fichierLog.good()) {
         fichierLog >> al;
 
+        if (al.GetCode() == -1) {  // le log n'a pas pu être analysé
+            continue;
+        }
+
         if (this->options->OptionE() && !this->options->ExtensionValide(al)) {
             continue;
         }
@@ -40,9 +44,11 @@ void AnalyseLogController::Run() {
         }
 
         if (this->options->OptionG()) {
+            // ajout pour le graphe
             siteGraph->AddSite(al.GetReferent(), al.GetRessource());
         }
 
+        // ajout pour le classement
         this->siteRank->Add1HittoSite(al.GetRessource());
     }
 

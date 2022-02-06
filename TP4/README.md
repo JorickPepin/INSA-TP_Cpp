@@ -4,7 +4,7 @@
 
 Création d'un programme d'analyse de logs Apache permettant de générer le classement
 des pages les plus demandées ainsi qu'un graphe de parcours en
-[langage DOT](https://fr.wikipedia.org/wiki/DOT_(langage)). 
+[langage DOT](https://fr.wikipedia.org/wiki/DOT_(langage)).
 
 ## Configuration
 
@@ -86,10 +86,6 @@ Le fichier d'entrée doit contenir un log par ligne au format suivant :
 # du CSS ou du JS et affiche les 10 plus demandées dans la console
 ./analog -g sortie.dot -e meslogs.log
 ```
-
-## Tests
-
-TODO
 
 ## Guide de style
 
