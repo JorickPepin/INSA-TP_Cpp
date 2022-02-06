@@ -23,8 +23,8 @@ void AnalyseLogController::Run() {
 
     fichierLog.open(this->nomFichierLog);
     if (!fichierLog.good()) {
-        std::cerr << "Erreur lors de l'ouverture du fichier" << "\n";
-        exit(2);
+        std::cerr << "Erreur lors de l'ouverture du fichier de logs." << "\n";
+        exit(EXIT_FAILURE);
     }
 
     ApacheLog al;

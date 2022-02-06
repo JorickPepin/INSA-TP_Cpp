@@ -49,12 +49,12 @@ void Config::Load(std::string nomFichierConfig) {
     } else {
         std::cerr << "Le fichier de configuration " << nomFichierConfig
                   << " n'a pas pu être ouvert." << std::endl;
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     if (!FORMAT_DATE || !DOMAINE) {
         std::cerr << "Les variables FORMAT_DATE et DOMAINE doivent être "
                   << "définies dans le fichier de configuration." << std::endl;
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 }

@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
 
     if (!argv[optind]) {
         std::cerr << "Fichier .log manquant\n" << utilisation << std::endl;
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     std::string nomFichierLog = argv[optind];
