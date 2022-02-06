@@ -66,6 +66,8 @@ class Options {
 
     Options();
 
+    virtual ~Options();
+
  private:
     //--------------------------------------------------- Attributs privés
     bool optionG;

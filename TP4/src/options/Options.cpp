@@ -28,6 +28,7 @@ bool Options::HeureValide(const ApacheLog & log) {
     return log.GetDateHeure().tm_hour == this->heure;
 }
 
+//-------------------------------------------- Constructeurs - destructeur
 Options::Options(bool optionG, bool optionE, bool optionT, int heure)
     : optionG(optionG), optionE(optionE), optionT(optionT), heure(heure) {
 
@@ -36,5 +37,8 @@ Options::Options(bool optionG, bool optionE, bool optionT, int heure)
     #endif
 }
 
-//------------------------------------------------------------------ PRIVE
-//------------------------------------------------------- Méthodes privées
+Options::~Options() {
+    #ifdef MAP
+        std::cout << "Appel au destructeur de <Options>" << std::endl;
+    #endif
+}
