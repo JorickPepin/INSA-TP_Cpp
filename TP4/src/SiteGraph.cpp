@@ -26,6 +26,25 @@ void SiteGraph::AddSite(const std::string & referant,
     ++graph[referant][cible];
 }
 
+std::ostream & SiteGraph::PrintDotGraphTo(std::ostream & os) const {
+    iterator_double it1;
+    iterator_simple it2;
+
+    os << "digraph{\n";
+    for (it1 = graph.cbegin(); it1 != graph.cend(); ++it1) {
+        for (it2 = it1->second.cbegin(); it2 != it1->second.cend(); ++it2) {
+            // WARNING le format pourrait ne pas être valide un site contient
+            // un ", mais normalement ce n'est pas possible
+            // (http://www.faqs.org/rfcs/rfc1738.html)
+            // format GraphViz: "   "referant" -> "cible" [label="unsigned int"]\n"
+            os << "\t\"" << it1->first << "\"" << " -> \""<< it2->first
+               << "\"[label=\"" << it2->second <<"\"]\n";
+        }
+    }
+    os << "}\n";
+    return os;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 std::ostream & operator <<(std::ostream & os, const SiteGraph & _SiteGraph) {
     iterator_double it1;
@@ -37,25 +56,6 @@ std::ostream & operator <<(std::ostream & os, const SiteGraph & _SiteGraph) {
             os << "\t" << it2->first << " : " << it2->second << '\n';
         }
     }
-    return os;
-}
-
-std::ofstream & operator <<(std::ofstream & os, const SiteGraph & _SiteGraph) {
-    iterator_double it1;
-    iterator_simple it2;
-
-    os << "digraph{\n";
-    for (it1 = _SiteGraph.graph.cbegin(); it1 != _SiteGraph.graph.cend(); ++it1) {
-        for (it2 = it1->second.cbegin(); it2 != it1->second.cend(); ++it2) {
-            // WARNING le format pourrait ne pas être valide un site contient
-            // un ", mais normalement ce n'est pas possible
-            // (http://www.faqs.org/rfcs/rfc1738.html)
-            // format : "   "referant" -> "cible" [label="unsigned int"]\n"
-            os << "\t\"" << it1->first << "\"" << " -> "<< it2->first
-               << "[label=\"" << it2->second <<"\"]\n";
-        }
-    }
-    os << "}\n";
     return os;
 }
 

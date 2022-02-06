@@ -26,6 +26,7 @@ class ApacheLog {
  public:
     //----------------------------------------------------- Méthodes publiques
     std::string GetRessource() const { return ressource; }
+    std::string GetReferent() const  { return referent;}
     tm GetDateHeure() const { return dateHeure; }
 
     //-------------------------------------------- Constructeurs - destructeur
