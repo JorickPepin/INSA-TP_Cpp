@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //--------- Interface de la classe <AnalyseLogController> ----------------
-#ifndef SRC_ANALYSELOGCONTROLLER_H_
-#define SRC_ANALYSELOGCONTROLLER_H_
+#ifndef SRC_CONTROLEURS_ANALYSELOGCONTROLLER_H_
+#define SRC_CONTROLEURS_ANALYSELOGCONTROLLER_H_
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
@@ -54,4 +54,4 @@ class AnalyseLogController {
     Options* options;
 };
 
-#endif  // SRC_ANALYSELOGCONTROLLER_H_
+#endif  // SRC_CONTROLEURS_ANALYSELOGCONTROLLER_H_

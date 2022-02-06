@@ -8,8 +8,8 @@
 
 
 //---------- Interface de la classe <SiteGraph> (fichier SiteGraph.h) ----
-#ifndef SRC_SITEGRAPH_H_
-#define SRC_SITEGRAPH_H_
+#ifndef SRC_GENERATEURS_SITEGRAPH_H_
+#define SRC_GENERATEURS_SITEGRAPH_H_
 
 //--------------------------------------------------- Interfaces utilisées
 #include <unordered_map>
@@ -57,4 +57,4 @@ class SiteGraph {
     std::unordered_map<std::string, std::unordered_map<std::string, unsigned int>> graph;
 };
 
-#endif  // SRC_SITEGRAPH_H_
+#endif  // SRC_GENERATEURS_SITEGRAPH_H_

@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---- Interface de la classe <Options> (fichier Options.h) ----------
-#ifndef SRC_OPTIONS_H_
-#define SRC_OPTIONS_H_
+#ifndef SRC_OPTIONS_OPTIONS_H_
+#define SRC_OPTIONS_OPTIONS_H_
 
 //--------------------------------------------------- Interfaces utilisées
 #include <vector>
@@ -73,4 +73,4 @@ class Options {
     int heure;
 };
 
-#endif  // SRC_OPTIONS_H_
+#endif  // SRC_OPTIONS_OPTIONS_H_

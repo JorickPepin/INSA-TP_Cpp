@@ -7,8 +7,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <SiteRank> (fichier SiteRank.h) ------
-#ifndef SRC_SITERANK_H_
-#define SRC_SITERANK_H_
+#ifndef SRC_GENERATEURS_SITERANK_H_
+#define SRC_GENERATEURS_SITERANK_H_
 
 //--------------------------------------------------- Interfaces utilisées
 #include <map>
@@ -55,4 +55,4 @@ class SiteRank {
     std::multimap<unsigned int, const std::string *> siteRankbyHits;
 };
 
-#endif  // SRC_SITERANK_H_
+#endif  // SRC_GENERATEURS_SITERANK_H_

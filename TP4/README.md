@@ -17,7 +17,8 @@ DOMAINE=http://mon-domaine.fr
 ```
 
 * `FORMAT_DATE` : le format de la date et de l'heure des logs
-* `DOMAINE` : le nom de domaine de base à enlever des pages référentes pour construire
+([liste des paramètres](https://en.cppreference.com/w/cpp/io/manip/get_time#Parameters))
+* `DOMAINE` : le nom de domaine à enlever des pages référentes pour construire
 le graphe de parcours
 
 ## Exemples
