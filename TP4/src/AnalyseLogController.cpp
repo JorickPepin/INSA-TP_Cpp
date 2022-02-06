@@ -38,17 +38,19 @@ void AnalyseLogController::Run() {
         if (this->options->OptionsT() && !this->options->HeureValide(al)) {
             continue;
         }
-        if(options->OptionsG()){
-            siteGraph->AddSite(al.GetReferent(),al.GetRessource());
+
+        if (this->options->OptionsG()) {
+            siteGraph->AddSite(al.GetReferent(), al.GetRessource());
         }
+
         this->siteRank->Add1HittoSite(al.GetRessource());
     }
 
     this->siteRank->PrintRank(std::cout, 10) << std::endl;
 
-    if(options->OptionsG()){
-        std::ofstream dotfile(nomFichierDot,std::ofstream::trunc);
-        if(dotfile.good()){
+    if (options->OptionsG()) {
+        std::ofstream dotfile(nomFichierDot, std::ofstream::trunc);
+        if (dotfile.good()) {
             siteGraph->PrintDotGraphTo(dotfile);
         }
     }
