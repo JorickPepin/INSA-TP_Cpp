@@ -17,8 +17,8 @@
 #include "Config.h"
 
 //------------------------------------------------------------- Constantes
-const char* FORMAT_DATE;
-const char* DOMAINE;
+std::string FORMAT_DATE;
+std::string DOMAINE;
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
@@ -41,9 +41,9 @@ void Config::Load(std::string nomFichierConfig) {
             auto valeur = ligne.substr(delimiteur + 1);
 
             if (cle == "FORMAT_DATE") {
-                FORMAT_DATE = valeur.c_str();
+                FORMAT_DATE = valeur;
             } else if (cle == "DOMAINE") {
-                DOMAINE = valeur.c_str();
+                DOMAINE = valeur;
             }
         }
     } else {
@@ -52,7 +52,7 @@ void Config::Load(std::string nomFichierConfig) {
         exit(EXIT_FAILURE);
     }
 
-    if (!FORMAT_DATE || !DOMAINE) {
+    if (FORMAT_DATE.empty() || DOMAINE.empty()) {
         std::cerr << "Les variables FORMAT_DATE et DOMAINE doivent être "
                   << "définies dans le fichier de configuration." << std::endl;
         exit(EXIT_FAILURE);

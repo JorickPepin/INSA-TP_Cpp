@@ -34,10 +34,12 @@ std::ostream & SiteRank::PrintRank(std::ostream & os,
     // umap -> multi_map
     swapMap();
 
+    os << "Top " << nbDisplayed << " :\n";
+
     // TODO est ce qu'on affiche les 10 premier (y compris les exe aequo ?)
     for (it = siteRankbyHits.crbegin(); it != siteRankbyHits.crend()
                                         && i < nbDisplayed; ++it, ++i) {
-        os << *it->second << " : " << it->first << '\n';
+        os << *it->second << " (" << it->first << " requête" << (it->first > 1 ? "s)" : ")") << '\n';
     }
 
     return os;

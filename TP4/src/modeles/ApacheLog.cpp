@@ -63,7 +63,7 @@ ApacheLog & ApacheLog::hydrate(const std::string & ligne) {
         this->adresseIP = matchs[1].str();
 
         std::istringstream ss(matchs[2].str());
-        ss >> std::get_time(&this->dateHeure, FORMAT_DATE);
+        ss >> std::get_time(&this->dateHeure, FORMAT_DATE.c_str());
 
         this->methode = matchs[3].str();
         this->ressource = matchs[4].str();
@@ -79,7 +79,7 @@ ApacheLog & ApacheLog::hydrate(const std::string & ligne) {
         // si le référent commence par le domaine défini dans le
         // fichier de configuration, on l'enlève
         if (pos == 0) {
-            referentBrut.erase(pos, strlen(DOMAINE));
+            referentBrut.erase(pos, DOMAINE.length());
         }
 
         this->referent = referentBrut;
