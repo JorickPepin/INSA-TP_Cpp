@@ -1,8 +1,8 @@
 /*************************************************************************
                            Options  -  description
                              -------------------
-    début                : 04/02/2021
-    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    début                : 04/02/2022
+    copyright            : (C) 2022 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
     e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
@@ -13,14 +13,18 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <vector>
 #include <string>
-#include "modeles/ApacheLog.h"
+#include "../modeles/ApacheLog.h"
 
 //------------------------------------------------------------- Constantes
 /**
  * Extensions de type image, CSS et JavaScript à exclure lorsque
  * l'option -e est utilisée
  */
-extern const std::vector<std::string> EXTENSIONS_A_EXCLURE;
+const std::vector<std::string> EXTENSIONS_A_EXCLURE = {
+    "apng", "avif", "gif", "jpg", "jpeg", "jfif", "pjpeg", "pjp",
+    "png", "svg", "webp", "bmp", "ico", "cur", "tif", "tiff",
+    "js", "css"
+};
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Options>
@@ -42,7 +46,7 @@ class Options {
      * @param log le log à vérifier
      * @return true si l'extension ne fait pas partie des extensions à exclure, false sinon
      */
-    bool ExtensionValide(const ApacheLog& log);
+    bool ExtensionValide(const ApacheLog & log);
 
     /**
      * Indique si l'heure du log correspond à l'intervalle [heure, heure + 1[
@@ -51,18 +55,18 @@ class Options {
      * @param heure l'heure souhaitée
      * @return true si l'heure est dans l'intervalle, false sinon
      */
-    bool HeureValide(const ApacheLog& log);
+    bool HeureValide(const ApacheLog & log);
 
-    bool OptionsG() const { return optionG; }
-    bool OptionsE() const { return optionE; }
-    bool OptionsT() const { return optionT; }
+    bool OptionG() const { return optionG; }
+    bool OptionE() const { return optionE; }
+    bool OptionT() const { return optionT; }
 
     Options(bool optionG, bool optionE, bool optionT, int heure);
 
     Options();
 
  private:
-    //----------------------------------------------------- Méthodes privées
+    //--------------------------------------------------- Attributs privés
     bool optionG;
     bool optionE;
     bool optionT;

@@ -1,8 +1,8 @@
 /*************************************************************************
                            AnalyseLogController  -  Controller
                              -------------------
-    début                : 03/02/2021
-    copyright            : (C) 2021 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
+    début                : 03/02/2022
+    copyright            : (C) 2022 par Inès Leclercq--Cuvelier, François Foltête, Jorick Pepin
     e-mail               : ines.leclercq---cuvelier@insa-lyon.fr, francois.foltete@insa-lyon.fr, jorick.pepin@insa-lyon.fr
 *************************************************************************/
 
@@ -12,26 +12,29 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
-#include "SiteRank.h"
-#include "SiteGraph.h"
-#include "Options.h"
+#include "../generateurs/SiteRank.h"
+#include "../generateurs/SiteGraph.h"
+#include "../options/Options.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <AnalyseLogController>
-//
-//
+// Contrôleur de l'analyse du fichier de logs.
 //------------------------------------------------------------------------
 
 class AnalyseLogController {
  public:
     //----------------------------------------------------- Méthodes publiques
+    /**
+     * Lance l'analyse du fichier.
+     */
     void Run();
 
     //------------------------------------------------- Surcharge d'opérateurs
-    AnalyseLogController& operator = (const AnalyseLogController& _AnalyseLogController);
+    AnalyseLogController & operator = (
+        const AnalyseLogController & _AnalyseLogController);
 
     //-------------------------------------------- Constructeurs - destructeur
-    AnalyseLogController(const AnalyseLogController& _AnalyseLogController);
+    AnalyseLogController(const AnalyseLogController & _AnalyseLogController);
 
     AnalyseLogController(bool optionG, bool optionE, bool optionT,
                          int heure, std::string nomFichierDot,
@@ -42,8 +45,6 @@ class AnalyseLogController {
     virtual ~AnalyseLogController();
 
  private:
-    //------------------------------------------------------- Méthodes privées
-
     //------------------------------------------------------- Attributs privés
     std::string nomFichierDot;
     std::string nomFichierLog;
