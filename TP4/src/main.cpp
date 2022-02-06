@@ -12,12 +12,21 @@
 #include "controleurs/AnalyseLogController.h"
 #include "config/Config.h"
 
+void utilisation() {
+    std::cout <<
+        "Utilisation :\n" <<
+        "./analog [-e] [-g fichier.dot] [-t heure] fichier.log\n\n" <<
+        "Options :\n" <<
+        "-e           exclut les documents qui ont une extension de type image, CSS ou JS\n" <<
+        "-t heure     exclut les logs n'étant pas dans l’intervalle horaire [heure, heure+1[\n" <<
+        "-g fichier   produit un fichier au format DOT du graphe de parcours des logs" << std::endl;
+}
+
 int main(int argc, char *argv[]) {
     Config::Load();  // chargement du fichier de configuration
 
-    std::string utilisation = "Utilisation : ./analog "
-                              "[-e | -g fichier.dot | -t heure] fichier.log";
     int option;
+    bool erreur = false;
 
     bool optionE = false, optionG = false, optionT = false;
     int heure = -1;
@@ -36,18 +45,15 @@ int main(int argc, char *argv[]) {
                 optionT = true;
                 heure = atoi(optarg);
                 continue;
-            case '?':
-            case 'h':
-            case  -1:
-            default :
-                std::cout << utilisation << std::endl;
+            default:
+                erreur = true;
                 break;
         }
         break;
     }
 
-    if (!argv[optind]) {
-        std::cerr << "Fichier .log manquant\n" << utilisation << std::endl;
+    if (!argv[optind] || erreur) {
+        utilisation();
         exit(EXIT_FAILURE);
     }
 

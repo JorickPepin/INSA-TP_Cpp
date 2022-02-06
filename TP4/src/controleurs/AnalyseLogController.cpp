@@ -46,14 +46,28 @@ void AnalyseLogController::Run() {
         this->siteRank->Add1HittoSite(al.GetRessource());
     }
 
-    this->siteRank->PrintRank(std::cout) << std::endl;
-
-    if (options->OptionG()) {
+    if (this->options->OptionG()) {
         std::ofstream dotfile(nomFichierDot, std::ofstream::trunc);
         if (dotfile.good()) {
             siteGraph->PrintDotGraphTo(dotfile);
+            std::cout << "Fichier " << nomFichierDot << " généré."
+                      << std::endl;
         }
     }
+
+    if (this->options->OptionT()) {
+        std::cout << "Attention : seules les requêtes entre "
+                  << this->options->GetHeure() << "h et "
+                  << this->options->GetHeure() + 1 << "h ont été prises "
+                  << "en compte." << std::endl;
+    }
+
+    if (this->options->OptionE()) {
+        std::cout << "Attention : les fichiers images, CSS et JS ont "
+                  << "été exclus du résultat." << std::endl;
+    }
+
+    this->siteRank->PrintRank(std::cout) << std::endl;
 }
 
 //-------------------------------------------- Constructeurs - destructeur

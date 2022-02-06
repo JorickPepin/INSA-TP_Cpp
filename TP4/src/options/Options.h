@@ -30,11 +30,11 @@ const std::vector<std::string> EXTENSIONS_A_EXCLURE = {
 // Rôle de la classe <Options>
 // Gestion des options potentiellement utilisées par l'utilisateur
 // Options :
-//  -g        permet de produire un fichier au format GraphViz du graphe analysé
-//  -e        permet d’exclure tous les documents qui ont une extension de type
-//            image, CSS ou JS
-//  -t heure  permet de ne prendre en compte que les hits qui sont dans le créneau
-//            horaire correspondant à l’intervalle [heure, heure+1[
+//  -g fichier  permet de produire un fichier au format DOT du graphe analysé
+//  -e          permet d’exclure tous les documents qui ont une extension de type
+//              image, CSS ou JS
+//  -t heure    permet de ne prendre en compte que les hits qui sont dans le créneau
+//              horaire correspondant à l’intervalle [heure, heure+1[
 //------------------------------------------------------------------------
 
 class Options {
@@ -60,6 +60,7 @@ class Options {
     bool OptionG() const { return optionG; }
     bool OptionE() const { return optionE; }
     bool OptionT() const { return optionT; }
+    int GetHeure() const { return heure; }
 
     Options(bool optionG, bool optionE, bool optionT, int heure);
 

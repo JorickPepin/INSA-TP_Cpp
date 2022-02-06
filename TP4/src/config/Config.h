@@ -14,8 +14,8 @@
 #include <string>
 
 //------------------------------------------------------------- Constantes
-extern const char* FORMAT_DATE;
-extern const char* DOMAINE;
+extern std::string FORMAT_DATE;
+extern std::string DOMAINE;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Config>
